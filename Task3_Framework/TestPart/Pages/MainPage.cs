@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Events;
+using Task2_SeleniumWebDriver.Steam.FrameworkPart.BrowserUtils;
 using Task3_Framework.TestPart.BaseClasses;
 using Task3_Framework.TestPart.BaseClasses.Elements;
 using Task3_Framework.TestPart.Elements;
@@ -10,7 +11,7 @@ namespace Task3_Framework.TestPart
     {
         private By mainPageBaseElement= By.XPath("//div[@class = \"home-content\"]");
         private string pageName = "main page";
-        private By alertsButton = By.XPath("//div[@class = \"card-body\"]//h5[contains(text(), \"Alerts\")]");
+        private By alertsButton = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsFramesWindows"]));
         private string alertsButtonName = "alerts button";
 
         public MainPage()

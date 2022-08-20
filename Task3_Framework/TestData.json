@@ -1,7 +1,8 @@
 {
   "AlertsForm": "Alerts",
-  "NumberOfPlayers": "LAN Co-op",
-  "Tag": "Action",
+  "SimpleAlertMessage": "You clicked a button",
+  "AlertsFramesWindows": "Alerts",
+
   "GameCount": "1",
   "button": "STORE",
   "Game": "Dota 2",

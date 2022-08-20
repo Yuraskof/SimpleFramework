@@ -1,4 +1,6 @@
+using System;
 using NUnit.Framework;
+using OpenQA.Selenium.Support.UI;
 using Task2_SeleniumWebDriver.Steam.FrameworkPart;
 using Task2_SeleniumWebDriver.Steam.FrameworkPart.BrowserUtils;
 using Task3_Framework.FrameworkPart.UtilClasses;
@@ -39,7 +41,17 @@ namespace Task2_SeleniumWebDriver.Steam
 
             alertsPage.menuPage.OpenAlertsForm();
 
-            Assert.IsTrue(alertsPage.alertsFormPage.isPageOpen(), "Alerts page isn't open");
+            Assert.IsTrue(alertsPage.alertsFormPage.isPageOpen(), "Alerts form isn't open");
+
+            alertsPage.alertsFormPage.ClickAlert();
+
+            WebDriverWait wait = new WebDriverWait(DriverUtils.WebDriver, TimeSpan.FromSeconds(10));
+
+            Assert.IsTrue(BrowserUtils.AlertIsPresent(wait), "Alert isn't open");
+
+            string simpleAlertText = BrowserUtils.GetTextFromAlert(wait);
+
+            Assert.AreEqual(simpleAlertText, ConfigUtils.TestData["SimpleAlertMessage"], "Wrong message");
 
             //Assert.IsTrue(mainPage.CheckMainPageIsOpen(), "MainPage isn't open");
 

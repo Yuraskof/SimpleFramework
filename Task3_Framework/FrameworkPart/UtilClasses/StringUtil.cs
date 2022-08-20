@@ -9,6 +9,7 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
 {
     class StringUtil
     {
+        
         public static List<decimal> ParsePrices(string prices)
         {
             string text = Regex.Replace(prices, @"[,]+", "");
