@@ -1,0 +1,8 @@
+{
+  "baseUrl": "https://demoqa.com/",
+  "browser": "chrome", // firefox  chrome
+  "optionsChrome": " --lang=us",
+  "regimeFirefox": "-private",
+  "languageFirefox": "us",
+  "wait_time": "20"
+}
