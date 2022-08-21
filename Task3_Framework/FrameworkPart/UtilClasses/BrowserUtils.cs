@@ -27,6 +27,18 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
             return false;
         }
 
+        public static bool AlertIsClosed(WebDriverWait wait)
+        {
+            if (wait.Until(ExpectedConditions.AlertState(false)))
+            {
+                log.Info("alert isn't present");
+                return true;
+            }
+
+            log.Info("alert is present");
+            return false;
+        }
+
         public static string GetTextFromAlert(WebDriverWait wait)
         {
             IAlert alert = DriverUtils.WebDriver.SwitchTo().Alert();
@@ -35,5 +47,25 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
             return text;
         }
 
+        public static void AcceptAlert(WebDriverWait wait)
+        {
+            IAlert alert = wait.Until(ExpectedConditions.AlertIsPresent());
+            alert.Accept();
+            log.Info("alert accepted");
+        }
+
+        public static void DismissAlert(WebDriverWait wait)
+        {
+            IAlert alert = wait.Until(ExpectedConditions.AlertIsPresent());
+            alert.Dismiss();
+            log.Info("alert declined");
+        }
+
+        public static void AlertSendKeys(string text, WebDriverWait wait)
+        {
+            IAlert alert = wait.Until(ExpectedConditions.AlertIsPresent());
+            alert.SendKeys(text);
+            log.Info(string.Format("entered text = {0}", text));
+        }
     }
 }

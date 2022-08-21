@@ -6,9 +6,26 @@ using OpenQA.Selenium;
 
 namespace Task3_Framework.FrameworkPart.UtilClasses
 {
-    class StringUtil
+    public static class StringUtil
     {
-        
+        public static string StringGenerator(int lettersCount)
+        {
+            char[] letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwxyz".ToCharArray();
+
+            Random rand = new Random();
+
+            string word = "";
+
+            for (int j = 1; j <= lettersCount; j++)
+            {
+                int letter = rand.Next(0, letters.Length - 1);
+
+                word += letters[letter];
+            }
+
+            return word;
+        }
+
         public static List<decimal> ParsePrices(string prices)
         {
             string text = Regex.Replace(prices, @"[,]+", "");

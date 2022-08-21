@@ -29,7 +29,7 @@ namespace Task3_Framework
 
 
         [Test]
-        public void TestCase1_MainAboutPages()
+        public void TestCase1_AlertForms()
         {
             BrowserUtils.GoToUrl(DriverUtils.BrowserConfig["baseUrl"]);
 
@@ -51,47 +51,66 @@ namespace Task3_Framework
 
             log.Info("Step 2 completed successfully");
 
-            alertsPage.alertsFormPage.ClickAlert();
+            alertsPage.alertsFormPage.ClickSimpleAlert();
 
             WebDriverWait wait = new WebDriverWait(DriverUtils.WebDriver, TimeSpan.FromSeconds(10));
 
-            Assert.IsTrue(BrowserUtils.AlertIsPresent(wait), "Alert isn't open");
+            Assert.IsTrue(BrowserUtils.AlertIsPresent(wait), "Simple alert isn't open");
 
             string simpleAlertText = BrowserUtils.GetTextFromAlert(wait);
 
             Assert.AreEqual(simpleAlertText, ConfigUtils.TestData["SimpleAlertMessage"], "Wrong message");
 
-            //Assert.IsTrue(mainPage.CheckMainPageIsOpen(), "MainPage isn't open");
+            log.Info("Step 3 completed successfully");
 
-            //Assert.IsTrue(mainPage.mainMenuPage.FindElementAbout(), "About element not found");
+            BrowserUtils.AcceptAlert(wait);
 
-            //mainPage.mainMenuPage.ClickElementAbout();
+            Assert.IsTrue(BrowserUtils.AlertIsClosed(wait), "Simple alert is open");
 
-            //AboutPage aboutPage = new AboutPage();
+            log.Info("Step 4 completed successfully");
 
-            //Assert.IsTrue(aboutPage.CheckPageAboutIsOpen(), "AboutPage isn't open");
+            alertsPage.alertsFormPage.ClickTwoOptionsAlert();
 
-            //Assert.IsTrue(aboutPage.FindElementGamersOnline(), "Gamers online element not found");
+            Assert.IsTrue(BrowserUtils.AlertIsPresent(wait), "Two options alert isn't open");
 
-            //int gamersOnlineCount = aboutPage.FindGamersOnlineCount();
+            string twoOptionsAlertText = BrowserUtils.GetTextFromAlert(wait);
 
-            //Assert.Positive(gamersOnlineCount, "Gamers online count isn't positive");
+            Assert.AreEqual(twoOptionsAlertText, ConfigUtils.TestData["TwoOptionsAlertMessage"], "Wrong message");
 
+            log.Info("Step 5 completed successfully");
 
-            //Assert.IsTrue(aboutPage.FindGamersPlayingCountElement(), "Gamers playing element not found");
+            BrowserUtils.AcceptAlert(wait);
 
-            //int gamersPlayingCount = aboutPage.FindGamersPlayingCount();
+            Assert.IsTrue(BrowserUtils.AlertIsClosed(wait), "Two options alert is open");
 
-            //Assert.NotZero(gamersPlayingCount, "Gamers playing count isn't positive");
+            string twoOptionsAlertConfirmationText = alertsPage.alertsFormPage.Get2OptAlertConfirmText();
 
-            //Assert.Greater(gamersOnlineCount, gamersPlayingCount, "Gamers online count smaller than gamers playing");
+            Assert.AreEqual(twoOptionsAlertConfirmationText, ConfigUtils.TestData["TwoOptionsAlertConfirmText"], "Wrong message");
 
-            //Assert.IsTrue(mainPage.mainMenuPage.FindElementStore(), "Store element not found");
+            log.Info("Step 6 completed successfully");
 
-            //mainPage.mainMenuPage.ClickElementStore();
+            alertsPage.alertsFormPage.ClickAlertWithText();
 
-            //Assert.IsTrue(mainPage.CheckMainPageIsOpen(), "MainPage isn't open");
+            Assert.IsTrue(BrowserUtils.AlertIsPresent(wait), "Alert with text field isn't open");
 
+            string alertWithTextMessage = BrowserUtils.GetTextFromAlert(wait);
+
+            Assert.AreEqual(alertWithTextMessage, ConfigUtils.TestData["AlertWithTextMessage"], "Wrong message");
+
+            log.Info("Step 7 completed successfully");
+
+            string generatedText = StringUtil.StringGenerator(Convert.ToInt32(ConfigUtils.TestData["LettersCount"]));
+
+            BrowserUtils.AlertSendKeys(generatedText, wait);
+            BrowserUtils.AcceptAlert(wait);
+
+            Assert.IsTrue(BrowserUtils.AlertIsClosed(wait), "Alert with text is open");
+
+            string alertWithTextConfirmResult = alertsPage.alertsFormPage.GetAlertWithTextComfirmText();
+
+            Assert.AreEqual(alertWithTextConfirmResult, string.Format(ConfigUtils.TestData["AlertWithTextResult"]+ generatedText) , "Wrong message");
+
+            log.Info("Step 7 completed successfully. Test case 1 completed.");
         }
 
 

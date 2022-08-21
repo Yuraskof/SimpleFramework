@@ -38,6 +38,28 @@ namespace Task3_Framework.TestPart.BaseClasses
                 log.Info(string.Format("element {0} clicked", name));
             }
         }
+        
+        public void JsScrollToElement(By locator, string name)
+        {
+            if (Find(locator, name))
+            {
+                IJavaScriptExecutor js = (IJavaScriptExecutor)DriverUtils.WebDriver;
+                IWebElement element = DriverUtils.WebDriver.FindElement(locator);
+                js.ExecuteScript("arguments[0].scrollIntoView();", element);  //("window.scrollBy(0,250)", "");
+                log.Info(string.Format("scrolled to element {0} ", name));
+            }
+        }
+
+        public string SaveText(By locator, string name)
+        {
+            if (Find(locator, name))
+            {
+                string text = DriverUtils.WebDriver.FindElement(locator).Text;
+                log.Info(string.Format("element {0} text = {1}", name, text));
+                return text;
+            }
+            return null;
+        }
 
         public void MoveToElement(By locator, string name)
         {
@@ -47,17 +69,6 @@ namespace Task3_Framework.TestPart.BaseClasses
                 IWebElement element = DriverUtils.WebDriver.FindElement(locator);
                 action.MoveToElement(element);
                 action.Perform();
-            }
-        }
-
-        public void JsScrollToElement(By locator, string name)
-        {
-            if (Find(locator, name))
-            {
-                IJavaScriptExecutor js = (IJavaScriptExecutor)DriverUtils.WebDriver;
-                IWebElement element = DriverUtils.WebDriver.FindElement(locator);
-                js.ExecuteScript("arguments[0].scrollIntoView();", element);  //("window.scrollBy(0,250)", "");
-                log.Info(string.Format("scrolled to element {0} ", name));
             }
         }
     }
