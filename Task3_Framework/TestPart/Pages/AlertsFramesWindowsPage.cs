@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using Task3_Framework.TestPart.BaseClasses;
 
 namespace Task3_Framework.TestPart.Pages

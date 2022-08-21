@@ -1,16 +1,19 @@
 using System;
+using log4net;
 using NUnit.Framework;
 using OpenQA.Selenium.Support.UI;
-using Task2_SeleniumWebDriver.Steam.FrameworkPart;
-using Task2_SeleniumWebDriver.Steam.FrameworkPart.BrowserUtils;
 using Task3_Framework.FrameworkPart.UtilClasses;
 using Task3_Framework.TestPart;
 using Task3_Framework.TestPart.Pages;
 
-namespace Task2_SeleniumWebDriver.Steam
+
+namespace Task3_Framework
 {
     public class Tests
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        
+
         [SetUp]
         public void Setup()
         {
@@ -21,6 +24,7 @@ namespace Task2_SeleniumWebDriver.Steam
             DriverUtils.WebDriver.Manage().Window.Maximize(); //log
 
             ConfigUtils.GetTestData(); //log
+
         }
 
 
@@ -33,6 +37,8 @@ namespace Task2_SeleniumWebDriver.Steam
 
             Assert.IsTrue(mainPage.isPageOpen(), "Main page isn't open");
 
+            log.Info("Step 1 completed successfully");
+
             mainPage.GoToAlertsPage();
 
             AlertsFramesWindowsPage alertsPage = new AlertsFramesWindowsPage();
@@ -42,6 +48,8 @@ namespace Task2_SeleniumWebDriver.Steam
             alertsPage.menuPage.OpenAlertsForm();
 
             Assert.IsTrue(alertsPage.alertsFormPage.isPageOpen(), "Alerts form isn't open");
+
+            log.Info("Step 2 completed successfully");
 
             alertsPage.alertsFormPage.ClickAlert();
 

@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using log4net;
 using OpenQA.Selenium;
-using Task2_SeleniumWebDriver.Steam.FrameworkPart.BrowserUtils;
 
 
-namespace Task2_SeleniumWebDriver.Steam.FrameworkPart
+namespace Task3_Framework
 {
     public static class DriverUtils
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public static Dictionary<string, string> BrowserConfig = new Dictionary<string, string>();
 
         private static IWebDriver _driver;
@@ -38,12 +40,14 @@ namespace Task2_SeleniumWebDriver.Steam.FrameworkPart
         public static void SetImplicitWait(int seconds)
         {
             WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(seconds);
+            log.Info(string.Format("implicit wait = {0} sec", seconds));
         }
 
         public static void ResetDriver()
         {
             WebDriver = null;
             BrowserConfig.Clear();
+            log.Info("driver reset");
         }
     }
 }

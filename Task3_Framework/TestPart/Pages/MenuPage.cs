@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using Task2_SeleniumWebDriver.Steam.FrameworkPart.BrowserUtils;
 using Task3_Framework.TestPart.BaseClasses;
 using Task3_Framework.TestPart.BaseClasses.Elements;
 
@@ -8,9 +7,9 @@ namespace Task3_Framework.TestPart.Pages
     class MenuPage:BasePage
     {
         private By menuPageBaseElement = By.XPath("//div[@class =\"left-pannel\"] ");
-        private string pageName = "menu page";
+        private string pageName = "\"Menu page\"";
         private By alertsFormButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsForm"]));
-        private string alertsFormButtonName = "alerts form button";
+        private string alertsFormButtonName = "\"Alerts form button\"";
 
         public MenuPage()
         {

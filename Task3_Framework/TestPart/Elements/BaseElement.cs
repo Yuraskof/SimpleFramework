@@ -1,12 +1,13 @@
-﻿using AngleSharp.Dom;
+﻿using log4net;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using Task2_SeleniumWebDriver.Steam.FrameworkPart;
 
 namespace Task3_Framework.TestPart.BaseClasses
 {
     public abstract class BaseElement
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         protected By uniqueLocator;
         protected string uniqueName;
 
@@ -18,8 +19,14 @@ namespace Task3_Framework.TestPart.BaseClasses
 
         public bool Find(By locator, string name)
         {
-            return DriverUtils.WebDriver.FindElements(locator).Count > 0;
-            //log
+            if (DriverUtils.WebDriver.FindElements(locator).Count > 0)
+            {
+                log.Info(string.Format("element {0} found", name));
+                return true;
+            }
+           
+            log.Info(string.Format("element {0} not found", name));
+            return false;
         }
 
         public void Click(By locator, string name)
@@ -28,7 +35,7 @@ namespace Task3_Framework.TestPart.BaseClasses
             {
                 IWebElement element = DriverUtils.WebDriver.FindElement(locator);
                 element.Click();
-                //log
+                log.Info(string.Format("element {0} clicked", name));
             }
         }
 
@@ -50,6 +57,7 @@ namespace Task3_Framework.TestPart.BaseClasses
                 IJavaScriptExecutor js = (IJavaScriptExecutor)DriverUtils.WebDriver;
                 IWebElement element = DriverUtils.WebDriver.FindElement(locator);
                 js.ExecuteScript("arguments[0].scrollIntoView();", element);  //("window.scrollBy(0,250)", "");
+                log.Info(string.Format("scrolled to element {0} ", name));
             }
         }
     }

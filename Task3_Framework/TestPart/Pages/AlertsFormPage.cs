@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using Task2_SeleniumWebDriver.Steam.FrameworkPart;
-using Task3_Framework.FrameworkPart.UtilClasses;
+﻿using OpenQA.Selenium;
 using Task3_Framework.TestPart.BaseClasses;
 using Task3_Framework.TestPart.BaseClasses.Elements;
 
@@ -13,9 +7,9 @@ namespace Task3_Framework.TestPart.Pages
     class AlertsFormPage:BasePage
     {
         private By alertsFormPageBaseElement = By.XPath("//*[@id = \"javascriptAlertsWrapper\"]");
-        private string pageName = "alertsForm page";
+        private string pageName = "\"AlertsForm page\"";
         private By simpleAlertButton = By.XPath("//*[@id = \"alertButton\"]");
-        private string simpleAlertButtonName = "simple alert";
+        private string simpleAlertButtonName = "\"Simple alert\"";
 
 
         public AlertsFormPage()

@@ -1,6 +1,4 @@
-﻿
-using OpenQA.Selenium;
-using Task2_SeleniumWebDriver.Steam.FrameworkPart;
+﻿using OpenQA.Selenium;
 
 
 namespace Task3_Framework.TestPart.BaseClasses
