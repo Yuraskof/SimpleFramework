@@ -7,11 +7,8 @@ namespace Task3_Framework.TestPart.Pages
     {
         private By alertsPageBaseElement = By.XPath("//div[contains(@class, \"show\")]//span[contains(text(), \"Alerts\")]");
         private string pageName = "\"Alerts page\"";
-
-
+        
         public MenuPage menuPage = new MenuPage();
-        public AlertsFormPage alertsFormPage = new AlertsFormPage();
-        public NestedFramesPage nestedFramesPage = new NestedFramesPage();
 
         public AlertsFramesWindowsPage()
         {

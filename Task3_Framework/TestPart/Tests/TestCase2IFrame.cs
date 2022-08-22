@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using log4net;
+﻿using log4net;
 using NUnit.Framework;
 using Task3_Framework.FrameworkPart.UtilClasses;
 using Task3_Framework.TestPart.Pages;
@@ -10,8 +7,7 @@ namespace Task3_Framework.TestPart.Tests
 {
     class TestCase2IFrame
     {
-        protected static readonly ILog log =
-            LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        protected static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public void CheckIframes()
         {
@@ -33,15 +29,17 @@ namespace Task3_Framework.TestPart.Tests
 
             alertsPage.menuPage.OpenNestedFramesForm();
 
-            Assert.IsTrue(alertsPage.nestedFramesPage.isPageOpen(), "Nested frames form isn't open");
+            NestedFramesPage nestedFramesPage = new NestedFramesPage();
 
-            string parentFrameText = alertsPage.nestedFramesPage.GetTextFromTheParentFrame();
+            Assert.IsTrue(nestedFramesPage.isPageOpen(), "Nested frames form isn't open");
 
-            //Assert.AreEqual(parentFrameText, ConfigUtils.TestData["ParentFrameText"]);
+            string parentFrameText = nestedFramesPage.parentFrame.GetTextFromTheParentFrame();
 
-            string childFrameText = alertsPage.nestedFramesPage.GetTextFromTheChildFrame(); 
+            Assert.AreEqual(parentFrameText, ConfigUtils.TestData["ParentFrameText"]);
 
+            string childFrameText = nestedFramesPage.parentFrame.childFrame.GetTextFromTheChildFrame();
 
+            Assert.AreEqual(childFrameText, ConfigUtils.TestData["ChildFrameText"]);
 
             log.Info("Step 2 completed successfully");
         }

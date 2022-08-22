@@ -11,6 +11,7 @@ namespace Task3_Framework
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public static Dictionary<string, string> TestData = new Dictionary<string, string>();
+        public static Dictionary<string, string> UserInfo = new Dictionary<string, string>();
 
         public static void GetTestData()
         {
@@ -25,8 +26,7 @@ namespace Task3_Framework
 
             log.Info("test data received");
         }
-
-
+        
         public static void GetBrowserConfig()
         {
             var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
@@ -46,6 +46,23 @@ namespace Task3_Framework
             DriverUtils.BrowserConfig.Clear();
             TestData.Clear();
             log.Info("test data and config data cleared");
+        }
+
+
+        public static void GetUserInfo(string key)
+        {
+            string allUserInfo = ConfigUtils.TestData[key];
+            string[] separatedData = allUserInfo.Split("\t");
+
+            List<string> userInfoFields = new List<string>()
+                { "UserNumber", "FirstName", "LastName", "Email", "Age", "Salary", "Department" };
+
+            for (int i = 0; i < separatedData.Length; i++)
+            {
+                UserInfo.Add(userInfoFields[i], separatedData[i]);
+            }
+
+            log.Info("user info received");
         }
     }
 }

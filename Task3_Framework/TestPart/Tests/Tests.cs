@@ -29,7 +29,10 @@ namespace Task3_Framework
         [TestCase("User2")]
         public void TestCase3_Tables(string configKey)
         {
-
+            log.Info("Test case \"Tables\" started.");
+            TestCase3Tables tables = new TestCase3Tables();
+            tables.CheckTables(configKey);
+            log.Info("Test case \"Tables\" completed.");
         }
     }
 }

@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 using OpenQA.Selenium.Support.UI;
+using Task3_Framework.TestPart.BaseClasses;
 
 namespace Task3_Framework.FrameworkPart.UtilClasses
 {
@@ -66,6 +67,19 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
             IAlert alert = wait.Until(ExpectedConditions.AlertIsPresent());
             alert.SendKeys(text);
             log.Info(string.Format("entered text = {0}", text));
+        }
+
+        public static void SwitchToFrame(By locator, string name)
+        {
+            IWebElement iframe = DriverUtils.WebDriver.FindElement(locator);
+            DriverUtils.WebDriver.SwitchTo().Frame(iframe);
+            log.Info(string.Format("switched to {0} ", name));
+        }
+
+        public static void SwitchToTopLevel()
+        {
+            DriverUtils.WebDriver.SwitchTo().DefaultContent();
+            log.Info("returned to the top level");
         }
     }
 }

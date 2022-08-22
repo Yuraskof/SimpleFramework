@@ -29,11 +29,13 @@ namespace Task3_Framework.TestPart.Tests
 
             alertsPage.menuPage.OpenAlertsForm();
 
-            Assert.IsTrue(alertsPage.alertsFormPage.isPageOpen(), "Alerts form isn't open");
+            AlertsFormPage alertsFormPage = new AlertsFormPage();
+
+            Assert.IsTrue(alertsFormPage.isPageOpen(), "Alerts form isn't open");
 
             log.Info("Step 2 completed successfully");
 
-            alertsPage.alertsFormPage.ClickSimpleAlert();
+            alertsFormPage.ClickSimpleAlert();
 
             WebDriverWait wait = new WebDriverWait(DriverUtils.WebDriver, TimeSpan.FromSeconds(10));
 
@@ -51,7 +53,7 @@ namespace Task3_Framework.TestPart.Tests
 
             log.Info("Step 4 completed successfully");
 
-            alertsPage.alertsFormPage.ClickTwoOptionsAlert();
+            alertsFormPage.ClickTwoOptionsAlert();
 
             Assert.IsTrue(BrowserUtils.AlertIsPresent(wait), "Two options alert isn't open");
 
@@ -65,13 +67,13 @@ namespace Task3_Framework.TestPart.Tests
 
             Assert.IsTrue(BrowserUtils.AlertIsClosed(wait), "Two options alert is open");
 
-            string twoOptionsAlertConfirmationText = alertsPage.alertsFormPage.Get2OptAlertConfirmText();
+            string twoOptionsAlertConfirmationText = alertsFormPage.Get2OptAlertConfirmText();
 
             Assert.AreEqual(twoOptionsAlertConfirmationText, ConfigUtils.TestData["TwoOptionsAlertConfirmText"], "Wrong message");
 
             log.Info("Step 6 completed successfully");
 
-            alertsPage.alertsFormPage.ClickAlertWithText();
+            alertsFormPage.ClickAlertWithText();
 
             Assert.IsTrue(BrowserUtils.AlertIsPresent(wait), "Alert with text field isn't open");
 
@@ -88,7 +90,7 @@ namespace Task3_Framework.TestPart.Tests
 
             Assert.IsTrue(BrowserUtils.AlertIsClosed(wait), "Alert with text is open");
 
-            string alertWithTextConfirmResult = alertsPage.alertsFormPage.GetAlertWithTextComfirmText();
+            string alertWithTextConfirmResult = alertsFormPage.GetAlertWithTextComfirmText();
 
             Assert.AreEqual(alertWithTextConfirmResult, string.Format(ConfigUtils.TestData["AlertWithTextResult"] + generatedText), "Wrong message");
 
