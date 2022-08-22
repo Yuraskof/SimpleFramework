@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using log4net;
 using OpenQA.Selenium;
 
 namespace Task3_Framework.FrameworkPart.UtilClasses
 {
     public static class StringUtil
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public static string StringGenerator(int lettersCount)
         {
             char[] letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwxyz".ToCharArray();
@@ -22,7 +25,7 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
 
                 word += letters[letter];
             }
-
+            log.Info(string.Format("generated random text = {0}", word));
             return word;
         }
 

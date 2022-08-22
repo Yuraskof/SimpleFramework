@@ -10,6 +10,8 @@ namespace Task3_Framework.TestPart
         private string pageName = "\"Main page\"";
         private By alertsButton = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsFramesWindows"]));
         private string alertsButtonName = "\"Alerts button\"";
+        private By elementsButton = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
+        private string elementsButtonName = "\"Elements button\"";
 
         public MainPage()
         {
@@ -31,6 +33,15 @@ namespace Task3_Framework.TestPart
             alertsButton.JsScrollToElement(this.alertsButton, alertsButtonName);
             
             alertsButton.Click(this.alertsButton, alertsButtonName);
+        }
+
+        public void GoToElementsPage()
+        {
+            Button elementsButton = new Button(this.elementsButton, elementsButtonName);
+
+            elementsButton.JsScrollToElement(this.elementsButton, elementsButtonName);
+
+            elementsButton.Click(this.elementsButton, elementsButtonName);
         }
 
 

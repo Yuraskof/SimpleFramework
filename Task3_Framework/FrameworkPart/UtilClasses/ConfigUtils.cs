@@ -57,6 +57,8 @@ namespace Task3_Framework
             List<string> userInfoFields = new List<string>()
                 { "UserNumber", "FirstName", "LastName", "Email", "Age", "Salary", "Department" };
 
+            UserInfo.Clear();
+
             for (int i = 0; i < separatedData.Length; i++)
             {
                 UserInfo.Add(userInfoFields[i], separatedData[i]);

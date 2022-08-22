@@ -9,5 +9,11 @@ namespace Task3_Framework.TestPart.Elements
         {
 
         }
+
+        public void SendKeys(string textToSend, By locator, string name)
+        {
+            Find(locator, name).SendKeys(textToSend);
+            log.Info(string.Format("send text = \"{1}\" to element {0} ", name, textToSend));
+        }
     }
 }

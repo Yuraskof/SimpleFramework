@@ -7,12 +7,13 @@ using Task3_Framework.TestPart.Pages;
 
 namespace Task3_Framework.TestPart.Tests
 {
-    class TestCase1Alerts
+    class TestCase1Alerts: BaseTest
     {
-        protected static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        [Test]
         public void CheckAlertForms()
         {
+            log.Info("Test case \"AlertForms\" started.");
+
             BrowserUtils.GoToUrl(DriverUtils.BrowserConfig["baseUrl"]);
 
             MainPage mainPage = new MainPage();
@@ -94,7 +95,7 @@ namespace Task3_Framework.TestPart.Tests
 
             Assert.AreEqual(alertWithTextConfirmResult, string.Format(ConfigUtils.TestData["AlertWithTextResult"] + generatedText), "Wrong message");
 
-            log.Info("Step 7 completed successfully. Test case 1 completed.");
+            log.Info("Step 7 completed successfully. Test case \"AlertForms\" completed.");
         }
     }
 }

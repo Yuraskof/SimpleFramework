@@ -14,6 +14,7 @@
     <Compile Remove="TestPart\Pages\MenuMainPage.cs" />
     <Compile Remove="TestPart\Pages\SearchMenuComMarketPage.cs" />
     <Compile Remove="TestPart\Pages\TopSellersPage.cs" />
+    <Compile Remove="TestPart\Tests\Tests.cs" />
   </ItemGroup>
 
   <ItemGroup>

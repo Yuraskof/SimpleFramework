@@ -12,6 +12,8 @@ namespace Task3_Framework.TestPart.Pages
         private string alertsFormButtonName = "\"Alerts form button\"";
         private By nestedFramesButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["NestedFrames"]));
         private string nestedFramesButtonName = "\"Nested frames button\"";
+        private By webTablesFormButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["WebTablesForm"]));
+        private string webTablesFormButtonName = "\"WebTablesForm Button\"";
 
         public MenuPage()
         {
@@ -37,6 +39,13 @@ namespace Task3_Framework.TestPart.Pages
             Button alertsFormButton = new Button(this.nestedFramesButton, nestedFramesButtonName);
             alertsFormButton.JsScrollToElement(this.nestedFramesButton, nestedFramesButtonName);
             alertsFormButton.Click(this.nestedFramesButton, nestedFramesButtonName);
+        }
+
+        public void OpenWebTablesForm()
+        {
+            Button webTablesFormButton = new Button(this.webTablesFormButton, webTablesFormButtonName);
+            webTablesFormButton.JsScrollToElement(this.webTablesFormButton, webTablesFormButtonName);
+            webTablesFormButton.Click(this.webTablesFormButton, webTablesFormButtonName);
         }
     }
 }

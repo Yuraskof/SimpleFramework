@@ -6,7 +6,7 @@ namespace Task3_Framework
 {
     public class Tests:BaseTest
     {
-        [Test]
+        //[Test]
         public void TestCase1_AlertForms()
         {
             log.Info("Test case \"AlertForms\" started.");
@@ -15,7 +15,7 @@ namespace Task3_Framework
             log.Info("Test case \"AlertForms\" completed.");
         }
 
-        [Test]
+        //[Test]
         public void TestCase2_Iframe()
         {
             log.Info("Test case \"IFrame\" started.");
@@ -24,9 +24,9 @@ namespace Task3_Framework
             log.Info("Test case \"IFrame\" completed.");
         }
 
-        [Test]
-        [TestCase("User1")]
-        [TestCase("User2")]
+        //[Test]
+        //[TestCase("User1")]
+        //[TestCase("User2")]
         public void TestCase3_Tables(string configKey)
         {
             log.Info("Test case \"Tables\" started.");

@@ -26,15 +26,5 @@ namespace Task3_Framework.TestPart.Tests
             DriverUtils.ResetDriver();
             ConfigUtils.ClearData();
         }
-
-
-
-        //public MainPage mainPage = new MainPage();
-
-        //public bool OpenMainPage()
-        //{
-        //    BrowserUtils.GoToUrl(DriverUtils.BrowserConfig["baseUrl"]);
-        //    return mainPage.isPageOpen();
-        //}
     }
 }

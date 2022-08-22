@@ -5,7 +5,7 @@ namespace Task3_Framework.TestPart.Pages
 {
     class AlertsFramesWindowsPage :BasePage
     {
-        private By alertsPageBaseElement = By.XPath("//div[contains(@class, \"show\")]//span[contains(text(), \"Alerts\")]");
+        private By alertsPageBaseElement = By.XPath(string.Format("//div[contains(@class, \"show\")]//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsFramesWindows"]));
         private string pageName = "\"Alerts page\"";
         
         public MenuPage menuPage = new MenuPage();

@@ -5,10 +5,9 @@ using Task3_Framework.TestPart.Pages;
 
 namespace Task3_Framework.TestPart.Tests
 {
-    class TestCase2IFrame
+    class TestCase2IFrame:BaseTest
     {
-        protected static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        [Test]
         public void CheckIframes()
         {
             log.Info("Test case \"Iframe\" started.");
@@ -42,6 +41,10 @@ namespace Task3_Framework.TestPart.Tests
             Assert.AreEqual(childFrameText, ConfigUtils.TestData["ChildFrameText"]);
 
             log.Info("Step 2 completed successfully");
+
+
+
+            log.Info("Test case \"IFrame\" completed.");
         }
     }
 }

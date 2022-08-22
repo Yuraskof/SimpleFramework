@@ -1,5 +1,7 @@
 ﻿using log4net;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 
 namespace Task3_Framework.TestPart.BaseClasses
 {
@@ -49,6 +51,22 @@ namespace Task3_Framework.TestPart.BaseClasses
             log.Info(string.Format("element {0} text = {1}", name, text));
             return text;
         }
+
+        public bool IsEnabled(By locator, string name)
+        {
+            bool isEnabled = Find(locator, name).Enabled;
+            log.Info(string.Format("element enabled = {0}", isEnabled));
+            return isEnabled;
+        }
+
+        public bool IsDisplayed(By locator, string name, WebDriverWait wait)
+        {
+            var element = wait.Until(ExpectedConditions.InvisibilityOfElementLocated(locator));
+            log.Info(string.Format("element displayed = {0}", element));
+            return element;
+        }
+
+
 
         //public void MoveToElement(By locator, string name)
         //{
