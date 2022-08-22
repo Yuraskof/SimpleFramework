@@ -15,7 +15,6 @@ namespace Task3_Framework
             log.Info("Test case \"AlertForms\" completed.");
         }
 
-
         [Test]
         public void TestCase2_Iframe()
         {
@@ -23,6 +22,14 @@ namespace Task3_Framework
             TestCase2IFrame frames = new TestCase2IFrame();
             frames.CheckIframes();
             log.Info("Test case \"IFrame\" completed.");
+        }
+
+        [Test]
+        [TestCase("User1")]
+        [TestCase("User2")]
+        public void TestCase3_Tables(string configKey)
+        {
+
         }
     }
 }

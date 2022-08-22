@@ -32,7 +32,7 @@ namespace Task3_Framework.TestPart.Pages
             alertsFormButton.Click(this.alertsFormButton, alertsFormButtonName);
         }
 
-        public void OpenNestedFramesPage()
+        public void OpenNestedFramesForm()
         {
             Button alertsFormButton = new Button(this.nestedFramesButton, nestedFramesButtonName);
             alertsFormButton.JsScrollToElement(this.nestedFramesButton, nestedFramesButtonName);

@@ -5,7 +5,7 @@ namespace Task3_Framework.TestPart.BaseClasses
 {
     public abstract class BaseElement
     {
-        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        protected static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         protected By uniqueLocator;
         protected string uniqueName;

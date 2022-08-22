@@ -1,6 +1,6 @@
-﻿namespace Task2_SeleniumWebDriver.Steam.TestPart.Models
+﻿namespace Task3_Framework
 {
-    class GameModel
+    public class UserModel
     {
         public string GameName { get; set; }
         public string ReleaseDate { get; set; }
@@ -12,7 +12,7 @@
             if (obj == null || GetType() != obj.GetType())
                 return false;
 
-            GameModel other = (GameModel)obj; ;
+            UserModel other = (UserModel)obj; ;
 
             return GameName.Equals(other.GameName) && ReleaseDate.Equals(other.ReleaseDate) && 
                    DiscountedPrice.Equals(other.DiscountedPrice) && FullPrice.Equals(other.FullPrice);

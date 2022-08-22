@@ -16,8 +16,7 @@ namespace Task3_Framework.TestPart.Tests
 
             DriverUtils.WebDriver.Manage().Window.Maximize(); 
 
-            ConfigUtils.GetTestData(); 
-
+            ConfigUtils.GetTestData();
         }
 
         [TearDown]

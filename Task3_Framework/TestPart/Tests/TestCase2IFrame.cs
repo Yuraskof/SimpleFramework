@@ -31,9 +31,19 @@ namespace Task3_Framework.TestPart.Tests
 
             Assert.IsTrue(alertsPage.isPageOpen(), "Alerts page isn't open");
 
-            alertsPage.menuPage.OpenNestedFramesPage();
+            alertsPage.menuPage.OpenNestedFramesForm();
 
-            Assert.IsTrue(alertsPage.nestedFramesPage.isPageOpen(), "Nested form isn't open");
+            Assert.IsTrue(alertsPage.nestedFramesPage.isPageOpen(), "Nested frames form isn't open");
+
+            string parentFrameText = alertsPage.nestedFramesPage.GetTextFromTheParentFrame();
+
+            //Assert.AreEqual(parentFrameText, ConfigUtils.TestData["ParentFrameText"]);
+
+            string childFrameText = alertsPage.nestedFramesPage.GetTextFromTheChildFrame(); 
+
+
+
+            log.Info("Step 2 completed successfully");
         }
     }
 }

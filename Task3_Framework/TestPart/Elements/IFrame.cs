@@ -10,17 +10,17 @@ namespace Task3_Framework.TestPart.Elements
 
         }
 
-        public void SwitchToAnotherFrame(By locator, string name)
+        public void SwitchToFrame(By locator, string name)
         {
             IWebElement iframe = Find(locator, name);
             DriverUtils.WebDriver.SwitchTo().Frame(iframe);
-
-            //log
+            log.Info(string.Format("switched to {0} ", name));
         }
 
         public void SwitchToTopLevel()
         {
             DriverUtils.WebDriver.SwitchTo().DefaultContent();
+            log.Info("returned to the top level");
         }
     }
 }
