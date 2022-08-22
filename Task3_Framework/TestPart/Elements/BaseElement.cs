@@ -1,6 +1,5 @@
 ﻿using log4net;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 
 namespace Task3_Framework.TestPart.BaseClasses
 {
@@ -17,59 +16,49 @@ namespace Task3_Framework.TestPart.BaseClasses
             this.uniqueName = name;
         }
 
-        public bool Find(By locator, string name)
+        protected IWebElement Find(By locator, string name)
         {
             if (DriverUtils.WebDriver.FindElements(locator).Count > 0)
             {
                 log.Info(string.Format("element {0} found", name));
-                return true;
+                IWebElement element = DriverUtils.WebDriver.FindElements(locator)[0];
+                return element;
             }
-           
             log.Info(string.Format("element {0} not found", name));
-            return false;
+            return null;
         }
 
         public void Click(By locator, string name)
         {
-            if (Find(locator, name))
-            {
-                IWebElement element = DriverUtils.WebDriver.FindElement(locator);
-                element.Click();
-                log.Info(string.Format("element {0} clicked", name));
-            }
+            IWebElement element = Find(locator, name);
+            element.Click();
+            log.Info(string.Format("element {0} clicked", name));
         }
         
         public void JsScrollToElement(By locator, string name)
         {
-            if (Find(locator, name))
-            {
-                IJavaScriptExecutor js = (IJavaScriptExecutor)DriverUtils.WebDriver;
-                IWebElement element = DriverUtils.WebDriver.FindElement(locator);
-                js.ExecuteScript("arguments[0].scrollIntoView();", element);  //("window.scrollBy(0,250)", "");
-                log.Info(string.Format("scrolled to element {0} ", name));
-            }
+            IJavaScriptExecutor js = (IJavaScriptExecutor)DriverUtils.WebDriver;
+            IWebElement element = Find(locator, name);
+            js.ExecuteScript("arguments[0].scrollIntoView();", element);
+            log.Info(string.Format("scrolled to element {0} ", name));
         }
 
         public string SaveText(By locator, string name)
         {
-            if (Find(locator, name))
-            {
-                string text = DriverUtils.WebDriver.FindElement(locator).Text;
-                log.Info(string.Format("element {0} text = {1}", name, text));
-                return text;
-            }
-            return null;
+            string text = Find(locator, name).Text;
+            log.Info(string.Format("element {0} text = {1}", name, text));
+            return text;
         }
 
-        public void MoveToElement(By locator, string name)
-        {
-            if (Find(locator, name))
-            {
-                Actions action = new Actions(DriverUtils.WebDriver);
-                IWebElement element = DriverUtils.WebDriver.FindElement(locator);
-                action.MoveToElement(element);
-                action.Perform();
-            }
-        }
+        //public void MoveToElement(By locator, string name)
+        //{
+        //    if (Find(locator, name))
+        //    {
+        //        Actions action = new Actions(DriverUtils.WebDriver);
+        //        IWebElement element = DriverUtils.WebDriver.FindElement(locator);
+        //        action.MoveToElement(element);
+        //        action.Perform();
+        //    }
+        //}
     }
 }

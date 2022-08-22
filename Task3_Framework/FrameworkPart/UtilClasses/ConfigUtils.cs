@@ -40,5 +40,12 @@ namespace Task3_Framework
 
             log.Info("browser config received");
         }
+
+        public static void ClearData()
+        {
+            DriverUtils.BrowserConfig.Clear();
+            TestData.Clear();
+            log.Info("test data and config data cleared");
+        }
     }
 }

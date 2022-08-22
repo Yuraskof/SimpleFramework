@@ -4,7 +4,7 @@ using Task3_Framework.TestPart.BaseClasses.Elements;
 
 namespace Task3_Framework.TestPart
 {
-    class MainPage : BasePage
+    public class MainPage : BasePage
     {
         private By mainPageBaseElement= By.XPath("//div[@class = \"home-content\"]");
         private string pageName = "\"Main page\"";

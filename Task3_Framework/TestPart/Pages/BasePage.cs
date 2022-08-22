@@ -1,10 +1,13 @@
-﻿using OpenQA.Selenium;
+﻿using log4net;
+using OpenQA.Selenium;
 
 
 namespace Task3_Framework.TestPart.BaseClasses
 {
     public abstract class BasePage
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         protected By uniqueElement;
         protected string name;
 
@@ -17,12 +20,19 @@ namespace Task3_Framework.TestPart.BaseClasses
         {
             uniqueElement = locator;
             this.name = name;
+            log.Info(string.Format("Page {0} created", name));
         }
 
         public bool isPageOpen()
         {
-            return DriverUtils.WebDriver.FindElements(uniqueElement).Count > 0; 
-            // в лог с именем
+            if (DriverUtils.WebDriver.FindElements(uniqueElement).Count > 0)
+            {
+                log.Info(string.Format("Page {0} is open", name)); 
+                return true;
+            }
+
+            log.Info(string.Format("Page {0} isn't open", name));
+            return false;
         }
     }
 }

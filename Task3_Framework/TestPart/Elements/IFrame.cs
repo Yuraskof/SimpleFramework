@@ -12,13 +12,10 @@ namespace Task3_Framework.TestPart.Elements
 
         public void SwitchToAnotherFrame(By locator, string name)
         {
-            if (Find(locator, name))
-            {
-                IWebElement iframe = DriverUtils.WebDriver.FindElement((locator));
-                DriverUtils.WebDriver.SwitchTo().Frame(iframe);
+            IWebElement iframe = Find(locator, name);
+            DriverUtils.WebDriver.SwitchTo().Frame(iframe);
 
-                //log
-            }
+            //log
         }
 
         public void SwitchToTopLevel()
