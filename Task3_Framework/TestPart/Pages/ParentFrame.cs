@@ -12,16 +12,16 @@ namespace Task3_Framework.TestPart.Pages
     {
         private By parentFrame = By.XPath("//*[@id = \"frame1\"]");
         private string parentFrameName = "\"Parent frame\"";
-        private By parentFrameUniqueElem = By.XPath(string.Format("//body[contains(text(), \"{0}\")]", ConfigUtils.TestData["ParentFrameText"]));
+        private By parentFrameTextField = By.XPath(string.Format("//body[contains(text(), \"{0}\")]", ConfigUtils.TestData["ParentFrameText"]));
         private string parentTextFieldName = "\"Parent frame text\"";
 
         public ChildFrame childFrame = new ChildFrame();
 
         public ParentFrame()
         {
-            uniqueElement = parentFrameUniqueElem;
+            uniqueElement = parentFrameTextField;
             name = parentFrameName;
-            ParentFrame mainPage = new ParentFrame(parentFrameUniqueElem, parentFrameName);
+            ParentFrame mainPage = new ParentFrame(parentFrameTextField, parentFrameName);
         }
 
         public ParentFrame(By locator, string name) : base(locator, name)
@@ -32,8 +32,8 @@ namespace Task3_Framework.TestPart.Pages
         public string GetTextFromTheParentFrame()
         {
             BrowserUtils.SwitchToFrame(this.parentFrame, parentFrameName);
-            TextField confirmationResult = new TextField(this.parentFrameUniqueElem, parentTextFieldName);
-            return confirmationResult.SaveText(this.parentFrameUniqueElem, parentTextFieldName);
+            TextField text = new TextField(this.parentFrameTextField, parentTextFieldName);
+            return text.SaveText(this.parentFrameTextField, parentTextFieldName);
         }
     }
 }

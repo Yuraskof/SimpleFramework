@@ -27,7 +27,7 @@ namespace Task3_Framework.TestPart.BaseClasses
                 IWebElement element = DriverUtils.WebDriver.FindElements(locator)[0];
                 return element;
             }
-            log.Info(string.Format("element {0} not found", name));
+            log.Error(string.Format("element {0} not found", name));
             return null;
         }
 

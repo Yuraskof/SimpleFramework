@@ -12,14 +12,14 @@ namespace Task3_Framework.TestPart.Pages
     {
         private By childFrame = By.XPath("//*[contains(@srcdoc, \"Child\")]");
         private string childFrameName = "\"Child frame\"";
-        private By childFrameUniqueElement = By.XPath(string.Format("//p[contains (text(), \"{0}\")]", ConfigUtils.TestData["ChildFrameText"]));
-        private string childFrameElementName = "\"Child frame text\"";
+        private By childFrameTextField = By.XPath(string.Format("//p[contains (text(), \"{0}\")]", ConfigUtils.TestData["ChildFrameText"]));
+        private string childFrameTextFieldName = "\"Child frame text\"";
 
         public ChildFrame()
         {
-            uniqueElement = childFrameUniqueElement;
+            uniqueElement = childFrameTextField;
             name = childFrameName;
-            ChildFrame childFrame = new ChildFrame(childFrameUniqueElement, childFrameName);
+            ChildFrame childFrame = new ChildFrame(childFrameTextField, childFrameName);
         }
 
         public ChildFrame(By locator, string name) : base(locator, name)
@@ -30,8 +30,8 @@ namespace Task3_Framework.TestPart.Pages
         public string GetTextFromTheChildFrame()
         {
             BrowserUtils.SwitchToFrame(this.childFrame, childFrameName);
-            TextField confirmationResult = new TextField(this.childFrameUniqueElement, childFrameElementName);
-            return confirmationResult.SaveText(this.childFrameUniqueElement, childFrameElementName);
+            TextField text = new TextField(this.childFrameTextField, childFrameTextFieldName);
+            return text.SaveText(this.childFrameTextField, childFrameTextFieldName);
         }
     }
 }

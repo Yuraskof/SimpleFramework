@@ -35,6 +35,7 @@ namespace Task3_Framework.TestPart.Pages
         public void ClickSimpleAlert()
         {
             Button alertsButton = new Button(this.simpleAlertButton, simpleAlertButtonName);
+            alertsButton.IsEnabled(this.simpleAlertButton, simpleAlertButtonName);
             alertsButton.Click(this.simpleAlertButton, simpleAlertButtonName);
         }
 

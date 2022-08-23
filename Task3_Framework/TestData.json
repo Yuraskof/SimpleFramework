@@ -8,6 +8,7 @@
   "LettersCount": "10",
   "AlertWithTextResult": "You entered ",
   "NestedFrames": "Nested",
+  "FramesForm": "Frames",
   "ParentFrameText": "Parent frame",
   "ChildFrameText": "Child Iframe",
   "User1": "1\tJon\tSnow\tknownothing@gmail.com\t30\t3000\talpha",
@@ -16,16 +17,6 @@
   "WebTablesForm": "Web Tables",
   "BrowserForm": "Browser Windows",
   "LinksButton": "Links",
-
-
-
-  "ElementsWindows": "Elements",
-  "ElementsWindows": "Elements",
-  "ElementsWindows": "Elements",
-  "ElementsWindows": "Elements",
-  "ElementsWindows": "Elements",
-  "ElementsWindows": "Elements",
-  "ElementsWindows": "Elements",
-  "ElementsWindows": "Elements"
+  "FramesText": "This is a sample page"
 }
 

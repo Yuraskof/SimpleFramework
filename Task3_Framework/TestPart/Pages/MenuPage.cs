@@ -20,7 +20,8 @@ namespace Task3_Framework.TestPart.Pages
         private string elementsButtonName = "\"Elements button\"";
         private By linksFormButton = By.XPath(string.Format("//*[(text() = \"{0}\")]", ConfigUtils.TestData["LinksButton"]));
         private string linksFormButtonName = "\"Links button\"";
-        
+        private By framesButton = By.XPath(string.Format("//span[text()=\"{0}\"]", ConfigUtils.TestData["FramesForm"]));
+        private string framesButtonName = "\"Frames button\""; 
 
         public MenuPage()
         {
@@ -46,6 +47,13 @@ namespace Task3_Framework.TestPart.Pages
             Button alertsFormButton = new Button(nestedFramesButton, nestedFramesButtonName);
             alertsFormButton.JsScrollToElement(nestedFramesButton, nestedFramesButtonName);
             alertsFormButton.Click(nestedFramesButton, nestedFramesButtonName);
+        }
+
+        public void OpenFramesForm()
+        {
+            Button button = new Button(framesButton, framesButtonName);
+            button.JsScrollToElement(framesButton, framesButtonName);
+            button.Click(framesButton, framesButtonName);
         }
 
         public void OpenWebTablesForm()

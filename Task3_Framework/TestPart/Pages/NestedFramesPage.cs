@@ -7,8 +7,7 @@ namespace Task3_Framework.TestPart.Pages
     class NestedFramesPage:BasePage
     {
         private By nestedFormsPageBaseElement = By.XPath("//*[@id=\"framesWrapper\"]");
-        private string nestedFormsPageBaseElemenName = "\"Nested forms page\"";
-        
+        private string nestedFormsPageBaseElemenName = "\"Nested forms page\"";        
 
         public ParentFrame parentFrame = new ParentFrame();
 

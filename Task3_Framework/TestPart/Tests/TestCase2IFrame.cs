@@ -40,11 +40,23 @@ namespace Task3_Framework.TestPart.Tests
 
             Assert.AreEqual(childFrameText, ConfigUtils.TestData["ChildFrameText"]);
 
+            BrowserUtils.SwitchToTopLevel();
+
             log.Info("Step 2 completed successfully");
 
+            alertsPage.menuPage.OpenFramesForm();
 
+            FramesForm framesPage = new FramesForm();
 
-            log.Info("Test case \"IFrame\" completed.");
+            string highFormText = framesPage.highFrame.GetTextFromHighFrame();
+
+            BrowserUtils.SwitchToTopLevel();
+
+            string lowFormText = framesPage.lowFrame.GetTextFromLowFrame();
+
+            Assert.AreEqual(highFormText, lowFormText);
+
+            log.Info("Step 3 completed successfully. Test case \"IFrame\" completed.");
         }
     }
 }
