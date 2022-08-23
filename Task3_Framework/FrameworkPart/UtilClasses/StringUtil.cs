@@ -29,6 +29,21 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
             return word;
         }
 
+        public static List<string> GetSeparateddStrings(string text, string splitter)
+        {
+            string[] separatedData = text.Split(splitter);
+
+            List<string> userInfoFields = new List<string>();
+
+            for (int i = 0; i < separatedData.Length; i++)
+            {
+                userInfoFields.Add(separatedData[i]);
+            }
+
+            log.Info("strings separated");
+            return userInfoFields;
+        }
+
         public static List<decimal> ParsePrices(string prices)
         {
             string text = Regex.Replace(prices, @"[,]+", "");

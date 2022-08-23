@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using System.Collections.Generic;
+using log4net;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
@@ -62,11 +63,11 @@ namespace Task3_Framework.TestPart.BaseClasses
         public bool IsDisplayed(By locator, string name, WebDriverWait wait)
         {
             var element = wait.Until(ExpectedConditions.InvisibilityOfElementLocated(locator));
-            log.Info(string.Format("element displayed = {0}", element));
+            log.Info(string.Format("element is not displayed = {0}", element));
             return element;
         }
 
-
+        
 
         //public void MoveToElement(By locator, string name)
         //{

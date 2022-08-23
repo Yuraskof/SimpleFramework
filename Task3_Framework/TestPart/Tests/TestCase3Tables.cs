@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using log4net;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Task3_Framework.FrameworkPart.UtilClasses;
 using Task3_Framework.TestPart.Pages;
@@ -17,6 +19,8 @@ namespace Task3_Framework.TestPart.Tests
             log.Info("Test case \"Tables\" started.");
 
             BrowserUtils.GoToUrl(DriverUtils.BrowserConfig["baseUrl"]);
+
+            ConfigUtils.GetUserInfo(configKey);
 
             MainPage mainPage = new MainPage();
 
@@ -36,8 +40,6 @@ namespace Task3_Framework.TestPart.Tests
 
             log.Info("Step 2 completed successfully");
 
-            ConfigUtils.GetUserInfo(configKey);
-
             UserModel userModelFromTestData = new UserModel();
 
             userModelFromTestData.SetModelFieldsFromTestData();
@@ -52,8 +54,23 @@ namespace Task3_Framework.TestPart.Tests
 
             WebDriverWait wait = new WebDriverWait(DriverUtils.WebDriver, TimeSpan.FromSeconds(10));
 
-            Assert.IsTrue(webTablesForm.CheckRegistrationFormIsClosed(wait), "Registration form is open"); 
+            Assert.IsTrue(webTablesForm.CheckRegistrationFormIsClosed(wait), "Registration form is open");
 
+            DriverUtils.SetImplicitWait(10);
+
+            UserModel userModelFromPage = new UserModel();
+
+            string userInfo = webTablesForm.GetUserInfoFromTextFields();
+
+            userModelFromPage.SetUserModelFromTextFields(userInfo);
+
+            Assert.IsTrue(userModelFromPage.Equals(userModelFromTestData), "Models are not equal");
+
+            Assert.IsTrue(webTablesForm.CheckListIsChangeded(), "List not changed"); 
+
+            DriverUtils.SetImplicitWait(0);
+
+            Assert.IsTrue(webTablesForm.CheckUserIsDeleted(wait), "User not deleted"); 
 
             log.Info("Test case \"Tables\" completed.");
         }

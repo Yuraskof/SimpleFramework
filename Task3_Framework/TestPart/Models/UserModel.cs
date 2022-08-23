@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using log4net;
+using OpenQA.Selenium;
+using Task3_Framework.FrameworkPart.UtilClasses;
+using Task3_Framework.TestPart.Pages;
 
 namespace Task3_Framework
 {
@@ -7,7 +11,7 @@ namespace Task3_Framework
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public string UserNumber { get; set; }
+        public string UserNumber { get; set; } = ConfigUtils.UserInfo["UserNumber"];
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -34,7 +38,6 @@ namespace Task3_Framework
 
         public void SetModelFieldsFromTestData()
         {
-            UserNumber = ConfigUtils.UserInfo["UserNumber"];
             FirstName = ConfigUtils.UserInfo["FirstName"];
             LastName = ConfigUtils.UserInfo["LastName"];
             Email = ConfigUtils.UserInfo["Email"];
@@ -43,6 +46,18 @@ namespace Task3_Framework
             Department = ConfigUtils.UserInfo["Department"];
 
             log.Info("Successfully set user model fields");
+        }
+
+        public void SetUserModelFromTextFields(string info)
+        {
+            List<string> userInfo = StringUtil.GetSeparateddStrings(info, "\r\n");
+
+            FirstName = userInfo[0];
+            LastName = userInfo[1];
+            Email = userInfo[3];
+            Age = userInfo[2];
+            Salary = userInfo[4];
+            Department = userInfo[5];
         }
     }
 }
