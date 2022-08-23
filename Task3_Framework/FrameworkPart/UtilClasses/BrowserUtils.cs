@@ -81,5 +81,38 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
             DriverUtils.WebDriver.SwitchTo().DefaultContent();
             log.Info("returned to the top level");
         }
+
+
+        public static string SaveCurrentWindowHandle()
+        {
+            string originalWindow = DriverUtils.WebDriver.CurrentWindowHandle;
+            log.Info(string.Format("Current window handle = {0}", originalWindow));
+            return originalWindow;
+        }
+
+        public static void SwitchToNextTab(string originalWindow, int windowsCount, WebDriverWait wait)
+        {
+            wait.Until(wd => wd.WindowHandles.Count == windowsCount);
+
+            foreach (string window in DriverUtils.WebDriver.WindowHandles)
+            {
+                if (originalWindow != window)
+                {
+                    DriverUtils.WebDriver.SwitchTo().Window(window);
+                    break;
+                }
+            }
+        }
+
+        public static void CloseTab()
+        {
+            DriverUtils.WebDriver.Close();
+        }
+
+        public static void SwitchHandleBack(string window)
+        {
+            DriverUtils.WebDriver.SwitchTo().Window(window);
+        }
+
     }
 }

@@ -46,6 +46,10 @@ namespace Task3_Framework.TestPart.Tests
 
             webTablesForm.OpenRegistrationForm();
 
+            Assert.IsTrue(webTablesForm.registrationForm.isPageOpen(), "Registration form form isn't open");
+
+            log.Info("Step 3 completed successfully");
+
             webTablesForm.registrationForm.FillRegistrationForm(userModelFromTestData);
 
             webTablesForm.registrationForm.SubmitForm();
@@ -66,13 +70,15 @@ namespace Task3_Framework.TestPart.Tests
 
             Assert.IsTrue(userModelFromPage.Equals(userModelFromTestData), "Models are not equal");
 
+            log.Info("Step 4 completed successfully");
+
             Assert.IsTrue(webTablesForm.CheckListIsChangeded(), "List not changed"); 
 
             DriverUtils.SetImplicitWait(0);
 
             Assert.IsTrue(webTablesForm.CheckUserIsDeleted(wait), "User not deleted"); 
 
-            log.Info("Test case \"Tables\" completed.");
+            log.Info("Step 5 completed successfully. Test case \"Tables\" completed.");
         }
     }
 }

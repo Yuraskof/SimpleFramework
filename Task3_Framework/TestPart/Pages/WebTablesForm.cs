@@ -17,7 +17,7 @@ namespace Task3_Framework.TestPart.Pages
         private By registrationFormBaseElement = By.XPath("//*[@id = \"userForm\"]");
         private string registrationFormBaseElementName = "\"Registration form base element\"";
         private By rowWithRegData = By.XPath(string.Format("//div[contains(text(), \"{0}\")]//parent:: div[contains(@class,\"rt-tr\")]", ConfigUtils.UserInfo["Email"]));
-        private string rowWithRegDataName = "\"List with User info elements\"";
+        private string rowWithRegDataName = "\"List with User info \"";
         private By deleteUserButtonElement = By.XPath(string.Format("//div[contains(text(), \"{0}\")]//parent:: div[contains(@class,\"rt-tr\")]//following-sibling:: span[contains(@title, \"Delete\")]", ConfigUtils.UserInfo["Email"]));
         private string deleteUserButtonName = "\"Delete user button\"";
         private By usersTable = By.XPath("//div[@class = \"rt-td\"][contains(text(), \"@\")]");

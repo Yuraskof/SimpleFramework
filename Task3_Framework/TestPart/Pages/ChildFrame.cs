@@ -19,7 +19,7 @@ namespace Task3_Framework.TestPart.Pages
         {
             uniqueElement = childFrameUniqueElement;
             name = childFrameName;
-            ChildFrame mainPage = new ChildFrame(childFrameUniqueElement, childFrameName);
+            ChildFrame childFrame = new ChildFrame(childFrameUniqueElement, childFrameName);
         }
 
         public ChildFrame(By locator, string name) : base(locator, name)

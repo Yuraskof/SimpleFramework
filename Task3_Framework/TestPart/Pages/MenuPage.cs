@@ -14,6 +14,13 @@ namespace Task3_Framework.TestPart.Pages
         private string nestedFramesButtonName = "\"Nested frames button\"";
         private By webTablesFormButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["WebTablesForm"]));
         private string webTablesFormButtonName = "\"WebTablesForm Button\"";
+        private By browserFormButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["BrowserForm"]));
+        private string browserFormButtonName = "\"Browser form button\"";
+        private By elementsButton = By.XPath(string.Format("//*[@class= \"header-text\"][contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
+        private string elementsButtonName = "\"Elements button\"";
+        private By linksFormButton = By.XPath(string.Format("//*[(text() = \"{0}\")]", ConfigUtils.TestData["LinksButton"]));
+        private string linksFormButtonName = "\"Links button\"";
+        
 
         public MenuPage()
         {
@@ -36,9 +43,9 @@ namespace Task3_Framework.TestPart.Pages
 
         public void OpenNestedFramesForm()
         {
-            Button alertsFormButton = new Button(this.nestedFramesButton, nestedFramesButtonName);
-            alertsFormButton.JsScrollToElement(this.nestedFramesButton, nestedFramesButtonName);
-            alertsFormButton.Click(this.nestedFramesButton, nestedFramesButtonName);
+            Button alertsFormButton = new Button(nestedFramesButton, nestedFramesButtonName);
+            alertsFormButton.JsScrollToElement(nestedFramesButton, nestedFramesButtonName);
+            alertsFormButton.Click(nestedFramesButton, nestedFramesButtonName);
         }
 
         public void OpenWebTablesForm()
@@ -47,5 +54,27 @@ namespace Task3_Framework.TestPart.Pages
             webTablesFormButton.JsScrollToElement(this.webTablesFormButton, webTablesFormButtonName);
             webTablesFormButton.Click(this.webTablesFormButton, webTablesFormButtonName);
         }
+
+        public void OpenBrowserWindowsForm()
+        {
+            Button browserFormButton = new Button(this.browserFormButton, browserFormButtonName);
+            browserFormButton.JsScrollToElement(this.browserFormButton, browserFormButtonName);
+            browserFormButton.Click(this.browserFormButton, browserFormButtonName);
+        }
+
+        public void OpenElementsPage()
+        {
+            Button elementsButton = new Button(this.elementsButton, elementsButtonName);
+            elementsButton.Click(this.elementsButton, elementsButtonName);
+        }
+
+        public void OpenLinksForm()
+        {
+            Button linksFormButton = new Button(this.linksFormButton, linksFormButtonName);
+            linksFormButton.JsScrollToElement(this.linksFormButton, linksFormButtonName);
+            linksFormButton.IsEnabled(this.linksFormButton, linksFormButtonName);
+            linksFormButton.Click(this.linksFormButton, linksFormButtonName);
+        }
+
     }
 }
