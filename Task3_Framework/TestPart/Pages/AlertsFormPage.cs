@@ -23,7 +23,9 @@ namespace Task3_Framework.TestPart.Pages
         private static By alertWithTextConfirmResultLocator = By.XPath("//*[@id = \"promptResult\"]");
         private static string alertWithTextResultName = "\"Alert with text confirmation result\"";
         private static TextField alertWithTextConfirmation = new TextField(alertWithTextConfirmResultLocator, alertWithTextResultName);
-
+        private static By pageHeaderLocator = By.XPath("//div[@class = \"main-header\"]");
+        private static string pageHeaderName = "\"Alerts form page header\"";
+        private static Header pageHeader = new Header(pageHeaderLocator, pageHeaderName);
 
         public AlertsFormPage() : base(simpleAlertsButton = new Button(simpleAlertButtonLocator, simpleAlertButtonName), pageName)
         {
@@ -33,6 +35,7 @@ namespace Task3_Framework.TestPart.Pages
 
         public void ClickSimpleAlert()
         {
+            pageHeader.IsEnabled();
             simpleAlertsButton.IsEnabled();
             simpleAlertsButton.Click();
         }

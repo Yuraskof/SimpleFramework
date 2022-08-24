@@ -11,24 +11,27 @@ namespace Task3_Framework.TestPart.Pages
         private static Panel menuPanel;
         private static By menuPanelLocator = By.XPath("//div[@class =\"left-pannel\"] ");
         private static string menuPanelName = "\"Menu panel\"";
-        
         private static By alertsFormButtonLocator = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsForm"]));
         private static string alertsFormButtonName = "\"Alerts form button\"";
         private static Button alertsFormButton = new Button(alertsFormButtonLocator, alertsFormButtonName);
-
-
-        private static By nestedFramesButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["NestedFrames"]));
+        private static By nestedFramesButtonLocator = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["NestedFrames"]));
         private static string nestedFramesButtonName = "\"Nested frames button\"";
-        private static By webTablesFormButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["WebTablesForm"]));
+        private static Button nestedFramesButton = new Button(nestedFramesButtonLocator, nestedFramesButtonName);
+        private static By webTablesFormButtonLocator = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["WebTablesForm"]));
         private static string webTablesFormButtonName = "\"WebTablesForm Button\"";
-        private static By browserFormButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["BrowserForm"]));
+        private static Button webTablesFormButton = new Button(webTablesFormButtonLocator, webTablesFormButtonName);
+        private static By browserFormButtonLocator = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["BrowserForm"]));
         private static string browserFormButtonName = "\"Browser form button\"";
-        private static By elementsButton = By.XPath(string.Format("//*[@class= \"header-text\"][contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
+        private static Button browserFormButton = new Button(browserFormButtonLocator, browserFormButtonName);
+        private static By elementsButtonLocator = By.XPath(string.Format("//*[@class= \"header-text\"][contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
         private static string elementsButtonName = "\"Elements button\"";
-        private static By linksFormButton = By.XPath(string.Format("//*[(text() = \"{0}\")]", ConfigUtils.TestData["LinksButton"]));
+        private static Button elementsButton = new Button(elementsButtonLocator, elementsButtonName);
+        private static By linksFormButtonLocator = By.XPath(string.Format("//*[(text() = \"{0}\")]", ConfigUtils.TestData["LinksButton"]));
         private static string linksFormButtonName = "\"Links button\"";
-        private static By framesButton = By.XPath(string.Format("//span[text()=\"{0}\"]", ConfigUtils.TestData["FramesForm"]));
-        private static string framesButtonName = "\"Frames button\""; 
+        private static Button linksFormButton = new Button(linksFormButtonLocator, linksFormButtonName);
+        private static By framesButtonLocator = By.XPath(string.Format("//span[text()=\"{0}\"]", ConfigUtils.TestData["FramesForm"]));
+        private static string framesButtonName = "\"Frames button\"";
+        private static Button framesButton = new Button(framesButtonLocator, framesButtonName);
 
         public MenuPage() : base(menuPanel = new Panel(menuPanelLocator, menuPanelName), pageName)
         {
@@ -42,47 +45,40 @@ namespace Task3_Framework.TestPart.Pages
             alertsFormButton.Click();
         }
 
-        //public void OpenNestedFramesForm()
-        //{
-        //    Button alertsFormButton = new Button(nestedFramesButton, nestedFramesButtonName);
-        //    alertsFormButton.JsScrollToElement(nestedFramesButton, nestedFramesButtonName);
-        //    alertsFormButton.Click(nestedFramesButton, nestedFramesButtonName);
-        //}
+        public void OpenNestedFramesForm()
+        {
+            nestedFramesButton.JsScrollToElement();
+            nestedFramesButton.Click();
+        }
 
-        //public void OpenFramesForm()
-        //{
-        //    Button button = new Button(framesButton, framesButtonName);
-        //    button.JsScrollToElement(framesButton, framesButtonName);
-        //    button.Click(framesButton, framesButtonName);
-        //}
+        public void OpenFramesForm()
+        {
+            framesButton.JsScrollToElement();
+            framesButton.Click();
+        }
 
-        //public void OpenWebTablesForm()
-        //{
-        //    Button webTablesFormButton = new Button(this.webTablesFormButton, webTablesFormButtonName);
-        //    webTablesFormButton.JsScrollToElement(this.webTablesFormButton, webTablesFormButtonName);
-        //    webTablesFormButton.Click(this.webTablesFormButton, webTablesFormButtonName);
-        //}
+        public void OpenWebTablesForm()
+        {
+            webTablesFormButton.JsScrollToElement();
+            webTablesFormButton.Click();
+        }
 
-        //public void OpenBrowserWindowsForm()
-        //{
-        //    Button browserFormButton = new Button(this.browserFormButton, browserFormButtonName);
-        //    browserFormButton.JsScrollToElement(this.browserFormButton, browserFormButtonName);
-        //    browserFormButton.Click(this.browserFormButton, browserFormButtonName);
-        //}
+        public void OpenBrowserWindowsForm()
+        {
+            browserFormButton.JsScrollToElement();
+            browserFormButton.Click();
+        }
 
-        //public void OpenElementsPage()
-        //{
-        //    Button elementsButton = new Button(this.elementsButton, elementsButtonName);
-        //    elementsButton.Click(this.elementsButton, elementsButtonName);
-        //}
+        public void OpenElementsPage()
+        {
+            elementsButton.Click();
+        }
 
-        //public void OpenLinksForm()
-        //{
-        //    Button linksFormButton = new Button(this.linksFormButton, linksFormButtonName);
-        //    linksFormButton.JsScrollToElement(this.linksFormButton, linksFormButtonName);
-        //    linksFormButton.IsEnabled(this.linksFormButton, linksFormButtonName);
-        //    linksFormButton.Click(this.linksFormButton, linksFormButtonName);
-        //}
-
+        public void OpenLinksForm()
+        {
+            linksFormButton.JsScrollToElement();
+            linksFormButton.IsEnabled();
+            linksFormButton.Click();
+        }
     }
 }

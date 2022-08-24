@@ -25,7 +25,7 @@ namespace Task3_Framework.TestPart.Tests
 
             Assert.IsTrue(alertsPage.isPageOpen(), "Alerts page isn't open");
 
-            //alertsPage.menuPage.OpenNestedFramesForm();
+            alertsPage.menuPage.OpenNestedFramesForm();
 
             NestedFramesPage nestedFramesPage = new NestedFramesPage();
 
@@ -43,7 +43,7 @@ namespace Task3_Framework.TestPart.Tests
 
             log.Info("Step 2 completed successfully");
 
-            //alertsPage.menuPage.OpenFramesForm();
+            alertsPage.menuPage.OpenFramesForm();
 
             FramesForm framesPage = new FramesForm();
 
