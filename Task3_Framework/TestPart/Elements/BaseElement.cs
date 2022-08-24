@@ -1,6 +1,7 @@
 ﻿using log4net;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
+using Task3_Framework.FrameworkPart.UtilClasses;
 
 namespace Task3_Framework.TestPart.BaseClasses
 {
@@ -38,10 +39,7 @@ namespace Task3_Framework.TestPart.BaseClasses
         
         public void JsScrollToElement()
         {
-            IJavaScriptExecutor js = (IJavaScriptExecutor)DriverUtils.WebDriver;
-            IWebElement element = Find();
-            js.ExecuteScript("arguments[0].scrollIntoView();", element);
-            log.Info(string.Format("scrolled to element {0} ", uniqueName));
+            BrowserUtils.ScrollScrypt(uniqueLocator, uniqueName);
         }
 
         public string SaveText()

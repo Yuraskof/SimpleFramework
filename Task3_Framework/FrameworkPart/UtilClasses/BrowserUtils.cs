@@ -124,5 +124,13 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
             log.Info(string.Format("returned to  handle = {0}", window));
 
         }
+
+        public static void ScrollScrypt(By locator, string name)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)DriverUtils.WebDriver;
+            IWebElement element = DriverUtils.WebDriver.FindElement(locator);
+            js.ExecuteScript("arguments[0].scrollIntoView();", element);
+            log.Info(string.Format("scrolled to element {0} ", name));
+        }
     }
 }
