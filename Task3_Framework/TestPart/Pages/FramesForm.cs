@@ -1,29 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using Task3_Framework.TestPart.BaseClasses;
+using Task3_Framework.TestPart.Elements;
 
 namespace Task3_Framework.TestPart.Pages
 {
     class FramesForm:BasePage
     {
-        private By framesFormsBaseElement = By.XPath("//*[@id=\"framesWrapper1\"]");
-        private string framesFormsBaseElementName = "\"Frames form\"";
+        private static Wrapper framesWrapper;
+        private static string framesWrapperName = "\"Frames wrapper on forms page\"";
+        private static By framesWrapperLocator = By.XPath("//*[@id=\"framesWrapper1\"]");
+        private static string pageName = "\"Frames form\"";
 
         public HighFrame highFrame = new HighFrame();
         public LowFrame lowFrame = new LowFrame();
 
-        public FramesForm()
+        public FramesForm() : base(framesWrapper = new Wrapper(framesWrapperLocator, framesWrapperName), pageName)
         {
-            uniqueElement = framesFormsBaseElement;
-            name = framesFormsBaseElementName;
-            FramesForm framesPage = new FramesForm(framesFormsBaseElement, framesFormsBaseElementName);
-        }
-
-        public FramesForm(By locator, string name) : base(locator, name)
-        {
-
+            locator = framesWrapperLocator;
+            elementName = framesWrapperName;
         }
     }
 }

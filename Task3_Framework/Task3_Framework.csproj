@@ -7,27 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="FrameworkPart\BrowserUtils\Helpers.cs" />
     <Compile Remove="TestPart\Models\UserModel.cs" />
     <Compile Remove="TestPart\Pages\AboutPage.cs" />
     <Compile Remove="TestPart\Pages\BrowserWindowsForm.cs" />
-    <Compile Remove="TestPart\Pages\ChildFrame.cs" />
     <Compile Remove="TestPart\Pages\CommunityMarketPage.cs" />
     <Compile Remove="TestPart\Pages\ElementsPage.cs" />
-    <Compile Remove="TestPart\Pages\FramesForm.cs" />
     <Compile Remove="TestPart\Pages\GamePage.cs" />
-    <Compile Remove="TestPart\Pages\HighFrame.cs" />
     <Compile Remove="TestPart\Pages\ItemPage.cs" />
     <Compile Remove="TestPart\Pages\LinksForm.cs" />
-    <Compile Remove="TestPart\Pages\LowFrame.cs" />
     <Compile Remove="TestPart\Pages\MenuMainPage.cs" />
-    <Compile Remove="TestPart\Pages\NestedFramesPage.cs" />
-    <Compile Remove="TestPart\Pages\ParentFrame.cs" />
     <Compile Remove="TestPart\Pages\RegistrationForm.cs" />
     <Compile Remove="TestPart\Pages\SamplePage.cs" />
     <Compile Remove="TestPart\Pages\SearchMenuComMarketPage.cs" />
     <Compile Remove="TestPart\Pages\TopSellersPage.cs" />
     <Compile Remove="TestPart\Pages\WebTablesForm.cs" />
-    <Compile Remove="TestPart\Tests\TestCase2IFrame.cs" />
     <Compile Remove="TestPart\Tests\TestCase3Tables.cs" />
     <Compile Remove="TestPart\Tests\TestCase4Handles.cs" />
     <Compile Remove="TestPart\Tests\Tests.cs" />

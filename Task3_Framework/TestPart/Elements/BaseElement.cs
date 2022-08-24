@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using log4net;
+﻿using log4net;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 
 namespace Task3_Framework.TestPart.BaseClasses
@@ -19,65 +17,52 @@ namespace Task3_Framework.TestPart.BaseClasses
             this.uniqueName = name;
         }
 
-        protected IWebElement Find(By locator, string name)
+        protected IWebElement Find()
         {
-            if (DriverUtils.WebDriver.FindElements(locator).Count > 0)
+            if (DriverUtils.WebDriver.FindElements(uniqueLocator).Count > 0)
             {
-                log.Info(string.Format("element {0} found", name));
-                IWebElement element = DriverUtils.WebDriver.FindElements(locator)[0];
+                log.Info(string.Format("element {0} found", uniqueName));
+                IWebElement element = DriverUtils.WebDriver.FindElements(uniqueLocator)[0];
                 return element;
             }
-            log.Error(string.Format("element {0} not found", name));
+            log.Error(string.Format("element {0} not found", uniqueName));
             return null;
         }
 
-        public void Click(By locator, string name)
+        public void Click()
         {
-            IWebElement element = Find(locator, name);
+            IWebElement element = Find();
             element.Click();
-            log.Info(string.Format("element {0} clicked", name));
+            log.Info(string.Format("element {0} clicked", uniqueName));
         }
         
-        public void JsScrollToElement(By locator, string name)
+        public void JsScrollToElement()
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)DriverUtils.WebDriver;
-            IWebElement element = Find(locator, name);
+            IWebElement element = Find();
             js.ExecuteScript("arguments[0].scrollIntoView();", element);
-            log.Info(string.Format("scrolled to element {0} ", name));
+            log.Info(string.Format("scrolled to element {0} ", uniqueName));
         }
 
-        public string SaveText(By locator, string name)
+        public string SaveText()
         {
-            string text = Find(locator, name).Text;
-            log.Info(string.Format("element {0} text = {1}", name, text));
+            string text = Find().Text;
+            log.Info(string.Format("element {0} text = {1}", uniqueName, text));
             return text;
         }
 
-        public bool IsEnabled(By locator, string name)
+        public bool IsEnabled()
         {
-            bool isEnabled = Find(locator, name).Enabled;
-            log.Info(string.Format("element {1} enabled = {0}", isEnabled, name));
+            bool isEnabled = Find().Enabled;
+            log.Info(string.Format("element {1} enabled = {0}", isEnabled, uniqueName));
             return isEnabled;
         }
 
-        public bool IsDisplayed(By locator, string name, WebDriverWait wait)
+        public bool IsDisplayed()
         {
-            var element = wait.Until(ExpectedConditions.InvisibilityOfElementLocated(locator));
+            var element = DriverUtils.wait.Until(ExpectedConditions.InvisibilityOfElementLocated(uniqueLocator));
             log.Info(string.Format("element is not displayed = {0}", element));
             return element;
         }
-
-        
-
-        //public void MoveToElement(By locator, string name)
-        //{
-        //    if (Find(locator, name))
-        //    {
-        //        Actions action = new Actions(DriverUtils.WebDriver);
-        //        IWebElement element = DriverUtils.WebDriver.FindElement(locator);
-        //        action.MoveToElement(element);
-        //        action.Perform();
-        //    }
-        //}
     }
 }

@@ -33,28 +33,28 @@ namespace Task3_Framework.TestPart.Pages
 
         public void ClickSimpleAlert()
         {
-            simpleAlertsButton.IsEnabled(simpleAlertButtonLocator, simpleAlertButtonName);
-            simpleAlertsButton.Click(simpleAlertButtonLocator, simpleAlertButtonName);
+            simpleAlertsButton.IsEnabled();
+            simpleAlertsButton.Click();
         }
 
         public void ClickTwoOptionsAlert()
         {
-            twoOptionsAlertsButton.Click(twoOptionsAlertButtonLocator, twoOptionsAlertButtonName);
+            twoOptionsAlertsButton.Click();
         }
 
         public string Get2OptAlertConfirmText()
         {
-            return twoOptionsAlertConfirmation.SaveText(twoOptionsConfirmResultLocator, twoOptionsAlertResultName);
+            return twoOptionsAlertConfirmation.SaveText();
         }
 
         public void ClickAlertWithText()
         {
-            alertWithTextButton.Click(alertWithTextButtonLocator, alertWithTextButtonName);
+            alertWithTextButton.Click();
         }
 
         public string GetAlertWithTextComfirmText()
         {
-            return alertWithTextConfirmation.SaveText(alertWithTextConfirmResultLocator, alertWithTextResultName);
+            return alertWithTextConfirmation.SaveText();
         }
     }
 }

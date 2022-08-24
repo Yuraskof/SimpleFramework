@@ -38,23 +38,23 @@ namespace Task3_Framework.TestPart.Pages
 
         public void OpenAlertsForm()
         {
-            alertsFormButton.JsScrollToElement(alertsFormButtonLocator, alertsFormButtonName);
-            alertsFormButton.Click(alertsFormButtonLocator, alertsFormButtonName);
+            alertsFormButton.JsScrollToElement();
+            alertsFormButton.Click();
         }
 
-        public void OpenNestedFramesForm()
-        {
-            Button alertsFormButton = new Button(nestedFramesButton, nestedFramesButtonName);
-            alertsFormButton.JsScrollToElement(nestedFramesButton, nestedFramesButtonName);
-            alertsFormButton.Click(nestedFramesButton, nestedFramesButtonName);
-        }
+        //public void OpenNestedFramesForm()
+        //{
+        //    Button alertsFormButton = new Button(nestedFramesButton, nestedFramesButtonName);
+        //    alertsFormButton.JsScrollToElement(nestedFramesButton, nestedFramesButtonName);
+        //    alertsFormButton.Click(nestedFramesButton, nestedFramesButtonName);
+        //}
 
-        public void OpenFramesForm()
-        {
-            Button button = new Button(framesButton, framesButtonName);
-            button.JsScrollToElement(framesButton, framesButtonName);
-            button.Click(framesButton, framesButtonName);
-        }
+        //public void OpenFramesForm()
+        //{
+        //    Button button = new Button(framesButton, framesButtonName);
+        //    button.JsScrollToElement(framesButton, framesButtonName);
+        //    button.Click(framesButton, framesButtonName);
+        //}
 
         //public void OpenWebTablesForm()
         //{

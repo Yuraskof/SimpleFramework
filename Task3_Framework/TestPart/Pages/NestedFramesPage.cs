@@ -1,26 +1,23 @@
 ﻿using OpenQA.Selenium;
 using Task3_Framework.TestPart.BaseClasses;
+using Task3_Framework.TestPart.Elements;
 
 
 namespace Task3_Framework.TestPart.Pages
 {
     class NestedFramesPage:BasePage
     {
-        private By nestedFormsPageBaseElement = By.XPath("//*[@id=\"framesWrapper\"]");
-        private string nestedFormsPageBaseElemenName = "\"Nested forms page\"";        
+        private static Wrapper framesWrapper;
+        private static By framesWrapperLocator = By.XPath("//*[@id=\"framesWrapper\"]");
+        private static string framesWrapperLocatorName = "\"Frames wrapper\"";
+        private static string pageName = "\"Nested forms page\"";
 
         public ParentFrame parentFrame = new ParentFrame();
-
-        public NestedFramesPage()
+        
+        public NestedFramesPage() : base(framesWrapper = new Wrapper(framesWrapperLocator, framesWrapperLocatorName), pageName)
         {
-            uniqueElement = nestedFormsPageBaseElement;
-            name = nestedFormsPageBaseElemenName;
-            NestedFramesPage mainPage = new NestedFramesPage(nestedFormsPageBaseElement, nestedFormsPageBaseElemenName);
-        }
-
-        public NestedFramesPage(By locator, string name) : base(locator, name)
-        {
-
+            locator = framesWrapperLocator;
+            elementName = framesWrapperLocatorName;
         }
     }
 }

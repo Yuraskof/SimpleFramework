@@ -3,9 +3,9 @@ using Task3_Framework.TestPart.BaseClasses;
 
 namespace Task3_Framework.TestPart.Elements
 {
-    class Accordion:BaseElement
+    class Wrapper:BaseElement
     {
-        public Accordion(By locator, string name) : base(locator, name)
+        public Wrapper(By locator, string name) : base(locator, name)
         {
 
         }

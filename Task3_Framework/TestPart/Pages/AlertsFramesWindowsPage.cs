@@ -18,6 +18,5 @@ namespace Task3_Framework.TestPart.Pages
             locator = alertsAccordionLocator;
             elementName = alertsAccordionName;
         }
-        
     }
 }

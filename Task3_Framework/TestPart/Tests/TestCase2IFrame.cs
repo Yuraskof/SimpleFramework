@@ -1,5 +1,4 @@
-﻿using log4net;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Task3_Framework.FrameworkPart.UtilClasses;
 using Task3_Framework.TestPart.Pages;
 
@@ -7,7 +6,7 @@ namespace Task3_Framework.TestPart.Tests
 {
     class TestCase2IFrame:BaseTest
     {
-        //[Test]
+        [Test]
         public void CheckIframes()
         {
             log.Info("Test case \"Iframe\" started.");
@@ -26,7 +25,7 @@ namespace Task3_Framework.TestPart.Tests
 
             Assert.IsTrue(alertsPage.isPageOpen(), "Alerts page isn't open");
 
-            alertsPage.menuPage.OpenNestedFramesForm();
+            //alertsPage.menuPage.OpenNestedFramesForm();
 
             NestedFramesPage nestedFramesPage = new NestedFramesPage();
 
@@ -44,7 +43,7 @@ namespace Task3_Framework.TestPart.Tests
 
             log.Info("Step 2 completed successfully");
 
-            alertsPage.menuPage.OpenFramesForm();
+            //alertsPage.menuPage.OpenFramesForm();
 
             FramesForm framesPage = new FramesForm();
 

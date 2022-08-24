@@ -1,8 +1,6 @@
-﻿using System.Net.Mime;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using Task3_Framework.TestPart.BaseClasses;
 using Task3_Framework.TestPart.BaseClasses.Elements;
-using Task3_Framework.TestPart.Elements;
 
 namespace Task3_Framework.TestPart
 {
@@ -12,9 +10,9 @@ namespace Task3_Framework.TestPart
         private static Button alertsButton;
         private static string alertsButtonName = "\"Alerts button\"";
         private static By alertsButtonLocator = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsFramesWindows"]));
-        private static Button elementsButton;
-        private By elementsButtonLocator = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
-        private string elementsButtonName = "\"Elements button\"";
+        private static By elementsButtonLocator = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
+        private static string elementsButtonName = "\"Elements button\"";
+        private static Button elementsButton = new Button(elementsButtonLocator, elementsButtonName);
 
         public MainPage() : base(alertsButton = new Button(alertsButtonLocator, alertsButtonName), pageName)
         {
@@ -25,14 +23,14 @@ namespace Task3_Framework.TestPart
 
         public void GoToAlertsPage()
         {
-            alertsButton.JsScrollToElement(alertsButtonLocator, alertsButtonName);
-            alertsButton.Click(alertsButtonLocator, alertsButtonName);
+            alertsButton.JsScrollToElement();
+            alertsButton.Click();
         }
 
         public void GoToElementsPage()
         {
-            elementsButton.JsScrollToElement(elementsButtonLocator, elementsButtonName);
-            elementsButton.Click(elementsButtonLocator, elementsButtonName);
+            elementsButton.JsScrollToElement();
+            elementsButton.Click();
         }
     }
 }

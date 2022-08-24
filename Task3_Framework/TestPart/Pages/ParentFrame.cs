@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using Task3_Framework.FrameworkPart.UtilClasses;
 using Task3_Framework.TestPart.BaseClasses;
 using Task3_Framework.TestPart.Elements;
@@ -10,30 +7,24 @@ namespace Task3_Framework.TestPart.Pages
 {
     class ParentFrame:BasePage
     {
-        private By parentFrame = By.XPath("//*[@id = \"frame1\"]");
-        private string parentFrameName = "\"Parent frame\"";
-        private By parentFrameTextField = By.XPath(string.Format("//body[contains(text(), \"{0}\")]", ConfigUtils.TestData["ParentFrameText"]));
-        private string parentTextFieldName = "\"Parent frame text\"";
+        private static By parentFrameLocator = By.XPath("//*[@id = \"frame1\"]");
+        private static string parentFrameName = "\"Parent frame\"";
+        private static TextField parentFrameTextField;
+        private static By parentFrameTextFieldLocator = By.XPath(string.Format("//body[contains(text(), \"{0}\")]", ConfigUtils.TestData["ParentFrameText"]));
+        private static string parentTextFieldName = "\"Parent frame text field\"";
 
         public ChildFrame childFrame = new ChildFrame();
-
-        public ParentFrame()
+        
+        public ParentFrame() : base(parentFrameTextField = new TextField(parentFrameTextFieldLocator, parentTextFieldName), parentFrameName)
         {
-            uniqueElement = parentFrameTextField;
-            name = parentFrameName;
-            ParentFrame mainPage = new ParentFrame(parentFrameTextField, parentFrameName);
-        }
-
-        public ParentFrame(By locator, string name) : base(locator, name)
-        {
-
+            locator = parentFrameTextFieldLocator;
+            elementName = parentTextFieldName;
         }
 
         public string GetTextFromTheParentFrame()
         {
-            BrowserUtils.SwitchToFrame(this.parentFrame, parentFrameName);
-            TextField text = new TextField(this.parentFrameTextField, parentTextFieldName);
-            return text.SaveText(this.parentFrameTextField, parentTextFieldName);
+            BrowserUtils.SwitchToFrame(parentFrameLocator, parentFrameName);
+            return parentFrameTextField.SaveText();
         }
     }
 }

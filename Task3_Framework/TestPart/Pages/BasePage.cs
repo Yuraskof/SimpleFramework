@@ -1,7 +1,6 @@
 ﻿using log4net;
 using OpenQA.Selenium;
 
-
 namespace Task3_Framework.TestPart.BaseClasses
 {
     public abstract class BasePage
@@ -27,7 +26,7 @@ namespace Task3_Framework.TestPart.BaseClasses
 
         public bool isPageOpen()
         {
-            if (uniqueElement.IsEnabled(locator, elementName))
+            if (uniqueElement.IsEnabled())
             {
                 log.Info(string.Format("Page {0} is open", pageName));
                 return true;

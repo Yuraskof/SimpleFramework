@@ -1,10 +1,7 @@
 ﻿using System;
-using log4net;
 using NUnit.Framework;
-using OpenQA.Selenium.Support.UI;
 using Task3_Framework.FrameworkPart.UtilClasses;
 using Task3_Framework.TestPart.Pages;
-
 
 namespace Task3_Framework.TestPart.Tests
 {

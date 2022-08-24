@@ -10,10 +10,10 @@ namespace Task3_Framework.TestPart.Elements
 
         }
 
-        public void SendKeys(string textToSend, By locator, string name)
+        public void SendKeys(string textToSend)
         {
-            Find(locator, name).SendKeys(textToSend);
-            log.Info(string.Format("send text = \"{1}\" to element {0} ", name, textToSend));
+            Find().SendKeys(textToSend);
+            log.Info(string.Format("send text = \"{1}\" to element {0} ", uniqueName, textToSend));
         }
     }
 }
