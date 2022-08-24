@@ -8,30 +8,31 @@ namespace Task3_Framework.TestPart.BaseClasses
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        protected By uniqueElement;
-        protected string name;
+        protected BaseElement uniqueElement;
+        protected string elementName;
+        protected By locator;
+        protected string pageName;
 
         public BasePage()
         {
             
         }
 
-        public BasePage(By locator, string name)
+        public BasePage(BaseElement element, string pageName)
         {
-            uniqueElement = locator;
-            this.name = name;
-            log.Info(string.Format("Page {0} created", name));
+            uniqueElement = element;
+            this.pageName = pageName;
+            log.Info(string.Format("Page {0} created", pageName));
         }
 
         public bool isPageOpen()
         {
-            if (DriverUtils.WebDriver.FindElements(uniqueElement).Count > 0)
+            if (uniqueElement.IsEnabled(locator, elementName))
             {
-                log.Info(string.Format("Page {0} is open", name)); 
+                log.Info(string.Format("Page {0} is open", pageName));
                 return true;
             }
-
-            log.Info(string.Format("Page {0} isn't open", name));
+            log.Info(string.Format("Page {0} isn't open", pageName));
             return false;
         }
     }

@@ -3,7 +3,7 @@ using log4net;
 using NUnit.Framework;
 using OpenQA.Selenium.Support.UI;
 using Task3_Framework.FrameworkPart.UtilClasses;
-using Task3_Framework.TestPart.Pages;
+
 
 namespace Task3_Framework.TestPart.Tests
 {
@@ -24,78 +24,78 @@ namespace Task3_Framework.TestPart.Tests
 
             mainPage.GoToAlertsPage();
 
-            AlertsFramesWindowsPage alertsPage = new AlertsFramesWindowsPage();
+            //AlertsFramesWindowsPage alertsPage = new AlertsFramesWindowsPage();
 
-            Assert.IsTrue(alertsPage.isPageOpen(), "Alerts page isn't open");
+            //Assert.IsTrue(alertsPage.isPageOpen(), "Alerts page isn't open");
 
-            alertsPage.menuPage.OpenAlertsForm();
+            //alertsPage.menuPage.OpenAlertsForm();
 
-            AlertsFormPage alertsFormPage = new AlertsFormPage();
+            //AlertsFormPage alertsFormPage = new AlertsFormPage();
 
-            Assert.IsTrue(alertsFormPage.isPageOpen(), "Alerts form isn't open");
+            //Assert.IsTrue(alertsFormPage.isPageOpen(), "Alerts form isn't open");
 
-            log.Info("Step 2 completed successfully");
+        //    log.Info("Step 2 completed successfully");
 
-            alertsFormPage.ClickSimpleAlert();
+        //    alertsFormPage.ClickSimpleAlert();
 
-            WebDriverWait wait = new WebDriverWait(DriverUtils.WebDriver, TimeSpan.FromSeconds(10));
+        //    WebDriverWait wait = new WebDriverWait(DriverUtils.WebDriver, TimeSpan.FromSeconds(10));
 
-            Assert.IsTrue(BrowserUtils.AlertIsPresent(wait), "Simple alert isn't open");
+        //    Assert.IsTrue(BrowserUtils.AlertIsPresent(wait), "Simple alert isn't open");
 
-            string simpleAlertText = BrowserUtils.GetTextFromAlert(wait);
+        //    string simpleAlertText = BrowserUtils.GetTextFromAlert(wait);
 
-            Assert.AreEqual(simpleAlertText, ConfigUtils.TestData["SimpleAlertMessage"], "Wrong message");
+        //    Assert.AreEqual(simpleAlertText, ConfigUtils.TestData["SimpleAlertMessage"], "Wrong message");
 
-            log.Info("Step 3 completed successfully");
+        //    log.Info("Step 3 completed successfully");
 
-            BrowserUtils.AcceptAlert(wait);
+        //    BrowserUtils.AcceptAlert(wait);
 
-            Assert.IsTrue(BrowserUtils.AlertIsClosed(wait), "Simple alert is open");
+        //    Assert.IsTrue(BrowserUtils.AlertIsClosed(wait), "Simple alert is open");
 
-            log.Info("Step 4 completed successfully");
+        //    log.Info("Step 4 completed successfully");
 
-            alertsFormPage.ClickTwoOptionsAlert();
+        //    alertsFormPage.ClickTwoOptionsAlert();
 
-            Assert.IsTrue(BrowserUtils.AlertIsPresent(wait), "Two options alert isn't open");
+        //    Assert.IsTrue(BrowserUtils.AlertIsPresent(wait), "Two options alert isn't open");
 
-            string twoOptionsAlertText = BrowserUtils.GetTextFromAlert(wait);
+        //    string twoOptionsAlertText = BrowserUtils.GetTextFromAlert(wait);
 
-            Assert.AreEqual(twoOptionsAlertText, ConfigUtils.TestData["TwoOptionsAlertMessage"], "Wrong message");
+        //    Assert.AreEqual(twoOptionsAlertText, ConfigUtils.TestData["TwoOptionsAlertMessage"], "Wrong message");
 
-            log.Info("Step 5 completed successfully");
+        //    log.Info("Step 5 completed successfully");
 
-            BrowserUtils.AcceptAlert(wait);
+        //    BrowserUtils.AcceptAlert(wait);
 
-            Assert.IsTrue(BrowserUtils.AlertIsClosed(wait), "Two options alert is open");
+        //    Assert.IsTrue(BrowserUtils.AlertIsClosed(wait), "Two options alert is open");
 
-            string twoOptionsAlertConfirmationText = alertsFormPage.Get2OptAlertConfirmText();
+        //    string twoOptionsAlertConfirmationText = alertsFormPage.Get2OptAlertConfirmText();
 
-            Assert.AreEqual(twoOptionsAlertConfirmationText, ConfigUtils.TestData["TwoOptionsAlertConfirmText"], "Wrong message");
+        //    Assert.AreEqual(twoOptionsAlertConfirmationText, ConfigUtils.TestData["TwoOptionsAlertConfirmText"], "Wrong message");
 
-            log.Info("Step 6 completed successfully");
+        //    log.Info("Step 6 completed successfully");
 
-            alertsFormPage.ClickAlertWithText();
+        //    alertsFormPage.ClickAlertWithText();
 
-            Assert.IsTrue(BrowserUtils.AlertIsPresent(wait), "Alert with text field isn't open");
+        //    Assert.IsTrue(BrowserUtils.AlertIsPresent(wait), "Alert with text field isn't open");
 
-            string alertWithTextMessage = BrowserUtils.GetTextFromAlert(wait);
+        //    string alertWithTextMessage = BrowserUtils.GetTextFromAlert(wait);
 
-            Assert.AreEqual(alertWithTextMessage, ConfigUtils.TestData["AlertWithTextMessage"], "Wrong message");
+        //    Assert.AreEqual(alertWithTextMessage, ConfigUtils.TestData["AlertWithTextMessage"], "Wrong message");
 
-            log.Info("Step 7 completed successfully");
+        //    log.Info("Step 7 completed successfully");
 
-            string generatedText = StringUtil.StringGenerator(Convert.ToInt32(ConfigUtils.TestData["LettersCount"]));
+        //    string generatedText = StringUtil.StringGenerator(Convert.ToInt32(ConfigUtils.TestData["LettersCount"]));
 
-            BrowserUtils.AlertSendKeys(generatedText, wait);
-            BrowserUtils.AcceptAlert(wait);
+        //    BrowserUtils.AlertSendKeys(generatedText, wait);
+        //    BrowserUtils.AcceptAlert(wait);
 
-            Assert.IsTrue(BrowserUtils.AlertIsClosed(wait), "Alert with text is open");
+        //    Assert.IsTrue(BrowserUtils.AlertIsClosed(wait), "Alert with text is open");
 
-            string alertWithTextConfirmResult = alertsFormPage.GetAlertWithTextComfirmText();
+        //    string alertWithTextConfirmResult = alertsFormPage.GetAlertWithTextComfirmText();
 
-            Assert.AreEqual(alertWithTextConfirmResult, string.Format(ConfigUtils.TestData["AlertWithTextResult"] + generatedText), "Wrong message");
+        //    Assert.AreEqual(alertWithTextConfirmResult, string.Format(ConfigUtils.TestData["AlertWithTextResult"] + generatedText), "Wrong message");
 
-            log.Info("Step 7 completed successfully. Test case \"AlertForms\" completed.");
+        //    log.Info("Step 7 completed successfully. Test case \"AlertForms\" completed.");
         }
     }
 }

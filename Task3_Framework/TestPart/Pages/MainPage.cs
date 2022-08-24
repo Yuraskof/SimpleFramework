@@ -1,70 +1,38 @@
-﻿using OpenQA.Selenium;
+﻿using System.Net.Mime;
+using OpenQA.Selenium;
 using Task3_Framework.TestPart.BaseClasses;
 using Task3_Framework.TestPart.BaseClasses.Elements;
+using Task3_Framework.TestPart.Elements;
 
 namespace Task3_Framework.TestPart
 {
     public class MainPage : BasePage
     {
-        private By mainPageBaseElement= By.XPath("//div[@class = \"home-content\"]");
-        private string pageName = "\"Main page\"";
-        private By alertsButton = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsFramesWindows"]));
-        private string alertsButtonName = "\"Alerts button\"";
-        private By elementsButton = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
+        private static string pageName = "\"Main page\"";
+        private static Button alertsButton;
+        private static string alertsButtonName = "\"Alerts button\"";
+        private static By alertsButtonLocator = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsFramesWindows"]));
+        private static Button elementsButton;
+        private By elementsButtonLocator = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
         private string elementsButtonName = "\"Elements button\"";
 
-        public MainPage()
+        public MainPage() : base(alertsButton = new Button(alertsButtonLocator, alertsButtonName), pageName)
         {
-            uniqueElement = mainPageBaseElement;
-            name = pageName;
-            MainPage mainPage = new MainPage(mainPageBaseElement, pageName);
+            locator = alertsButtonLocator;
+            elementName = alertsButtonName;
         }
-
-        public MainPage(By locator, string name) : base(locator, name)
-        {
-            
-        }
-
+        
 
         public void GoToAlertsPage()
         {
-            Button alertsButton = new Button(this.alertsButton, alertsButtonName);
-
-            alertsButton.JsScrollToElement(this.alertsButton, alertsButtonName);
-            
-            alertsButton.Click(this.alertsButton, alertsButtonName);
+            alertsButton.JsScrollToElement(alertsButtonLocator, alertsButtonName);
+            alertsButton.Click(alertsButtonLocator, alertsButtonName);
         }
 
         public void GoToElementsPage()
         {
-            Button elementsButton = new Button(this.elementsButton, elementsButtonName);
-
-            elementsButton.JsScrollToElement(this.elementsButton, elementsButtonName);
-
-            elementsButton.Click(this.elementsButton, elementsButtonName);
+            elementsButton.JsScrollToElement(elementsButtonLocator, elementsButtonName);
+            elementsButton.Click(elementsButtonLocator, elementsButtonName);
         }
-
-
-        //public bool CheckMainPageIsOpen()
-        //{
-        //    var elements = DriverUtils.WebDriver.FindElements(By.XPath(mainPageBaseElement));
-        //    return elements.Count > 0;
-        //}
-
-        //IFrame googleIframe = new IFrame(this.googleIframe, "google iframe");
-
-        //if (googleIframe.Find(this.googleIframe, "google iframe"))
-        //{
-        //    googleIframe.SwitchToAnotherFrame(this.googleIframe, "google iframe");
-        //}
-
-        //Button advButton = new Button(closeAdvertisingWindow, "advertising button");
-
-        //if (advButton.Find(closeAdvertisingWindow, "advertising button"))
-        //{
-        //    advButton.Click(closeAdvertisingWindow, "advertising button");
-        //}
-
-        //googleIframe.SwitchToTopLevel();
     }
 }

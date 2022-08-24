@@ -1,38 +1,36 @@
 ﻿using OpenQA.Selenium;
 using Task3_Framework.TestPart.BaseClasses;
 using Task3_Framework.TestPart.BaseClasses.Elements;
+using Task3_Framework.TestPart.Elements;
 
 namespace Task3_Framework.TestPart.Pages
 {
     class MenuPage:BasePage
     {
-        private By menuPageBaseElement = By.XPath("//div[@class =\"left-pannel\"] ");
-        private string pageName = "\"Menu page\"";
-        private By alertsFormButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsForm"]));
-        private string alertsFormButtonName = "\"Alerts form button\"";
-        private By nestedFramesButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["NestedFrames"]));
-        private string nestedFramesButtonName = "\"Nested frames button\"";
-        private By webTablesFormButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["WebTablesForm"]));
-        private string webTablesFormButtonName = "\"WebTablesForm Button\"";
-        private By browserFormButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["BrowserForm"]));
-        private string browserFormButtonName = "\"Browser form button\"";
-        private By elementsButton = By.XPath(string.Format("//*[@class= \"header-text\"][contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
-        private string elementsButtonName = "\"Elements button\"";
-        private By linksFormButton = By.XPath(string.Format("//*[(text() = \"{0}\")]", ConfigUtils.TestData["LinksButton"]));
-        private string linksFormButtonName = "\"Links button\"";
-        private By framesButton = By.XPath(string.Format("//span[text()=\"{0}\"]", ConfigUtils.TestData["FramesForm"]));
-        private string framesButtonName = "\"Frames button\""; 
+        private static string pageName = "\"Menu page\"";
+        private static Panel menuPanel;
+        private static By menuPanelLocator = By.XPath("//div[@class =\"left-pannel\"] ");
+        private static string menuPanelName = "\"Menu panel\"";
 
-        public MenuPage()
+        private static By alertsFormButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsForm"]));
+        private static string alertsFormButtonName = "\"Alerts form button\"";
+        private static By nestedFramesButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["NestedFrames"]));
+        private static string nestedFramesButtonName = "\"Nested frames button\"";
+        private static By webTablesFormButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["WebTablesForm"]));
+        private static string webTablesFormButtonName = "\"WebTablesForm Button\"";
+        private static By browserFormButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["BrowserForm"]));
+        private static string browserFormButtonName = "\"Browser form button\"";
+        private static By elementsButton = By.XPath(string.Format("//*[@class= \"header-text\"][contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
+        private static string elementsButtonName = "\"Elements button\"";
+        private static By linksFormButton = By.XPath(string.Format("//*[(text() = \"{0}\")]", ConfigUtils.TestData["LinksButton"]));
+        private static string linksFormButtonName = "\"Links button\"";
+        private static By framesButton = By.XPath(string.Format("//span[text()=\"{0}\"]", ConfigUtils.TestData["FramesForm"]));
+        private static string framesButtonName = "\"Frames button\""; 
+
+        public MenuPage() : base(menuPanel = new Panel(menuPanelLocator, menuPanelName), pageName)
         {
-            uniqueElement = menuPageBaseElement;
-            name = pageName;
-            MenuPage mainPage = new MenuPage(menuPageBaseElement, pageName);
-        }
-
-        public MenuPage(By locator, string name) : base(locator, name)
-        {
-
+            locator = menuPanelLocator;
+            elementName = menuPanelName;
         }
 
         public void OpenAlertsForm()

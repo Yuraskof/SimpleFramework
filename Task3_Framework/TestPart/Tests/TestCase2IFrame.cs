@@ -7,7 +7,7 @@ namespace Task3_Framework.TestPart.Tests
 {
     class TestCase2IFrame:BaseTest
     {
-        [Test]
+        //[Test]
         public void CheckIframes()
         {
             log.Info("Test case \"Iframe\" started.");

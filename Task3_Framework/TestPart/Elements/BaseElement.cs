@@ -56,7 +56,7 @@ namespace Task3_Framework.TestPart.BaseClasses
         public bool IsEnabled(By locator, string name)
         {
             bool isEnabled = Find(locator, name).Enabled;
-            log.Info(string.Format("element enabled = {0}", isEnabled));
+            log.Info(string.Format("element {1} enabled = {0}", isEnabled, name));
             return isEnabled;
         }
 

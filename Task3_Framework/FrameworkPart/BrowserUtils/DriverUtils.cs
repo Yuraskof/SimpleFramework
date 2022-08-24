@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using log4net;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 
 namespace Task3_Framework
@@ -11,6 +12,8 @@ namespace Task3_Framework
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public static Dictionary<string, string> BrowserConfig = new Dictionary<string, string>();
+
+        public static WebDriverWait wait;
 
         private static IWebDriver _driver;
 
@@ -32,9 +35,15 @@ namespace Task3_Framework
             {
                 WebDriver = BrowserFactory.CreateDriver(BrowserConfig["browser"]);
                 SetImplicitWait(Convert.ToInt32(BrowserConfig["wait_time"]));
+                SetExplicitWait(10);
             }
 
             return _driver;
+        }
+
+        public static void SetExplicitWait(int seconds)
+        {
+            wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(seconds));
         }
 
         public static void SetImplicitWait(int seconds)

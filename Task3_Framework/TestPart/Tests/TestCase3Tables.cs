@@ -11,9 +11,9 @@ namespace Task3_Framework.TestPart.Tests
 {
     class TestCase3Tables:BaseTest
     {
-        [Test]
-        [TestCase("User1")]
-        [TestCase("User2")]
+        //[Test]
+        //[TestCase("User1")]
+        //[TestCase("User2")]
         public void CheckTables(string configKey)
         {
             log.Info("Test case \"Tables\" started.");
