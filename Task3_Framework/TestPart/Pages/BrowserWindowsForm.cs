@@ -1,6 +1,4 @@
-﻿
-
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using Task3_Framework.TestPart.BaseClasses;
 using Task3_Framework.TestPart.BaseClasses.Elements;
 
@@ -8,28 +6,26 @@ namespace Task3_Framework.TestPart.Pages
 {
     class BrowserWindowsForm:BasePage
     {
-        private By browserWindowsFormBaseElement = By.XPath("//*[@id= \"tabButton\"]");
-        private string browserFormBaseElementName = "\"Browser windows form\"";
-        private By newTabButton = By.XPath("//*[@id= \"tabButton\"]");
-        private string newTabButtonName = "\"New tab button\"";
+        private static Button browserWindowsFormButton;
+        private static string browserWindowsFormButtonName = "\"Browser windows form button\"";
+        private static By browserWindowsFormButtonLocator = By.XPath("//*[@id= \"tabButton\"]");
+        private static string pageName = "\"Browser windows form\"";
 
-        public BrowserWindowsForm()
+        private static By newTabButtonLocator = By.XPath("//*[@id= \"tabButton\"]");
+        private static string newTabButtonName = "\"New tab button\"";
+        private static Button newTabButton = new Button(newTabButtonLocator, newTabButtonName);
+
+        public BrowserWindowsForm() : base(browserWindowsFormButton = new Button(browserWindowsFormButtonLocator, browserWindowsFormButtonName), pageName)
         {
-            uniqueElement = browserWindowsFormBaseElement;
-            name = browserFormBaseElementName;
-            BrowserWindowsForm browserWindowsForm = new BrowserWindowsForm(browserWindowsFormBaseElement, browserFormBaseElementName);
+            locator = browserWindowsFormButtonLocator;
+            elementName = browserWindowsFormButtonName;
         }
 
-        public BrowserWindowsForm(By locator, string name) : base(locator, name)
-        {
-
-        }
 
         public void ClickNewTabButton()
         {
-            Button button = new Button(newTabButton, newTabButtonName);
-            button.IsEnabled(newTabButton, newTabButtonName);
-            button.Click(newTabButton, newTabButtonName);
+            newTabButton.IsEnabled();
+            newTabButton.Click();
         }
 
     }

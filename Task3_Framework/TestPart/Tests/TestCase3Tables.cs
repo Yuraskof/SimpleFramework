@@ -11,9 +11,9 @@ namespace Task3_Framework.TestPart.Tests
 {
     class TestCase3Tables:BaseTest
     {
-        //[Test]
-        //[TestCase("User1")]
-        //[TestCase("User2")]
+        [Test]
+        [TestCase("User1")]
+        [TestCase("User2")]
         public void CheckTables(string configKey)
         {
             log.Info("Test case \"Tables\" started.");
@@ -56,9 +56,7 @@ namespace Task3_Framework.TestPart.Tests
 
             DriverUtils.SetImplicitWait(0);
 
-            WebDriverWait wait = new WebDriverWait(DriverUtils.WebDriver, TimeSpan.FromSeconds(10));
-
-            Assert.IsTrue(webTablesForm.CheckRegistrationFormIsClosed(wait), "Registration form is open");
+            Assert.IsTrue(webTablesForm.CheckRegistrationFormIsClosed(DriverUtils.wait), "Registration form is open");
 
             DriverUtils.SetImplicitWait(10);
 
@@ -76,7 +74,7 @@ namespace Task3_Framework.TestPart.Tests
 
             DriverUtils.SetImplicitWait(0);
 
-            Assert.IsTrue(webTablesForm.CheckUserIsDeleted(wait), "User not deleted"); 
+            Assert.IsTrue(webTablesForm.CheckUserIsDeleted(), "User not deleted"); 
 
             log.Info("Step 5 completed successfully. Test case \"Tables\" completed.");
         }

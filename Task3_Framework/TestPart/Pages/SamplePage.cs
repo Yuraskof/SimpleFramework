@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using System.Text;
 using OpenQA.Selenium;
 using Task3_Framework.TestPart.BaseClasses;
+using Task3_Framework.TestPart.BaseClasses.Elements;
+using Task3_Framework.TestPart.Elements;
 
 namespace Task3_Framework.TestPart.Pages
 {
     class SamplePage:BasePage
     {
-        private By samplePageBaseElement = By.XPath("//*[@id =\"sampleHeading\"]");
-        private string samplePageBaseElementName = "\"Sample page\"";
+        private static TextField samplePageTextField;
+        private static By samplePageTextFieldLocator = By.XPath("//*[@id =\"sampleHeading\"]");
+        private static string samplePageTextFieldName = "\"Sample text field\"";
+        private static string pageName = "\"Sample page\"";
 
-        public SamplePage()
+        public SamplePage() : base(samplePageTextField = new TextField(samplePageTextFieldLocator, samplePageTextFieldName), pageName)
         {
-            uniqueElement = samplePageBaseElement;
-            name = samplePageBaseElementName;
-            SamplePage samplePage = new SamplePage(samplePageBaseElement, samplePageBaseElementName);
-        }
-
-        public SamplePage(By locator, string name) : base(locator, name)
-        {
-
+            locator = samplePageTextFieldLocator;
+            elementName = samplePageTextFieldName;
         }
     }
 }

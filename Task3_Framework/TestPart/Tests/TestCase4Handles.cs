@@ -8,7 +8,7 @@ namespace Task3_Framework.TestPart.Tests
 {
     class TestCase4Handles : BaseTest
     {
-        //[Test]
+        [Test]
         public void CheckHandles()
         {
             log.Info("Test case \"Handles\" started.");

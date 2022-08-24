@@ -1,28 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using Task3_Framework.TestPart.BaseClasses;
+using Task3_Framework.TestPart.Elements;
 
 namespace Task3_Framework.TestPart.Pages
 {
     class ElementsPage:BasePage
     {
-        private By elementsPageBaseElement = By.XPath(string.Format("//div[contains(@class, \"show\")]//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
-        private string pageName = "\"Elements page\"";
-
+        private static Accordion elementsAccordion;
+        private static string elementsAccordionName = "\"Elements accordion\"";
+        private static By elementsAccordionLocator = By.XPath(string.Format("//div[contains(@class, \"show\")]//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
+        private static string pageName = "\"Elements pagee\"";
+        
         public MenuPage menuPage = new MenuPage();
 
-        public ElementsPage()
+        public ElementsPage() : base(elementsAccordion = new Accordion(elementsAccordionLocator, elementsAccordionName), pageName)
         {
-            uniqueElement = elementsPageBaseElement;
-            name = pageName;
-            ElementsPage elementsPage = new ElementsPage(elementsPageBaseElement, pageName);
-        }
-
-        public ElementsPage(By locator, string name) : base(locator, name)
-        {
-
+            locator = elementsAccordionLocator;
+            elementName = elementsAccordionName;
         }
     }
 }

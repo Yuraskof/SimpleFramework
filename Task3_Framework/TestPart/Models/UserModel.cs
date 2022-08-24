@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using log4net;
-using OpenQA.Selenium;
 using Task3_Framework.FrameworkPart.UtilClasses;
-using Task3_Framework.TestPart.Pages;
 
 namespace Task3_Framework
 {

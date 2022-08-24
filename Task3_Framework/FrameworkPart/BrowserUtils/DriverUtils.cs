@@ -35,7 +35,7 @@ namespace Task3_Framework
             {
                 WebDriver = BrowserFactory.CreateDriver(BrowserConfig["browser"]);
                 SetImplicitWait(Convert.ToInt32(BrowserConfig["wait_time"]));
-                SetExplicitWait(10);
+                SetExplicitWait(Convert.ToInt32(BrowserConfig["wait_time"]));
             }
 
             return _driver;
