@@ -7,60 +7,54 @@ namespace Task3_Framework.TestPart.Pages
 {
     class AlertsFormPage:BasePage
     {
-        private By alertsFormPageBaseElement = By.XPath("//*[@id = \"javascriptAlertsWrapper\"]");
-        private string pageName = "\"AlertsForm page\"";
-        private By simpleAlertButton = By.XPath("//*[@id = \"alertButton\"]");
-        private string simpleAlertButtonName = "\"Simple alert\"";
-        private By twoOptionsAlertButton =By.XPath("//*[@id = \"confirmButton\"]");
-        private string twoOptionsAlertButtonName = "\"Two options alert\"";
-        private By twoOptionsConfirmResult = By.XPath("//*[@id = \"confirmResult\"]");
-        private string twoOptionsAlertResultName = "\"Two options alert confirmation result\"";
-        private By alertWithTextButton = By.XPath("//*[@id = \"promtButton\"]");
-        private string alertWithTextButtonName = "\"Alert with text\"";
-        private By alertWithTextConfirmResult = By.XPath("//*[@id = \"promptResult\"]");
-        private string alertWithTextResultName = "\"Alert with text confirmation result\"";
+        private static Button simpleAlertsButton;
+        private static string pageName = "\"AlertsForm page\"";
+        private static By simpleAlertButtonLocator = By.XPath("//*[@id = \"alertButton\"]");
+        private static string simpleAlertButtonName = "\"Simple alert\"";
+        private static By twoOptionsAlertButtonLocator = By.XPath("//*[@id = \"confirmButton\"]");
+        private static string twoOptionsAlertButtonName = "\"Two options alert\"";
+        private static Button twoOptionsAlertsButton = new Button(twoOptionsAlertButtonLocator, twoOptionsAlertButtonName);
+        private static By twoOptionsConfirmResultLocator = By.XPath("//*[@id = \"confirmResult\"]");
+        private static string twoOptionsAlertResultName = "\"Two options alert confirmation result\"";
+        private static TextField twoOptionsAlertConfirmation = new TextField(twoOptionsConfirmResultLocator, twoOptionsAlertResultName);
+        private static By alertWithTextButtonLocator = By.XPath("//*[@id = \"promtButton\"]");
+        private static string alertWithTextButtonName = "\"Alert with text\"";
+        private static Button alertWithTextButton = new Button(alertWithTextButtonLocator, alertWithTextButtonName);
+        private static By alertWithTextConfirmResultLocator = By.XPath("//*[@id = \"promptResult\"]");
+        private static string alertWithTextResultName = "\"Alert with text confirmation result\"";
+        private static TextField alertWithTextConfirmation = new TextField(alertWithTextConfirmResultLocator, alertWithTextResultName);
 
-        public AlertsFormPage()
+
+        public AlertsFormPage() : base(simpleAlertsButton = new Button(simpleAlertButtonLocator, simpleAlertButtonName), pageName)
         {
-            uniqueElement = alertsFormPageBaseElement;
-            name = pageName;
-            AlertsFormPage alertsFormPage = new AlertsFormPage(alertsFormPageBaseElement, pageName);
-        }
-
-        public AlertsFormPage(By locator, string name) : base(locator, name)
-        {
-
+            locator = simpleAlertButtonLocator;
+            elementName = simpleAlertButtonName;
         }
 
         public void ClickSimpleAlert()
         {
-            Button alertsButton = new Button(this.simpleAlertButton, simpleAlertButtonName);
-            alertsButton.IsEnabled(this.simpleAlertButton, simpleAlertButtonName);
-            alertsButton.Click(this.simpleAlertButton, simpleAlertButtonName);
+            simpleAlertsButton.IsEnabled(simpleAlertButtonLocator, simpleAlertButtonName);
+            simpleAlertsButton.Click(simpleAlertButtonLocator, simpleAlertButtonName);
         }
 
         public void ClickTwoOptionsAlert()
         {
-            Button alertsButton = new Button(this.twoOptionsAlertButton, twoOptionsAlertButtonName);
-            alertsButton.Click(this.twoOptionsAlertButton, twoOptionsAlertButtonName);
+            twoOptionsAlertsButton.Click(twoOptionsAlertButtonLocator, twoOptionsAlertButtonName);
         }
 
         public string Get2OptAlertConfirmText()
         {
-            TextField confirmationResult = new TextField(this.twoOptionsConfirmResult, twoOptionsAlertResultName);
-            return confirmationResult.SaveText(this.twoOptionsConfirmResult, twoOptionsAlertResultName);
+            return twoOptionsAlertConfirmation.SaveText(twoOptionsConfirmResultLocator, twoOptionsAlertResultName);
         }
 
         public void ClickAlertWithText()
         {
-            Button alertsButton = new Button(this.alertWithTextButton, alertWithTextButtonName);
-            alertsButton.Click(this.alertWithTextButton, alertWithTextButtonName);
+            alertWithTextButton.Click(alertWithTextButtonLocator, alertWithTextButtonName);
         }
 
         public string GetAlertWithTextComfirmText()
         {
-            TextField confirmationResult = new TextField(this.alertWithTextConfirmResult, alertWithTextResultName);
-            return confirmationResult.SaveText(this.alertWithTextConfirmResult, alertWithTextResultName);
+            return alertWithTextConfirmation.SaveText(alertWithTextConfirmResultLocator, alertWithTextResultName);
         }
     }
 }

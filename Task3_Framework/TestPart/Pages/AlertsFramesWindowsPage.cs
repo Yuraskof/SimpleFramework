@@ -1,25 +1,23 @@
 ﻿using OpenQA.Selenium;
 using Task3_Framework.TestPart.BaseClasses;
+using Task3_Framework.TestPart.Elements;
 
 namespace Task3_Framework.TestPart.Pages
 {
     class AlertsFramesWindowsPage :BasePage
     {
-        private By alertsPageBaseElement = By.XPath(string.Format("//div[contains(@class, \"show\")]//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsFramesWindows"]));
-        private string pageName = "\"Alerts page\"";
+        private static Accordion alertsAccordion;
+        private static string alertsAccordionName = "\"Alerts accordion\"";
+        private static By alertsAccordionLocator = By.XPath(string.Format("//div[contains(@class, \"show\")]//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsFramesWindows"]));
+        private static string pageName = "\"Alerts page\"";
         
         public MenuPage menuPage = new MenuPage();
 
-        public AlertsFramesWindowsPage()
+        public AlertsFramesWindowsPage() : base(alertsAccordion = new Accordion(alertsAccordionLocator, alertsAccordionName), pageName)
         {
-            uniqueElement = alertsPageBaseElement;
-            name = pageName;
-            AlertsFramesWindowsPage alertsPage = new AlertsFramesWindowsPage(alertsPageBaseElement, pageName);
+            locator = alertsAccordionLocator;
+            elementName = alertsAccordionName;
         }
-
-        public AlertsFramesWindowsPage(By locator, string name) : base(locator, name)
-        {
-
-        }
+        
     }
 }

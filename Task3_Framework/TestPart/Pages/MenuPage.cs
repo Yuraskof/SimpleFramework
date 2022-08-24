@@ -11,9 +11,12 @@ namespace Task3_Framework.TestPart.Pages
         private static Panel menuPanel;
         private static By menuPanelLocator = By.XPath("//div[@class =\"left-pannel\"] ");
         private static string menuPanelName = "\"Menu panel\"";
-
-        private static By alertsFormButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsForm"]));
+        
+        private static By alertsFormButtonLocator = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsForm"]));
         private static string alertsFormButtonName = "\"Alerts form button\"";
+        private static Button alertsFormButton = new Button(alertsFormButtonLocator, alertsFormButtonName);
+
+
         private static By nestedFramesButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["NestedFrames"]));
         private static string nestedFramesButtonName = "\"Nested frames button\"";
         private static By webTablesFormButton = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["WebTablesForm"]));
@@ -35,9 +38,8 @@ namespace Task3_Framework.TestPart.Pages
 
         public void OpenAlertsForm()
         {
-            Button alertsFormButton = new Button(this.alertsFormButton, alertsFormButtonName);
-            alertsFormButton.JsScrollToElement(this.alertsFormButton, alertsFormButtonName);
-            alertsFormButton.Click(this.alertsFormButton, alertsFormButtonName);
+            alertsFormButton.JsScrollToElement(alertsFormButtonLocator, alertsFormButtonName);
+            alertsFormButton.Click(alertsFormButtonLocator, alertsFormButtonName);
         }
 
         public void OpenNestedFramesForm()
@@ -54,33 +56,33 @@ namespace Task3_Framework.TestPart.Pages
             button.Click(framesButton, framesButtonName);
         }
 
-        public void OpenWebTablesForm()
-        {
-            Button webTablesFormButton = new Button(this.webTablesFormButton, webTablesFormButtonName);
-            webTablesFormButton.JsScrollToElement(this.webTablesFormButton, webTablesFormButtonName);
-            webTablesFormButton.Click(this.webTablesFormButton, webTablesFormButtonName);
-        }
+        //public void OpenWebTablesForm()
+        //{
+        //    Button webTablesFormButton = new Button(this.webTablesFormButton, webTablesFormButtonName);
+        //    webTablesFormButton.JsScrollToElement(this.webTablesFormButton, webTablesFormButtonName);
+        //    webTablesFormButton.Click(this.webTablesFormButton, webTablesFormButtonName);
+        //}
 
-        public void OpenBrowserWindowsForm()
-        {
-            Button browserFormButton = new Button(this.browserFormButton, browserFormButtonName);
-            browserFormButton.JsScrollToElement(this.browserFormButton, browserFormButtonName);
-            browserFormButton.Click(this.browserFormButton, browserFormButtonName);
-        }
+        //public void OpenBrowserWindowsForm()
+        //{
+        //    Button browserFormButton = new Button(this.browserFormButton, browserFormButtonName);
+        //    browserFormButton.JsScrollToElement(this.browserFormButton, browserFormButtonName);
+        //    browserFormButton.Click(this.browserFormButton, browserFormButtonName);
+        //}
 
-        public void OpenElementsPage()
-        {
-            Button elementsButton = new Button(this.elementsButton, elementsButtonName);
-            elementsButton.Click(this.elementsButton, elementsButtonName);
-        }
+        //public void OpenElementsPage()
+        //{
+        //    Button elementsButton = new Button(this.elementsButton, elementsButtonName);
+        //    elementsButton.Click(this.elementsButton, elementsButtonName);
+        //}
 
-        public void OpenLinksForm()
-        {
-            Button linksFormButton = new Button(this.linksFormButton, linksFormButtonName);
-            linksFormButton.JsScrollToElement(this.linksFormButton, linksFormButtonName);
-            linksFormButton.IsEnabled(this.linksFormButton, linksFormButtonName);
-            linksFormButton.Click(this.linksFormButton, linksFormButtonName);
-        }
+        //public void OpenLinksForm()
+        //{
+        //    Button linksFormButton = new Button(this.linksFormButton, linksFormButtonName);
+        //    linksFormButton.JsScrollToElement(this.linksFormButton, linksFormButtonName);
+        //    linksFormButton.IsEnabled(this.linksFormButton, linksFormButtonName);
+        //    linksFormButton.Click(this.linksFormButton, linksFormButtonName);
+        //}
 
     }
 }

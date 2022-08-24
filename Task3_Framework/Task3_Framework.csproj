@@ -9,8 +9,6 @@
   <ItemGroup>
     <Compile Remove="TestPart\Models\UserModel.cs" />
     <Compile Remove="TestPart\Pages\AboutPage.cs" />
-    <Compile Remove="TestPart\Pages\AlertsFormPage.cs" />
-    <Compile Remove="TestPart\Pages\AlertsFramesWindowsPage.cs" />
     <Compile Remove="TestPart\Pages\BrowserWindowsForm.cs" />
     <Compile Remove="TestPart\Pages\ChildFrame.cs" />
     <Compile Remove="TestPart\Pages\CommunityMarketPage.cs" />
