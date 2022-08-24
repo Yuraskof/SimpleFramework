@@ -44,6 +44,7 @@ namespace Task3_Framework
         public static void SetExplicitWait(int seconds)
         {
             wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(seconds));
+            log.Info(string.Format("explicit wait = {0} sec", seconds));
         }
 
         public static void SetImplicitWait(int seconds)

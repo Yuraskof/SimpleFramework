@@ -2,13 +2,13 @@
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 using OpenQA.Selenium.Support.UI;
-using Task3_Framework.TestPart.BaseClasses;
 
 namespace Task3_Framework.FrameworkPart.UtilClasses
 {
     class BrowserUtils
     {
-        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog log =
+            LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public static void GoToUrl(string url)
         {
@@ -99,20 +99,30 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
                 if (originalWindow != window)
                 {
                     DriverUtils.WebDriver.SwitchTo().Window(window);
+                    log.Info(string.Format("Switched to next tab = {0}", window));
                     break;
                 }
             }
         }
 
+        public static string GetUrl()
+        {
+            string url = DriverUtils.WebDriver.Url;
+            log.Info(string.Format("Current window url = {0}", url));
+            return url;
+        }
+
         public static void CloseTab()
         {
             DriverUtils.WebDriver.Close();
+            log.Info("window closed");
         }
 
         public static void SwitchHandleBack(string window)
         {
             DriverUtils.WebDriver.SwitchTo().Window(window);
-        }
+            log.Info(string.Format("returned to  handle = {0}", window));
 
+        }
     }
 }

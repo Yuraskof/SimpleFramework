@@ -39,13 +39,13 @@ namespace Task3_Framework.TestPart.Tests
 
             browserWindowsForm.ClickNewTabButton();
 
-            WebDriverWait wait = new WebDriverWait(DriverUtils.WebDriver, TimeSpan.FromSeconds(10));
-
-            BrowserUtils.SwitchToNextTab(currentWindowHandle,2, wait);
+            BrowserUtils.SwitchToNextTab(currentWindowHandle,2, DriverUtils.wait);
 
             SamplePage samplePage = new SamplePage();
 
             Assert.IsTrue(samplePage.isPageOpen(), "Sample page isn't open");
+
+            Assert.IsTrue(samplePage.CheckUrl(), "Wrong reference");
 
             log.Info("Step 3 completed successfully");
 
@@ -70,7 +70,7 @@ namespace Task3_Framework.TestPart.Tests
 
             linksForm.OpenHomeReference();
 
-            BrowserUtils.SwitchToNextTab(currentWindowHandle, 2, wait);
+            BrowserUtils.SwitchToNextTab(currentWindowHandle, 2, DriverUtils.wait);
 
             Assert.IsTrue(mainPage.isPageOpen(), "Main page isn't open");
 

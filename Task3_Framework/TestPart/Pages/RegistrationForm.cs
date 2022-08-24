@@ -46,8 +46,7 @@ namespace Task3_Framework.TestPart.Pages
             locator = registrationFormLocator;
             elementName = registrationFormName;
         }
-
-
+        
         public void FillRegistrationForm(UserModel model)
         {
             firstNameTextField.SendKeys(model.FirstName);

@@ -17,6 +17,7 @@
   "WebTablesForm": "Web Tables",
   "BrowserForm": "Browser Windows",
   "LinksButton": "Links",
-  "FramesText": "This is a sample page"
+  "FramesText": "This is a sample page",
+  "Url": "/sample"
 }
 

@@ -20,11 +20,11 @@ namespace Task3_Framework.TestPart.Pages
             locator = browserWindowsFormButtonLocator;
             elementName = browserWindowsFormButtonName;
         }
-
-
+        
         public void ClickNewTabButton()
         {
             newTabButton.IsEnabled();
+            newTabButton.JsScrollToElement();
             newTabButton.Click();
         }
 

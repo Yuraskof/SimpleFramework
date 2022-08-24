@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
+using Task3_Framework.FrameworkPart.UtilClasses;
 using Task3_Framework.TestPart.BaseClasses;
-using Task3_Framework.TestPart.BaseClasses.Elements;
 using Task3_Framework.TestPart.Elements;
 
 namespace Task3_Framework.TestPart.Pages
@@ -19,6 +16,11 @@ namespace Task3_Framework.TestPart.Pages
         {
             locator = samplePageTextFieldLocator;
             elementName = samplePageTextFieldName;
+        }
+
+        public bool CheckUrl()
+        {
+            return BrowserUtils.GetUrl().Contains(ConfigUtils.TestData["Url"]);
         }
     }
 }
