@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using Task3_Framework.FrameworkPart.UtilClasses;
 using Task3_Framework.TestPart.Pages;
 
@@ -7,9 +8,8 @@ namespace Task3_Framework.TestPart.Tests
     class TestCase3Tables:BaseTest
     {
         [Test]
-        [TestCase("User1")]
-        [TestCase("User2")]
-        public void CheckTables(string configKey)
+        [TestCaseSource("GetTestItems")]
+        public void CheckTables(UserModel model)
         {
             log.Info("Test case \"Tables\" started.");
 
@@ -65,13 +65,20 @@ namespace Task3_Framework.TestPart.Tests
 
             log.Info("Step 4 completed successfully");
 
-            Assert.IsTrue(webTablesForm.CheckListIsChangeded(), "List not changed"); 
+            Assert.IsTrue(webTablesForm.CheckListIsChangeded(), "List not changed");
 
             DriverUtils.SetImplicitWait(0);
 
-            Assert.IsTrue(webTablesForm.CheckUserIsDeleted(), "User not deleted"); 
+            Assert.IsTrue(webTablesForm.CheckUserIsDeleted(), "User not deleted");
 
             log.Info("Step 5 completed successfully. Test case \"Tables\" completed.");
+        }
+
+        public static IEnumerable<object[]> GetTestItems()
+        {
+            ConfigUtils.GetTestData();
+            yield return new [] { UserModel.CreateModel("User1") };
+            yield return new [] { UserModel.CreateModel("User2") };
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Task3_Framework.TestPart.Tests
 
             Assert.IsTrue(BrowserUtils.AlertIsPresent(DriverUtils.wait), "Simple alert isn't open");
 
-            string simpleAlertText = BrowserUtils.GetTextFromAlert(DriverUtils.wait);
+            string simpleAlertText = BrowserUtils.GetTextFromAlert();
 
             Assert.AreEqual(simpleAlertText, ConfigUtils.TestData["SimpleAlertMessage"], "Wrong message");
 
@@ -46,7 +46,7 @@ namespace Task3_Framework.TestPart.Tests
 
             BrowserUtils.AcceptAlert(DriverUtils.wait);
 
-            Assert.IsTrue(BrowserUtils.AlertIsClosed(DriverUtils.wait), "Simple alert is open");
+            Assert.Null(BrowserUtils.SwitchToAlert(), "Simple alert is open");
 
             log.Info("Step 4 completed successfully");
 
@@ -54,7 +54,7 @@ namespace Task3_Framework.TestPart.Tests
 
             Assert.IsTrue(BrowserUtils.AlertIsPresent(DriverUtils.wait), "Two options alert isn't open");
 
-            string twoOptionsAlertText = BrowserUtils.GetTextFromAlert(DriverUtils.wait);
+            string twoOptionsAlertText = BrowserUtils.GetTextFromAlert();
 
             Assert.AreEqual(twoOptionsAlertText, ConfigUtils.TestData["TwoOptionsAlertMessage"], "Wrong message");
 
@@ -62,7 +62,7 @@ namespace Task3_Framework.TestPart.Tests
 
             BrowserUtils.AcceptAlert(DriverUtils.wait);
 
-            Assert.IsTrue(BrowserUtils.AlertIsClosed(DriverUtils.wait), "Two options alert is open");
+            Assert.Null(BrowserUtils.SwitchToAlert(), "Two options alert is open");
 
             string twoOptionsAlertConfirmationText = alertsFormPage.Get2OptAlertConfirmText();
 
@@ -74,7 +74,7 @@ namespace Task3_Framework.TestPart.Tests
 
             Assert.IsTrue(BrowserUtils.AlertIsPresent(DriverUtils.wait), "Alert with text field isn't open");
 
-            string alertWithTextMessage = BrowserUtils.GetTextFromAlert(DriverUtils.wait);
+            string alertWithTextMessage = BrowserUtils.GetTextFromAlert();
 
             Assert.AreEqual(alertWithTextMessage, ConfigUtils.TestData["AlertWithTextMessage"], "Wrong message");
 
@@ -85,7 +85,7 @@ namespace Task3_Framework.TestPart.Tests
             BrowserUtils.AlertSendKeys(generatedText, DriverUtils.wait);
             BrowserUtils.AcceptAlert(DriverUtils.wait);
 
-            Assert.IsTrue(BrowserUtils.AlertIsClosed(DriverUtils.wait), "Alert with text is open");
+            Assert.Null(BrowserUtils.SwitchToAlert(), "Alert with text is open");
 
             string alertWithTextConfirmResult = alertsFormPage.GetAlertWithTextComfirmText();
 

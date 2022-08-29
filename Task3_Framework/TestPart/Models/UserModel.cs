@@ -33,6 +33,16 @@ namespace Task3_Framework
             return false;
         }
 
+        
+
+        public static  UserModel CreateModel(string key)
+        {
+            ConfigUtils.GetUserInfo(key);
+            UserModel model = new UserModel();
+            model.SetModelFieldsFromTestData();
+            return model;
+        }
+
         public void SetModelFieldsFromTestData()
         {
             FirstName = ConfigUtils.UserInfo["FirstName"];

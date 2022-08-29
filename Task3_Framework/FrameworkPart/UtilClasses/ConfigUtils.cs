@@ -15,6 +15,7 @@ namespace Task3_Framework
 
         public static void GetTestData()
         {
+            TestData.Clear();
             var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestData.json");
             var json = File.ReadAllText(filePath);
             var jsonObj = JObject.Parse(json);
@@ -51,7 +52,7 @@ namespace Task3_Framework
 
         public static void GetUserInfo(string key)
         {
-            string allUserInfo = ConfigUtils.TestData[key];
+            string allUserInfo = TestData[key];
             string[] separatedData = allUserInfo.Split("\t");
 
             List<string> userInfoFields = new List<string>()
