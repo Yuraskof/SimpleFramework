@@ -31,11 +31,11 @@ namespace Task3_Framework.TestPart.Tests
 
             Assert.IsTrue(nestedFramesPage.isPageOpen(), "Nested frames form isn't open");
 
-            string parentFrameText = nestedFramesPage.parentFrame.GetTextFromTheParentFrame();
+            string parentFrameText = nestedFramesPage.parentChildFramesPage.GetTextFromTheParentFrame();
 
             Assert.AreEqual(parentFrameText, ConfigUtils.TestData["ParentFrameText"]);
 
-            string childFrameText = nestedFramesPage.parentFrame.childFrame.GetTextFromTheChildFrame();
+            string childFrameText = nestedFramesPage.parentChildFramesPage.GetTextFromTheChildFrame();
 
             Assert.AreEqual(childFrameText, ConfigUtils.TestData["ChildFrameText"]);
 
@@ -47,11 +47,11 @@ namespace Task3_Framework.TestPart.Tests
 
             FramesForm framesPage = new FramesForm();
 
-            string highFormText = framesPage.highFrame.GetTextFromHighFrame();
+            string highFormText = framesPage.highLowFramesPage.GetTextFromHighFrame();
 
             BrowserUtils.SwitchToTopLevel();
 
-            string lowFormText = framesPage.lowFrame.GetTextFromLowFrame();
+            string lowFormText = framesPage.highLowFramesPage.GetTextFromLowFrame();
 
             Assert.AreEqual(highFormText, lowFormText);
 

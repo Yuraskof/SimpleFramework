@@ -8,8 +8,7 @@ namespace Task3_Framework.TestPart.Pages
     {
         private static Wrapper framesWrapper;
 
-        public HighFrame highFrame = new HighFrame();
-        public LowFrame lowFrame = new LowFrame();
+        public HighLowFramesPage highLowFramesPage = new HighLowFramesPage();
 
         public FramesForm() : base(framesWrapper = new Wrapper(By.XPath("//*[@id=\"framesWrapper1\"]"), "\"Frames wrapper on forms page\""), "\"Frames form\"")
         {

@@ -9,7 +9,7 @@ namespace Task3_Framework.TestPart.Pages
     {
         private static Wrapper framesWrapper;
 
-        public ParentFrame parentFrame = new ParentFrame();
+        public ParentChildFramesPage parentChildFramesPage = new ParentChildFramesPage();
         
         public NestedFramesPage() : base(framesWrapper = new Wrapper(By.XPath("//*[@id=\"framesWrapper\"]"), "\"Frames wrapper\""), "\"Nested forms page\"")
         {
