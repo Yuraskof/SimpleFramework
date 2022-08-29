@@ -7,10 +7,7 @@ namespace Task3_Framework.TestPart.Pages
 {
     class MenuPage:BasePage
     {
-        private static string pageName = "\"Menu page\"";
         private static Panel menuPanel;
-        private static By menuPanelLocator = By.XPath("//div[@class =\"left-pannel\"] ");
-        private static string menuPanelName = "\"Menu panel\"";
         private static By alertsFormButtonLocator = By.XPath(string.Format("//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsForm"]));
         private static string alertsFormButtonName = "\"Alerts form button\"";
         private static Button alertsFormButton = new Button(alertsFormButtonLocator, alertsFormButtonName);
@@ -42,10 +39,10 @@ namespace Task3_Framework.TestPart.Pages
         private static string datePickerFormButtonName = "\"Date picker form button\"";
         private static Button datePickerFormButton = new Button(datePickerFormButtonLocator, datePickerFormButtonName);
 
-        public MenuPage() : base(menuPanel = new Panel(menuPanelLocator, menuPanelName), pageName)
+        public MenuPage() : base(menuPanel = new Panel(By.XPath("//div[@class =\"left-pannel\"]"), "\"Menu panel\""), "\"Menu page\"")
         {
-            locator = menuPanelLocator;
-            elementName = menuPanelName;
+            locator = By.XPath("//div[@class =\"left-pannel\"]");
+            elementName = "\"Menu panel\"";
         }
 
         public void OpenAlertsForm()

@@ -9,9 +9,6 @@ namespace Task3_Framework.TestPart.Pages
     class WebTablesForm:BasePage
     {
         private static Button webTablesFormButton;
-        private static string webTablesFormButtonName = "\"button webTables form\"";
-        private static By webTablesFormButtonLocator = By.XPath(string.Format("//*[contains(text(), \"{0}\")]", ConfigUtils.TestData["WebTablesForm"]));
-        private static string pageName = "\"Web tables form\"";
         private static By addButtonLocator = By.XPath("//*[@id = \"addNewRecordButton\"]");
         private static string addButtonName = "\"button Add\"";
         private static Button addButton = new Button(addButtonLocator, addButtonName);
@@ -30,10 +27,10 @@ namespace Task3_Framework.TestPart.Pages
 
         public RegistrationForm registrationForm = new RegistrationForm();
 
-        public WebTablesForm() : base(webTablesFormButton = new Button(webTablesFormButtonLocator, webTablesFormButtonName), pageName)
+        public WebTablesForm() : base(webTablesFormButton = new Button(By.XPath(string.Format("//*[contains(text(), \"{0}\")]", ConfigUtils.TestData["WebTablesForm"])), "\"button webTables form\""), "\"Web tables form\"")
         {
-            locator = webTablesFormButtonLocator;
-            elementName = webTablesFormButtonName;
+            locator = By.XPath(string.Format("//*[contains(text(), \"{0}\")]", ConfigUtils.TestData["WebTablesForm"]));
+            elementName = "\"button webTables form\"";
         }
 
         public void OpenRegistrationForm()

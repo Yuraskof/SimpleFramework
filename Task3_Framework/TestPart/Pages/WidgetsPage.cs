@@ -7,16 +7,13 @@ namespace Task3_Framework.TestPart.Pages
     class WidgetsPage : BasePage
     {
         private static Accordion widgetsAccordion;
-        private static string widgetsAccordionName = "\"Widgets accordion\"";
-        private static By widgetsAccordionLocator = By.XPath(string.Format("//div[contains(text(), \"{0}\")]//following:: div[contains(@class, \"show\")]", ConfigUtils.TestData["WidgetsWindows"]));
-        private static string pageName = "\"Widgets page\"";
 
         public MenuPage menuPage = new MenuPage();
 
-        public WidgetsPage() : base(widgetsAccordion = new Accordion(widgetsAccordionLocator, widgetsAccordionName), pageName)
+        public WidgetsPage() : base(widgetsAccordion = new Accordion(By.XPath(string.Format("//div[contains(text(), \"{0}\")]//following:: div[contains(@class, \"show\")]", ConfigUtils.TestData["WidgetsWindows"])), "\"Widgets accordion\""), "\"Widgets page\"")
         {
-            locator = widgetsAccordionLocator;
-            elementName = widgetsAccordionName;
+            locator = By.XPath(string.Format("//div[contains(text(), \"{0}\")]//following:: div[contains(@class, \"show\")]", ConfigUtils.TestData["WidgetsWindows"]));
+            elementName = "\"Widgets accordion\"";
         }
     }
 }

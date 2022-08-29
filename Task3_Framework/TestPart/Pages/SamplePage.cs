@@ -8,14 +8,11 @@ namespace Task3_Framework.TestPart.Pages
     class SamplePage:BasePage
     {
         private static TextField samplePageTextField;
-        private static By samplePageTextFieldLocator = By.XPath("//*[@id =\"sampleHeading\"]");
-        private static string samplePageTextFieldName = "\"Sample text field\"";
-        private static string pageName = "\"Sample page\"";
 
-        public SamplePage() : base(samplePageTextField = new TextField(samplePageTextFieldLocator, samplePageTextFieldName), pageName)
+        public SamplePage() : base(samplePageTextField = new TextField(By.XPath("//*[@id =\"sampleHeading\"]"), "\"Sample text field\""), "\"Sample page\"")
         {
-            locator = samplePageTextFieldLocator;
-            elementName = samplePageTextFieldName;
+            locator = By.XPath("//*[@id =\"sampleHeading\"]");
+            elementName = "\"Sample text field\"";
         }
 
         public bool CheckUrl()

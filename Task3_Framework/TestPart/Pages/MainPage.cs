@@ -6,10 +6,7 @@ namespace Task3_Framework.TestPart
 {
     public class MainPage : BasePage
     {
-        private static string pageName = "\"Main page\"";
         private static Button alertsButton;
-        private static string alertsButtonName = "\"Alerts button\"";
-        private static By alertsButtonLocator = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsFramesWindows"]));
         private static By elementsButtonLocator = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
         private static string elementsButtonName = "\"Elements button\"";
         private static Button elementsButton = new Button(elementsButtonLocator, elementsButtonName);
@@ -17,10 +14,10 @@ namespace Task3_Framework.TestPart
         private static string widgetsButtonName = "\"Widgets button\"";
         private static Button widgetsButton = new Button(widgetsButtonLocator, widgetsButtonName);
 
-        public MainPage() : base(alertsButton = new Button(alertsButtonLocator, alertsButtonName), pageName)
+        public MainPage() : base(alertsButton = new Button(By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsFramesWindows"])), "\"Alerts button\""), "\"Main page\"")
         {
-            locator = alertsButtonLocator;
-            elementName = alertsButtonName;
+            locator = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsFramesWindows"]));
+            elementName = "\"Alerts button\"";
         }
         
 

@@ -8,9 +8,6 @@ namespace Task3_Framework.TestPart.Pages
     class RegistrationForm:BasePage
     {
         private static Form regForm;
-        private static string registrationFormName = "\"Registration form base element\"";
-        private static By registrationFormLocator = By.XPath("//*[@id = \"userForm\"]");
-        private static string pageName = "\"Registration form\"";
 
         private static By firstNameTextFieldLocator = By.XPath("//*[@id = \"firstName\"]");
         private static string firstNameTextFieldName = "\"First name text field\"";
@@ -41,10 +38,10 @@ namespace Task3_Framework.TestPart.Pages
         private static Button submitButton = new Button(submitButtonLocator, submitButtonName);
 
 
-        public RegistrationForm() : base(regForm = new Form(registrationFormLocator, registrationFormName), pageName)
+        public RegistrationForm() : base(regForm = new Form(By.XPath("//*[@id = \"userForm\"]"), "\"Registration form base element\""), "\"Registration form\"")
         {
-            locator = registrationFormLocator;
-            elementName = registrationFormName;
+            locator = By.XPath("//*[@id = \"userForm\"]");
+            elementName = "\"Registration form base element\"";
         }
         
         public void FillRegistrationForm(UserModel model)

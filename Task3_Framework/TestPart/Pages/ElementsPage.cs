@@ -7,16 +7,13 @@ namespace Task3_Framework.TestPart.Pages
     class ElementsPage:BasePage
     {
         private static Accordion elementsAccordion;
-        private static string elementsAccordionName = "\"Elements accordion\"";
-        private static By elementsAccordionLocator = By.XPath(string.Format("//div[contains(@class, \"show\")]//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
-        private static string pageName = "\"Elements pagee\"";
         
         public MenuPage menuPage = new MenuPage();
 
-        public ElementsPage() : base(elementsAccordion = new Accordion(elementsAccordionLocator, elementsAccordionName), pageName)
+        public ElementsPage() : base(elementsAccordion = new Accordion(By.XPath(string.Format("//div[contains(@class, \"show\")]//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"])), "\"Elements accordion\""), "\"Elements pagee\"")
         {
-            locator = elementsAccordionLocator;
-            elementName = elementsAccordionName;
+            locator = By.XPath(string.Format("//div[contains(@class, \"show\")]//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
+            elementName = "\"Elements accordion\"";
         }
     }
 }

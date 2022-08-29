@@ -1,8 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Task3_Framework.TestPart.BaseClasses;
 using Task3_Framework.TestPart.BaseClasses.Elements;
 using Task3_Framework.TestPart.Elements;
@@ -12,9 +10,6 @@ namespace Task3_Framework.TestPart.Pages
     internal class DatePickerForm:BasePage
     {
         private static DatePicker datePicker;
-        private static string datePickerName = "\"Date picker\"";
-        private static By datePickerLocator = By.XPath("//input[@id =\"datePickerMonthYearInput\"]");
-        private static string pageName = "\"Date picker form\"";
 
         private static By selectMonthLocator = By.XPath("//select[@class = \"react-datepicker__month-select\"]");
         private static string selectMonthName = "\"Select month dropdown\"";
@@ -32,10 +27,10 @@ namespace Task3_Framework.TestPart.Pages
         //private static string startStopName = "\"Start stop button\"";
         //private static Button startStopButton = new Button(startStopButtonLocator, startStopName);
 
-        public DatePickerForm() : base(datePicker = new DatePicker(datePickerLocator, datePickerName), pageName)
+        public DatePickerForm() : base(datePicker = new DatePicker(By.XPath("//input[@id =\"datePickerMonthYearInput\"]"), "\"Date picker\""), "\"Date picker form\"")
         {
-            locator = datePickerLocator;
-            elementName = pageName;
+            locator = By.XPath("//input[@id =\"datePickerMonthYearInput\"]");
+            elementName = "\"Date picker form\"";
         }
 
         public void CompareDateTime()

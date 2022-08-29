@@ -7,17 +7,14 @@ namespace Task3_Framework.TestPart.Pages
     class FramesForm:BasePage
     {
         private static Wrapper framesWrapper;
-        private static string framesWrapperName = "\"Frames wrapper on forms page\"";
-        private static By framesWrapperLocator = By.XPath("//*[@id=\"framesWrapper1\"]");
-        private static string pageName = "\"Frames form\"";
 
         public HighFrame highFrame = new HighFrame();
         public LowFrame lowFrame = new LowFrame();
 
-        public FramesForm() : base(framesWrapper = new Wrapper(framesWrapperLocator, framesWrapperName), pageName)
+        public FramesForm() : base(framesWrapper = new Wrapper(By.XPath("//*[@id=\"framesWrapper1\"]"), "\"Frames wrapper on forms page\""), "\"Frames form\"")
         {
-            locator = framesWrapperLocator;
-            elementName = framesWrapperName;
+            locator = By.XPath("//*[@id=\"framesWrapper1\"]");
+            elementName = "\"Frames wrapper on forms page\"";
         }
     }
 }

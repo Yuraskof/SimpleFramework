@@ -10,17 +10,14 @@ namespace Task3_Framework.TestPart.Pages
     class SliderForm:BasePage
     {
         private static Slider slider;
-        private static string sliderName = "\"Slider\"";
-        private static By sliderLocator = By.XPath("//input[contains(@class, \"range-slider\")]"); 
-        private static string pageName = "\"Slider form\"";
         private static By sliderTextFieldLocator = By.XPath("//input[@id= \"sliderValue\"]");
         private static string sliderTextFieldName = "\"Slider text field\"";
         private static TextField sliderTextField = new TextField(sliderTextFieldLocator, sliderTextFieldName);
 
-        public SliderForm() : base(slider = new Slider(sliderLocator, sliderName), pageName)
+        public SliderForm() : base(slider = new Slider(By.XPath("//input[contains(@class, \"range-slider\")]"), "\"Slider\""), "\"Slider form\"")
         {
-            locator = sliderLocator;
-            elementName = sliderName;
+            locator = By.XPath("//input[contains(@class, \"range-slider\")]");
+            elementName = "\"Slider\"";
         }
 
         public int SetSliderValue()

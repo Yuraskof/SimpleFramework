@@ -10,18 +10,15 @@ namespace Task3_Framework.TestPart.Pages
     class ProgressBarForm : BasePage
     {
         private static ProgressBar progressBar;
-        private static string progressBarName = "\"Progress bar\"";
-        private static By progressBarLocator = By.XPath("//div[@id =\"progressBar\"]");
-        private static string pageName = "\"Progress bar form\"";
-
+        
         private static By startStopButtonLocator = By.XPath("//button[@id =\"startStopButton\"]");
         private static string startStopName = "\"Start stop button\"";
         private static Button startStopButton = new Button(startStopButtonLocator, startStopName);
 
-        public ProgressBarForm() : base(progressBar = new ProgressBar(progressBarLocator, progressBarName), pageName)
+        public ProgressBarForm() : base(progressBar = new ProgressBar(By.XPath("//div[@id =\"progressBar\"]"), "\"Progress bar\""), "\"Progress bar form\"")
         {
-            locator = progressBarLocator;
-            elementName = pageName;
+            locator = By.XPath("//div[@id =\"progressBar\"]");
+            elementName = "\"Progress bar\"";
         }
 
         public void SetProgressBarValue()

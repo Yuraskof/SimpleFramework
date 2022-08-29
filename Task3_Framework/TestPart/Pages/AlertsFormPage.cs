@@ -8,9 +8,6 @@ namespace Task3_Framework.TestPart.Pages
     class AlertsFormPage:BasePage
     {
         private static Button simpleAlertsButton;
-        private static string pageName = "\"AlertsForm page\"";
-        private static By simpleAlertButtonLocator = By.XPath("//*[@id = \"alertButton\"]");
-        private static string simpleAlertButtonName = "\"Simple alert\"";
         private static By twoOptionsAlertButtonLocator = By.XPath("//*[@id = \"confirmButton\"]");
         private static string twoOptionsAlertButtonName = "\"Two options alert\"";
         private static Button twoOptionsAlertsButton = new Button(twoOptionsAlertButtonLocator, twoOptionsAlertButtonName);
@@ -27,10 +24,10 @@ namespace Task3_Framework.TestPart.Pages
         private static string pageHeaderName = "\"Alerts form page header\"";
         private static Header pageHeader = new Header(pageHeaderLocator, pageHeaderName);
 
-        public AlertsFormPage() : base(simpleAlertsButton = new Button(simpleAlertButtonLocator, simpleAlertButtonName), pageName)
+        public AlertsFormPage() : base(simpleAlertsButton = new Button(By.XPath("//*[@id = \"alertButton\"]"), "\"Simple alert\""), "\"AlertsForm page\"")
         {
-            locator = simpleAlertButtonLocator;
-            elementName = simpleAlertButtonName;
+            locator = By.XPath("//*[@id = \"alertButton\"]");
+            elementName = "\"Simple alert\"";
         }
 
         public void ClickSimpleAlert()
