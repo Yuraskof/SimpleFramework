@@ -36,7 +36,7 @@ namespace Task3_Framework.TestPart.Tests
 
             alertsFormPage.ClickSimpleAlert();
 
-            Assert.IsTrue(BrowserUtils.AlertIsPresent(DriverUtils.wait), "Simple alert isn't open");
+            Assert.IsTrue(BrowserUtils.AlertIsPresent(), "Simple alert isn't open");
 
             string simpleAlertText = BrowserUtils.GetTextFromAlert();
 
@@ -46,13 +46,13 @@ namespace Task3_Framework.TestPart.Tests
 
             BrowserUtils.AcceptAlert(DriverUtils.wait);
 
-            Assert.Null(BrowserUtils.SwitchToAlert(), "Simple alert is open");
+            Assert.IsFalse(BrowserUtils.AlertIsPresent(), "Simple alert is open");
 
             log.Info("Step 4 completed successfully");
 
             alertsFormPage.ClickTwoOptionsAlert();
 
-            Assert.IsTrue(BrowserUtils.AlertIsPresent(DriverUtils.wait), "Two options alert isn't open");
+            Assert.IsTrue(BrowserUtils.AlertIsPresent(), "Two options alert isn't open");
 
             string twoOptionsAlertText = BrowserUtils.GetTextFromAlert();
 
@@ -62,7 +62,7 @@ namespace Task3_Framework.TestPart.Tests
 
             BrowserUtils.AcceptAlert(DriverUtils.wait);
 
-            Assert.Null(BrowserUtils.SwitchToAlert(), "Two options alert is open");
+            Assert.IsFalse(BrowserUtils.AlertIsPresent(), "Two options alert is open");
 
             string twoOptionsAlertConfirmationText = alertsFormPage.Get2OptAlertConfirmText();
 
@@ -72,7 +72,7 @@ namespace Task3_Framework.TestPart.Tests
 
             alertsFormPage.ClickAlertWithText();
 
-            Assert.IsTrue(BrowserUtils.AlertIsPresent(DriverUtils.wait), "Alert with text field isn't open");
+            Assert.IsTrue(BrowserUtils.AlertIsPresent(), "Alert with text field isn't open");
 
             string alertWithTextMessage = BrowserUtils.GetTextFromAlert();
 
@@ -85,7 +85,7 @@ namespace Task3_Framework.TestPart.Tests
             BrowserUtils.AlertSendKeys(generatedText, DriverUtils.wait);
             BrowserUtils.AcceptAlert(DriverUtils.wait);
 
-            Assert.Null(BrowserUtils.SwitchToAlert(), "Alert with text is open");
+            Assert.IsFalse(BrowserUtils.AlertIsPresent(), "Alert with text is open");
 
             string alertWithTextConfirmResult = alertsFormPage.GetAlertWithTextComfirmText();
 

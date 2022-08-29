@@ -17,31 +17,26 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
             log.Info(string.Format("open url = {0}", url));
         }
 
-        public static bool AlertIsPresent(WebDriverWait wait)
-        {
-            if (wait.Until(ExpectedConditions.AlertIsPresent()) != null)
-            {
-                log.Info("alert is present");
-                return true;
-            }
-
-            log.Info("alert isn't present");
-            return false;
-        }
-
-        public static IAlert SwitchToAlert()
+        public static bool AlertIsPresent()
         {
             try
             {
                 IAlert alert = DriverUtils.WebDriver.SwitchTo().Alert();
-                log.Info("Switched to alert");
-                return alert;
+                log.Info("Alert is present");
+                return true;
             }
-            catch (Exception exception)
+            catch (Exception e)
             {
                 log.Info("Alert not found");
-                return null;
+                return false;
             }
+        }
+
+        public static IAlert SwitchToAlert()
+        {
+            IAlert alert = DriverUtils.WebDriver.SwitchTo().Alert();
+            log.Info("Switched to alert");
+            return alert;
         }
 
         public static string GetTextFromAlert()
