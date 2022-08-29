@@ -32,6 +32,15 @@ namespace Task3_Framework.TestPart.Pages
         private static By framesButtonLocator = By.XPath(string.Format("//span[text()=\"{0}\"]", ConfigUtils.TestData["FramesForm"]));
         private static string framesButtonName = "\"Frames button\"";
         private static Button framesButton = new Button(framesButtonLocator, framesButtonName);
+        private static By sliderFormButtonLocator = By.XPath(string.Format("//span[text()=\"{0}\"]", ConfigUtils.TestData["SliderForm"]));
+        private static string sliderFormButtonName = "\"Slider form button\"";
+        private static Button sliderFormButton = new Button(sliderFormButtonLocator, sliderFormButtonName);
+        private static By progrBarFormButtonLocator = By.XPath(string.Format("//span[text()=\"{0}\"]", ConfigUtils.TestData["ProgressBarForm"]));
+        private static string progrBarFormButtonName = "\"Progress bar form button\"";
+        private static Button progrBarFormButton = new Button(progrBarFormButtonLocator, progrBarFormButtonName);
+        private static By datePickerFormButtonLocator = By.XPath(string.Format("//span[text()=\"{0}\"]", ConfigUtils.TestData["DatePickerForm"]));
+        private static string datePickerFormButtonName = "\"Date picker form button\"";
+        private static Button datePickerFormButton = new Button(datePickerFormButtonLocator, datePickerFormButtonName);
 
         public MenuPage() : base(menuPanel = new Panel(menuPanelLocator, menuPanelName), pageName)
         {
@@ -79,6 +88,27 @@ namespace Task3_Framework.TestPart.Pages
             linksFormButton.JsScrollToElement();
             linksFormButton.IsEnabled();
             linksFormButton.Click();
+        }
+
+        public void OpenSliderForm()
+        {
+            sliderFormButton.JsScrollToElement();
+            sliderFormButton.IsEnabled();
+            sliderFormButton.Click();
+        }
+
+        public void OpenProgressBarForm()
+        {
+            progrBarFormButton.JsScrollToElement();
+            progrBarFormButton.IsEnabled();
+            progrBarFormButton.Click();
+        }
+
+        public void OpenDatePickerForm()
+        {
+            datePickerFormButton.JsScrollToElement();
+            datePickerFormButton.IsEnabled();
+            datePickerFormButton.Click();
         }
     }
 }

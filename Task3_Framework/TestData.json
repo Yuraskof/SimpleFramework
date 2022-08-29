@@ -18,6 +18,20 @@
   "BrowserForm": "Browser Windows",
   "LinksButton": "Links",
   "FramesText": "This is a sample page",
-  "Url": "/sample"
+  "Url": "/sample",
+  "WidgetsWindows": "Widgets",
+  "SliderForm": "Slider",
+  "ProgressBarForm": "Progress Bar",
+  "Age": "33",
+  "DatePickerForm": "Date Picker",
+  "Day": "29",
+  "Month": "February",
+  "PrecissionPercent": "2",
+
+
+  "": "Links",
+  "": "This is a sample page",
+  "": "/sample",
+  "": "Widgets"
 }
 

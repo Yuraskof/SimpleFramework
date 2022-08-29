@@ -62,5 +62,11 @@ namespace Task3_Framework.TestPart.BaseClasses
             log.Info(string.Format("element is not displayed = {0}", element));
             return element;
         }
+
+        public string GetAttribute(string attribute)
+        {
+            IWebElement element = Find();
+            return element.GetAttribute(attribute);
+        }
     }
 }

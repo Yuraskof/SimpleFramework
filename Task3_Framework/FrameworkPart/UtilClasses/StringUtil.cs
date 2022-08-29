@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Text.RegularExpressions;
 using log4net;
 
 namespace Task3_Framework.FrameworkPart.UtilClasses
@@ -39,6 +41,16 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
 
             log.Info("strings separated");
             return userInfoFields;
+        }
+
+        public static decimal ConvertToDecimal(string text)
+        {
+            string clearText = Regex.Replace(text, @"[%]+", "");
+
+            decimal convertedValue = decimal.Parse(Regex.Match(text, @"\d+").Value, NumberFormatInfo.InvariantInfo);
+
+            log.Info(string.Format("Decimal value = {0}", convertedValue));
+            return convertedValue;
         }
     }
 }

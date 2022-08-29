@@ -13,6 +13,9 @@ namespace Task3_Framework.TestPart
         private static By elementsButtonLocator = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
         private static string elementsButtonName = "\"Elements button\"";
         private static Button elementsButton = new Button(elementsButtonLocator, elementsButtonName);
+        private static By widgetsButtonLocator = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["WidgetsWindows"]));
+        private static string widgetsButtonName = "\"Widgets button\"";
+        private static Button widgetsButton = new Button(widgetsButtonLocator, widgetsButtonName);
 
         public MainPage() : base(alertsButton = new Button(alertsButtonLocator, alertsButtonName), pageName)
         {
@@ -31,6 +34,12 @@ namespace Task3_Framework.TestPart
         {
             elementsButton.JsScrollToElement();
             elementsButton.Click();
+        }
+
+        public void GoToWidgetsPage()
+        {
+            widgetsButton.JsScrollToElement();
+            widgetsButton.Click();
         }
     }
 }
