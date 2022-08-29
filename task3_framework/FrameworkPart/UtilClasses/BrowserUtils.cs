@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using System;
+using log4net;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 using OpenQA.Selenium.Support.UI;
@@ -28,22 +29,24 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
             return false;
         }
 
-        public static bool AlertIsClosed(WebDriverWait wait)
+        public static IAlert SwitchToAlert()
         {
-            if (wait.Until(ExpectedConditions.AlertState(false)))
+            try
             {
-                log.Info("alert isn't present");
-                return true;
+                IAlert alert = DriverUtils.WebDriver.SwitchTo().Alert();
+                log.Info("Switched to alert");
+                return alert;
             }
-
-            log.Info("alert is present");
-            return false;
+            catch (Exception exception)
+            {
+                log.Info("Alert not found");
+                return null;
+            }
         }
 
-        public static string GetTextFromAlert(WebDriverWait wait)
+        public static string GetTextFromAlert()
         {
-            IAlert alert = DriverUtils.WebDriver.SwitchTo().Alert();
-            string text = alert.Text;
+            string text = SwitchToAlert().Text;
             log.Info(string.Format("alert text = {0}", text));
             return text;
         }

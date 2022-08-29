@@ -15,8 +15,6 @@ namespace Task3_Framework.TestPart.Tests
 
             BrowserUtils.GoToUrl(DriverUtils.BrowserConfig["baseUrl"]);
 
-            ConfigUtils.GetUserInfo(configKey);
-
             MainPage mainPage = new MainPage();
 
             Assert.IsTrue(mainPage.isPageOpen(), "Main page isn't open");
@@ -35,17 +33,13 @@ namespace Task3_Framework.TestPart.Tests
 
             log.Info("Step 2 completed successfully");
 
-            UserModel userModelFromTestData = new UserModel();
-
-            userModelFromTestData.SetModelFieldsFromTestData();
-
             webTablesForm.OpenRegistrationForm();
 
             Assert.IsTrue(webTablesForm.registrationForm.isPageOpen(), "Registration form form isn't open");
 
             log.Info("Step 3 completed successfully");
 
-            webTablesForm.registrationForm.FillRegistrationForm(userModelFromTestData);
+            webTablesForm.registrationForm.FillRegistrationForm(model);
 
             webTablesForm.registrationForm.SubmitForm();
 
@@ -57,19 +51,19 @@ namespace Task3_Framework.TestPart.Tests
 
             UserModel userModelFromPage = new UserModel();
 
-            string userInfo = webTablesForm.GetUserInfoFromTextFields();
+            string userInfo = webTablesForm.GetUserInfoFromTextFields(model.Email);
 
             userModelFromPage.SetUserModelFromTextFields(userInfo);
 
-            Assert.IsTrue(userModelFromPage.Equals(userModelFromTestData), "Models are not equal");
+            Assert.IsTrue(userModelFromPage.Equals(model), "Models are not equal");
 
             log.Info("Step 4 completed successfully");
 
-            Assert.IsTrue(webTablesForm.CheckListIsChangeded(), "List not changed");
+            Assert.IsTrue(webTablesForm.CheckListIsChangeded(model.Email), "List not changed");
 
             DriverUtils.SetImplicitWait(0);
 
-            Assert.IsTrue(webTablesForm.CheckUserIsDeleted(), "User not deleted");
+            Assert.IsTrue(webTablesForm.CheckUserIsDeleted(model.Email), "User not deleted");
 
             log.Info("Step 5 completed successfully. Test case \"Tables\" completed.");
         }

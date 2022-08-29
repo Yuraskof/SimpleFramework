@@ -33,8 +33,6 @@ namespace Task3_Framework
             return false;
         }
 
-        
-
         public static  UserModel CreateModel(string key)
         {
             ConfigUtils.GetUserInfo(key);

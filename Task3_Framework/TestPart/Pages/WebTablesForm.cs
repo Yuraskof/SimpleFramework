@@ -46,46 +46,46 @@ namespace Task3_Framework.TestPart.Pages
             return  regForm.IsDisplayed();
         }
 
-        public string GetUserInfoFromTextFields()
+        public string GetUserInfoFromTextFields(string uniqueText)
         {
-            TextField rowWithRegData = CreateRowWithRegDataTextField(rowWithRegDataLocator);
+            TextField rowWithRegData = CreateRowWithRegDataTextField(rowWithRegDataLocator, uniqueText);
             rowWithRegData.IsEnabled();
             return rowWithRegData.SaveText();
         }
 
-        private TextField CreateRowWithRegDataTextField(string locator)
+        private TextField CreateRowWithRegDataTextField(string locator, string uniqueText)
         {
-            locator = string.Format("//div[contains(text(), \"{0}\")]//parent:: div[contains(@class,\"rt-tr\")]", ConfigUtils.UserInfo["Email"]);
+            locator = string.Format("//div[contains(text(), \"{0}\")]//parent:: div[contains(@class,\"rt-tr\")]", uniqueText);
             By rowWithRegDataLocator = By.XPath(locator);
             TextField element = new TextField(rowWithRegDataLocator, "\"List with User info \"");
             return element;
         }
 
-        public void DeleteUser()
+        public void DeleteUser(string uniqueText)
         {
-            Button deleteUserButton = CreateDeleteUserButton(deleteUserButtonLocator);
+            Button deleteUserButton = CreateDeleteUserButton(deleteUserButtonLocator, uniqueText);
             deleteUserButton.Click();
         }
 
-        private Button CreateDeleteUserButton(string locator)
+        private Button CreateDeleteUserButton(string locator, string uniqueText)
         {
-            locator = string.Format("//div[contains(text(), \"{0}\")]//parent:: div[contains(@class,\"rt-tr\")]//following-sibling:: span[contains(@title, \"Delete\")]", ConfigUtils.UserInfo["Email"]);
+            locator = string.Format("//div[contains(text(), \"{0}\")]//parent:: div[contains(@class,\"rt-tr\")]//following-sibling:: span[contains(@title, \"Delete\")]", uniqueText);
             By userButtonLocator = By.XPath(locator);
             Button element = new Button(userButtonLocator, "\"Delete user button\"");
             return element;
         }
 
-        public bool CheckListIsChangeded()
+        public bool CheckListIsChangeded(string uniqueText)
         {
             int elementsListCount = DriverUtils.WebDriver.FindElements(usersTableLocator).Count;
-            DeleteUser();
+            DeleteUser(uniqueText);
             int newElementsListCount = DriverUtils.WebDriver.FindElements(usersTableLocator).Count;
             return elementsListCount > newElementsListCount;
         }
 
-        public bool CheckUserIsDeleted()
+        public bool CheckUserIsDeleted(string uniqueText)
         {
-            TextField rowWithRegData = CreateRowWithRegDataTextField(rowWithRegDataLocator);
+            TextField rowWithRegData = CreateRowWithRegDataTextField(rowWithRegDataLocator, uniqueText);
             return rowWithRegData.IsDisplayed();
         }
     }

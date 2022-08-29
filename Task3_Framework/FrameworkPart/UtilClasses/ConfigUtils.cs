@@ -15,17 +15,19 @@ namespace Task3_Framework
 
         public static void GetTestData()
         {
-            TestData.Clear();
-            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestData.json");
-            var json = File.ReadAllText(filePath);
-            var jsonObj = JObject.Parse(json);
+            if (TestData.Count == 0)
+            {
+                var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestData.json");
+                var json = File.ReadAllText(filePath);
+                var jsonObj = JObject.Parse(json);
 
-            foreach (var element in jsonObj)
-            { 
-                TestData.Add(element.Key, element.Value.ToString());
+                foreach (var element in jsonObj)
+                {
+                    TestData.Add(element.Key, element.Value.ToString());
+                }
+
+                log.Info("test data received");
             }
-
-            log.Info("test data received");
         }
         
         public static void GetBrowserConfig()
