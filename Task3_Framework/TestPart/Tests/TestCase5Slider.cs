@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Task3_Framework.FrameworkPart.UtilClasses;
 using Task3_Framework.TestPart.Pages;
 

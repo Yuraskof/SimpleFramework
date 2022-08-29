@@ -41,9 +41,9 @@ namespace Task3_Framework.TestPart.Elements
 
                 for (int i = 0; i < difference; i++)
                 {
-                    move.SendKeys(Keys.ArrowUp);
+                    move.SendKeys(Keys.ArrowUp).Perform();
                 }
-                move.Release().Build().Perform();
+                move.Release();
             }
             else if(value < 50)
             {
@@ -51,9 +51,9 @@ namespace Task3_Framework.TestPart.Elements
 
                 for (int i = 0; i < difference; i++)
                 {
-                    move.SendKeys(Keys.ArrowDown);
+                    move.SendKeys(Keys.ArrowDown).Perform();
                 }
-                move.Release().Build().Perform();
+                move.Release(); 
             }
 
             log.Info(string.Format("{1} value = {0} ", value, uniqueName));

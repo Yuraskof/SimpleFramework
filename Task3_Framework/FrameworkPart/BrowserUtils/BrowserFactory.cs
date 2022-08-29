@@ -11,13 +11,17 @@ namespace Task3_Framework
     static class BrowserFactory
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        const string chromeBrowser = "chrome";
+        const string firefoxBrowser = "firefox";
+
         public static IWebDriver CreateDriver(string browserName)
         {
             IWebDriver driver = null;
 
             switch (browserName)
             {
-                case "chrome":
+                case chromeBrowser:
                     new DriverManager().SetUpDriver(new ChromeConfig());
                     ChromeOptions optionsChrome = new ChromeOptions();
                     optionsChrome.AddArguments(DriverUtils.BrowserConfig["optionsChrome"]);
@@ -25,7 +29,7 @@ namespace Task3_Framework
                     log.Info(string.Format("browser = {0}", browserName));
                     return driver;
 
-                case "firefox":
+                case firefoxBrowser:
                     new DriverManager().SetUpDriver(new FirefoxConfig());
                     FirefoxOptions optionsFirefox = new FirefoxOptions();
                     FirefoxProfile firefoxProfile = new FirefoxProfile();
@@ -36,6 +40,7 @@ namespace Task3_Framework
                     log.Info(string.Format("browser = {0}", browserName));
                     return driver;
                 default:
+                    log.Info("No suitable browser found.Check browser name in config.json.");
                     throw new Exception("No suitable browser found. Check browser name in config.json.");
             }
         }
