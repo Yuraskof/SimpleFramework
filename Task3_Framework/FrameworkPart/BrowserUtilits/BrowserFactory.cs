@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using log4net;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -25,6 +26,7 @@ namespace Task3_Framework
                     new DriverManager().SetUpDriver(new ChromeConfig());
                     ChromeOptions optionsChrome = new ChromeOptions();
                     optionsChrome.AddArguments(DriverUtils.BrowserConfig["optionsChrome"]);
+                    optionsChrome.AddUserProfilePreference("download.default_directory", @Directory.GetCurrentDirectory()+ "\\downloads");
                     driver = new ChromeDriver(optionsChrome);
                     log.Info(string.Format("browser = {0}", browserName));
                     return driver;
@@ -34,6 +36,7 @@ namespace Task3_Framework
                     FirefoxOptions optionsFirefox = new FirefoxOptions();
                     FirefoxProfile firefoxProfile = new FirefoxProfile();
                     firefoxProfile.SetPreference("intl.accept_languages", DriverUtils.BrowserConfig["languageFirefox"]);
+                    firefoxProfile.SetPreference("browser.download.dir", @Directory.GetCurrentDirectory() + "\\downloads");
                     optionsFirefox.AddArguments(DriverUtils.BrowserConfig["regimeFirefox"]);
                     optionsFirefox.Profile = firefoxProfile;
                     driver = new FirefoxDriver(optionsFirefox);

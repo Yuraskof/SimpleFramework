@@ -2,6 +2,7 @@
   "baseUrl": "https://demoqa.com/",
   "browser": "chrome", // firefox  chrome
   "optionsChrome": " --lang=us",
+  "downloadDirectory": "C:\\Users\\ёрий\\source\\repos\\y.zabela\\Task3_Framework",
   "regimeFirefox": "-private",
   "languageFirefox": "us",
   "wait_time": "20"

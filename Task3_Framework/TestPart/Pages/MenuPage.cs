@@ -18,6 +18,7 @@ namespace Task3_Framework.TestPart.Pages
         private static Button sliderFormButton = new Button(By.XPath(string.Format("//span[text()=\"{0}\"]", ConfigUtils.TestData["SliderForm"])), "\"Slider form button\"");
         private static Button progrBarFormButton = new Button(By.XPath(string.Format("//span[text()=\"{0}\"]", ConfigUtils.TestData["ProgressBarForm"])), "\"Progress bar form button\"");
         private static Button datePickerFormButton = new Button(By.XPath(string.Format("//span[text()=\"{0}\"]", ConfigUtils.TestData["DatePickerForm"])), "\"Date picker form button\"");
+        private static Button uploadDownloadButton = new Button(By.XPath(string.Format("//span[text()=\"{0}\"]", ConfigUtils.TestData["UploadDownload"])), "\"Upload and download button\"");
 
         public MenuPage() : base(menuPanel = new Panel(By.XPath("//div[@class =\"left-pannel\"]"), "\"Menu panel\""), "\"Menu page\"")
         {
@@ -86,6 +87,13 @@ namespace Task3_Framework.TestPart.Pages
             datePickerFormButton.JsScrollToElement();
             datePickerFormButton.IsEnabled();
             datePickerFormButton.Click();
+        }
+
+        public void OpenUploadDownloadForm()
+        {
+            uploadDownloadButton.JsScrollToElement();
+            uploadDownloadButton.IsEnabled();
+            uploadDownloadButton.Click();
         }
     }
 }

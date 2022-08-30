@@ -1,5 +1,6 @@
 ﻿using log4net;
 using NUnit.Framework;
+using Task3_Framework.FrameworkPart.UtilClasses;
 
 namespace Task3_Framework.TestPart.Tests
 {
@@ -11,12 +12,10 @@ namespace Task3_Framework.TestPart.Tests
         public void Setup()
         {
             ConfigUtils.GetBrowserConfig();
-
-            DriverUtils.getInstance(); 
-
-            DriverUtils.WebDriver.Manage().Window.Maximize(); 
-
+            DriverUtils.getInstance();
+            DriverUtils.WebDriver.Manage().Window.Maximize();
             ConfigUtils.GetTestData();
+            FilesUtils.ClearDownloadFolder();
         }
 
         [TearDown]

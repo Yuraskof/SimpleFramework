@@ -12,7 +12,6 @@ namespace Task3_Framework.TestPart.Pages
     internal class DatePickerForm:BasePage
     {
         private static DatePicker datePicker;
-
         private static By selectMonthLocator = By.XPath("//select[@class = \"react-datepicker__month-select\"]");
         private static By selectYearLocator = By.XPath("//select[@class = \"react-datepicker__year-select\"]");
         private static Button dayButton = new Button(By.XPath(string.Format("//div[contains (text(), \"{0}\")]", ConfigUtils.TestData["Day"])), "\"Select day button\"");
@@ -68,7 +67,7 @@ namespace Task3_Framework.TestPart.Pages
             selectMonth.SelectByText(ConfigUtils.TestData["Month"]);
 
             int selectedYear = now.Year;
-            int month = Array.FindIndex(CultureInfo.CurrentCulture.DateTimeFormat.MonthNames,
+            int selectedMonth = Array.FindIndex(CultureInfo.CurrentCulture.DateTimeFormat.MonthNames,
                 t => t.Equals(ConfigUtils.TestData["Month"], StringComparison.CurrentCultureIgnoreCase))+1;
             
             DriverUtils.SetImplicitWait(1);
@@ -89,7 +88,7 @@ namespace Task3_Framework.TestPart.Pages
                         {
                             dayButton.JsScrollToElement();
                             element.Click();
-                            dateInFuture = new DateTime(selectedYear, month, Convert.ToInt32(ConfigUtils.TestData["Day"]));
+                            dateInFuture = new DateTime(selectedYear, selectedMonth, Convert.ToInt32(ConfigUtils.TestData["Day"]));
                             closestDate = dateInFuture;
                             i = -1;
                             break;
@@ -122,7 +121,7 @@ namespace Task3_Framework.TestPart.Pages
 
                         if (attribute.Contains(ConfigUtils.TestData["Month"]) && attribute.Contains(ConfigUtils.TestData["Day"]))
                         {
-                            dateInPast = new DateTime(selectedYear, month, Convert.ToInt32(ConfigUtils.TestData["Day"]));
+                            dateInPast = new DateTime(selectedYear, selectedMonth, Convert.ToInt32(ConfigUtils.TestData["Day"]));
                             TimeSpan differenceNowPast = now.Subtract(dateInPast);
 
                             if (differenceNowPast<differenceNowFuture)
@@ -140,7 +139,5 @@ namespace Task3_Framework.TestPart.Pages
             DriverUtils.SetImplicitWait(Convert.ToInt32(DriverUtils.BrowserConfig["wait_time"]));
             return closestDate;
         }
-
-
     }
 }
