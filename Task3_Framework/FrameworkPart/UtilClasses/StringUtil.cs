@@ -52,5 +52,10 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
             log.Info(string.Format("Decimal value = {0}", convertedValue));
             return convertedValue;
         }
+
+        public static bool CompareStrings(string string1, string string2)
+        {
+            return string1.Equals(string2);
+        }
     }
 }

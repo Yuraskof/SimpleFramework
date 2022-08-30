@@ -66,7 +66,6 @@ namespace Task3_Framework
             {
                 UserInfo.Add(userInfoFields[i], separatedData[i]);
             }
-
             log.Info("user info received");
         }
     }

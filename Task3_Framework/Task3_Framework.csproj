@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="FrameworkPart\BrowserUtils\Helpers.cs" />
+    <Compile Remove="FrameworkPart\BrowserUtilits\Helpers.cs" />
     <Compile Remove="TestPart\Pages\AboutPage.cs" />
     <Compile Remove="TestPart\Pages\CommunityMarketPage.cs" />
     <Compile Remove="TestPart\Pages\GamePage.cs" />

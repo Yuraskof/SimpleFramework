@@ -8,8 +8,7 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
 {
     class BrowserUtils
     {
-        private static readonly ILog log =
-            LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public static void GoToUrl(string url)
         {

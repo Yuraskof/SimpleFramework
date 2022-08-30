@@ -1,4 +1,6 @@
-﻿using log4net;
+﻿using System;
+using System.Collections.ObjectModel;
+using log4net;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 using Task3_Framework.FrameworkPart.UtilClasses;
@@ -61,6 +63,25 @@ namespace Task3_Framework.TestPart.BaseClasses
             var element = DriverUtils.wait.Until(ExpectedConditions.InvisibilityOfElementLocated(uniqueLocator));
             log.Info(string.Format("element is not displayed = {0}", element));
             return element;
+        }
+
+        public bool ElementIsPresent()
+        {
+            try
+            {
+                var element = DriverUtils.WebDriver.FindElement(uniqueLocator);
+                log.Info(string.Format("element displayed = {0}", element));
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public ReadOnlyCollection<IWebElement> GetListOfElements()
+        {
+            return DriverUtils.WebDriver.FindElements(uniqueLocator);
         }
 
         public string GetAttribute(string attribute)
