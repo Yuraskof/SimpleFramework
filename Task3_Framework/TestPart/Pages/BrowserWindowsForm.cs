@@ -7,10 +7,7 @@ namespace Task3_Framework.TestPart.Pages
     class BrowserWindowsForm:BasePage
     {
         private static Button browserWindowsFormButton;
-        
-        private static By newTabButtonLocator = By.XPath("//*[@id= \"tabButton\"]");
-        private static string newTabButtonName = "\"New tab button\"";
-        private static Button newTabButton = new Button(newTabButtonLocator, newTabButtonName);
+        private static Button newTabButton = new Button(By.XPath("//*[@id= \"tabButton\"]"), "\"New tab button\"");
 
         public BrowserWindowsForm() : base(browserWindowsFormButton = new Button(By.XPath("//*[@id= \"tabButton\"]"), "\"Browser windows form button\""), "\"Browser windows form\"")
         {

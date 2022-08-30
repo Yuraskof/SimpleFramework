@@ -10,9 +10,7 @@ namespace Task3_Framework.TestPart.Pages
     class SliderForm:BasePage
     {
         private static Slider slider;
-        private static By sliderTextFieldLocator = By.XPath("//input[@id= \"sliderValue\"]");
-        private static string sliderTextFieldName = "\"Slider text field\"";
-        private static TextField sliderTextField = new TextField(sliderTextFieldLocator, sliderTextFieldName);
+        private static TextField sliderTextField = new TextField(By.XPath("//input[@id= \"sliderValue\"]"), "\"Slider text field\"");
 
         public SliderForm() : base(slider = new Slider(By.XPath("//input[contains(@class, \"range-slider\")]"), "\"Slider\""), "\"Slider form\"")
         {

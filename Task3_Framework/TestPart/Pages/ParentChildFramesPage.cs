@@ -10,7 +10,6 @@ namespace Task3_Framework.TestPart.Pages
         private static By parentFrameLocator = By.XPath("//*[@id = \"frame1\"]");
         private static string parentFrameName = "\"Parent frame\"";
         private static TextField parentFrameTextField;
-        
         private static By childFrameLocator = By.XPath("//*[contains(@srcdoc, \"Child\")]");
         private static string childFrameName = "\"Child frame\"";
         private static TextField childFrameTextField = new TextField(By.XPath(string.Format("//p[contains (text(), \"{0}\")]", ConfigUtils.TestData["ChildFrameText"])), "\"Child frame text\"");

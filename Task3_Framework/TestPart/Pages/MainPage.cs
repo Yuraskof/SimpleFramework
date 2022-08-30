@@ -7,12 +7,8 @@ namespace Task3_Framework.TestPart
     public class MainPage : BasePage
     {
         private static Button alertsButton;
-        private static By elementsButtonLocator = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
-        private static string elementsButtonName = "\"Elements button\"";
-        private static Button elementsButton = new Button(elementsButtonLocator, elementsButtonName);
-        private static By widgetsButtonLocator = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["WidgetsWindows"]));
-        private static string widgetsButtonName = "\"Widgets button\"";
-        private static Button widgetsButton = new Button(widgetsButtonLocator, widgetsButtonName);
+        private static Button elementsButton = new Button(By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"])), "\"Elements button\"");
+        private static Button widgetsButton = new Button(By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["WidgetsWindows"])), "\"Widgets button\"");
 
         public MainPage() : base(alertsButton = new Button(By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsFramesWindows"])), "\"Alerts button\""), "\"Main page\"")
         {
@@ -20,7 +16,6 @@ namespace Task3_Framework.TestPart
             elementName = "\"Alerts button\"";
         }
         
-
         public void GoToAlertsPage()
         {
             alertsButton.JsScrollToElement();

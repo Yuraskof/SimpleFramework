@@ -9,21 +9,12 @@ namespace Task3_Framework.TestPart.Pages
     class WebTablesForm:BasePage
     {
         private static Button webTablesFormButton;
-        private static By addButtonLocator = By.XPath("//*[@id = \"addNewRecordButton\"]");
-        private static string addButtonName = "\"button Add\"";
-        private static Button addButton = new Button(addButtonLocator, addButtonName);
-        private static By registrationFormLocator = By.XPath("//*[@id = \"userForm\"]");
-        private static string registrationFormName = "\"Registration form base element\"";
-        private static Form regForm = new Form(registrationFormLocator, registrationFormName);
+        private static Button addButton = new Button(By.XPath("//*[@id = \"addNewRecordButton\"]"), "\"button Add\"");
+        private static Form regForm = new Form(By.XPath("//*[@id = \"userForm\"]"), "\"Registration form base element\"");
         private static string rowWithRegDataLocator = "//div[contains(text(), \"{0}\")]//parent:: div[contains(@class,\"rt-tr\")]";
         private static string deleteUserButtonLocator = "//div[contains(text(), \"{0}\")]//parent:: div[contains(@class,\"rt-tr\")]//following-sibling:: span[contains(@title, \"Delete\")]";
         private static By usersTableLocator = By.XPath("//div[@class = \"rt-td\"][contains(text(), \"@\")]");
-        private static string usersTableName = "\"List with User info \"";
-        private static Table usersTable = new Table(usersTableLocator, usersTableName);
-        private static By pageHeaderLocator = By.XPath("//div[@class = \"main-header\"]");
-        private static string pageHeaderName = "\"Web tables page header\"";
-        private static Header pageHeader = new Header(pageHeaderLocator, pageHeaderName);
-
+        private static Header pageHeader = new Header(By.XPath("//div[@class = \"main-header\"]"), "\"Web tables page header\"");
 
         public RegistrationForm registrationForm = new RegistrationForm();
 
