@@ -14,8 +14,7 @@ namespace Task3_Framework.TestPart.Pages
             locator = By.XPath("//*[@id = \"linkWrapper\"]");
             elementName = "\"links page wrapper\"";
         }
-
-
+        
         public void OpenHomeReference()
         {
             homeReference.JsScrollToElement();

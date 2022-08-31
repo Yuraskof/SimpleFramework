@@ -32,6 +32,13 @@ namespace Task3_Framework.TestPart.BaseClasses
             return null;
         }
 
+        public void SendKeys(string text)
+        {
+            IWebElement element = Find();
+            element.SendKeys(text);
+            log.Info(string.Format("send keys = {0} to element {1}", text, uniqueName));
+        }
+
         public void Click()
         {
             IWebElement element = Find();

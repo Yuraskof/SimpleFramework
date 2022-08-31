@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using OpenQA.Selenium;
 using Task3_Framework.FrameworkPart.UtilClasses;
 using Task3_Framework.TestPart.BaseClasses;
@@ -15,6 +11,9 @@ namespace Task3_Framework.TestPart.Pages
     {
         private static Button downloadButton;
         private static Header pageHeader = new Header(By.XPath("//div[@class = \"main-header\"]"), "\"Upload download page header\"");
+        private static Button uploadButton = new Button(By.XPath("//*[@id= \"uploadFile\"]"), "\"Upload button\"");
+        private static TextField uploadedFilePath = new TextField(By.XPath("//*[@id= \"uploadedFilePath\"]"), "\"Uploaded file path text field\"");
+        private string fileName;
 
         public UploadDownloadForm() : base(downloadButton = new Button(By.XPath("//*[@id = \"downloadButton\"]"), "\"Download button\""), "\"Upload and download page\"")
         {
@@ -27,14 +26,20 @@ namespace Task3_Framework.TestPart.Pages
             pageHeader.IsEnabled();
             downloadButton.JsScrollToElement();
             downloadButton.IsEnabled();
-            string fileNameOnPage = downloadButton.GetAttribute("download");
+            fileName = downloadButton.GetAttribute("download");
             downloadButton.Click();
-            return FilesUtils.CheckDownloadFile(fileNameOnPage);
+            return FilesUtils.CheckDownloadFile(fileName);
         }
 
         public void UploadFile()
         {
+            string uploadFilePath = Directory.GetCurrentDirectory() + "\\downloads\\" + fileName;
+            uploadButton.SendKeys(@uploadFilePath);
+        }
 
+        public bool CheckUploadedFilePath()
+        {
+            return uploadedFilePath.SaveText().Contains(fileName);
         }
     }
 }

@@ -52,13 +52,6 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
             log.Info("alert accepted");
         }
 
-        public static void DismissAlert(WebDriverWait wait)
-        {
-            IAlert alert = wait.Until(ExpectedConditions.AlertIsPresent());
-            alert.Dismiss();
-            log.Info("alert declined");
-        }
-
         public static void AlertSendKeys(string text, WebDriverWait wait)
         {
             IAlert alert = wait.Until(ExpectedConditions.AlertIsPresent());
@@ -78,7 +71,6 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
             DriverUtils.WebDriver.SwitchTo().DefaultContent();
             log.Info("returned to the top level");
         }
-
 
         public static string SaveCurrentWindowHandle()
         {

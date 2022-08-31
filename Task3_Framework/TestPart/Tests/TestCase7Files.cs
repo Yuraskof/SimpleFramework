@@ -31,6 +31,9 @@ namespace Task3_Framework.TestPart.Tests
 
             Assert.IsTrue(uploadDownloadForm.DownloadFile(), "File isn't download"); 
 
+            uploadDownloadForm.UploadFile();
+
+            Assert.IsTrue(uploadDownloadForm.CheckUploadedFilePath(), "Wrong uploaded file path");
 
             log.Info("Step 3 completed successfully. Test case \"Uploading and downloading\" completed.");
         }

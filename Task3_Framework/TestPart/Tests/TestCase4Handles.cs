@@ -1,6 +1,4 @@
-﻿using System;
-using NUnit.Framework;
-using OpenQA.Selenium.Support.UI;
+﻿using NUnit.Framework;
 using Task3_Framework.FrameworkPart.UtilClasses;
 using Task3_Framework.TestPart.Pages;
 
