@@ -17,8 +17,6 @@ namespace Task3_Framework.TestPart.Pages
 
         public HighLowFramesPage() : base(highFrameTextField = new TextField(By.XPath(string.Format("//h1[contains (text(), \"{0}\")]", ConfigUtils.TestData["FramesText"])), "\"High frame text\""), "\"High and low frames page\"")
         {
-            locator = By.XPath(string.Format("//h1[contains (text(), \"{0}\")]", ConfigUtils.TestData["FramesText"]));
-            elementName = "\"High frame text\"";
         }
 
         public string GetTextFromHighFrame()

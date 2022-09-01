@@ -12,8 +12,6 @@ namespace Task3_Framework.TestPart
 
         public MainPage() : base(alertsButton = new Button(By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsFramesWindows"])), "\"Alerts button\""), "\"Main page\"")
         {
-            locator = By.XPath(string.Format("//div[@class = \"card-body\"]//h5[contains(text(), \"{0}\")]", ConfigUtils.TestData["AlertsFramesWindows"]));
-            elementName = "\"Alerts button\"";
         }
         
         public void GoToAlertsPage()

@@ -17,8 +17,6 @@ namespace Task3_Framework.TestPart.Pages
 
         public UploadDownloadForm() : base(downloadButton = new Button(By.XPath("//*[@id = \"downloadButton\"]"), "\"Download button\""), "\"Upload and download page\"")
         {
-            locator = By.XPath("//*[@id = \"downloadButton\"]");
-            elementName = "\"Download button\"";
         }
 
         public bool DownloadFile()

@@ -8,14 +8,7 @@ namespace Task3_Framework.TestPart.BaseClasses
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         protected BaseElement uniqueElement;
-        protected string elementName;
-        protected By locator;
         protected string pageName;
-
-        public BasePage()
-        {
-            
-        }
 
         public BasePage(BaseElement element, string pageName)
         {

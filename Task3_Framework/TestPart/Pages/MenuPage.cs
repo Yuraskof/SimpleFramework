@@ -22,8 +22,6 @@ namespace Task3_Framework.TestPart.Pages
 
         public MenuPage() : base(menuPanel = new Panel(By.XPath("//div[@class =\"left-pannel\"]"), "\"Menu panel\""), "\"Menu page\"")
         {
-            locator = By.XPath("//div[@class =\"left-pannel\"]");
-            elementName = "\"Menu panel\"";
         }
 
         public void OpenAlertsForm()

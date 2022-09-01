@@ -11,8 +11,6 @@ namespace Task3_Framework.TestPart.Pages
 
         public SamplePage() : base(samplePageTextField = new TextField(By.XPath("//*[@id =\"sampleHeading\"]"), "\"Sample text field\""), "\"Sample page\"")
         {
-            locator = By.XPath("//*[@id =\"sampleHeading\"]");
-            elementName = "\"Sample text field\"";
         }
 
         public bool CheckUrl()

@@ -18,8 +18,6 @@ namespace Task3_Framework.TestPart.Pages
         
         public RegistrationForm() : base(regForm = new Form(By.XPath("//*[@id = \"userForm\"]"), "\"Registration form base element\""), "\"Registration form\"")
         {
-            locator = By.XPath("//*[@id = \"userForm\"]");
-            elementName = "\"Registration form base element\"";
         }
         
         public void FillRegistrationForm(UserModel model)

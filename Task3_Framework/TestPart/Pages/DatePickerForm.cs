@@ -20,8 +20,6 @@ namespace Task3_Framework.TestPart.Pages
 
         public DatePickerForm() : base(datePicker = new DatePicker(By.XPath("//input[@id =\"datePickerMonthYearInput\"]"), "\"Date picker\""), "\"Date picker form\"")
         {
-            locator = By.XPath("//input[@id =\"datePickerMonthYearInput\"]");
-            elementName = "\"Date picker form\"";
         }
 
         public bool CompareDate()
@@ -35,7 +33,7 @@ namespace Task3_Framework.TestPart.Pages
         public bool CompareDateTime()
         {
             DateTime now = DateTime.Now;
-            string formatedDateAndTime = now.ToString("MMMM dd, yyyy h:mm tt");
+            string formatedDateAndTime = now.ToString("MMMM d, yyyy h:mm tt");
             string dateAndTimeFromPage = dateAndTimeField.GetAttribute("value");
             return StringUtil.CompareStrings(formatedDateAndTime, dateAndTimeFromPage);
         }

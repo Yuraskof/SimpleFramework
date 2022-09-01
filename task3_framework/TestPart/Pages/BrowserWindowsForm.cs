@@ -11,8 +11,6 @@ namespace Task3_Framework.TestPart.Pages
 
         public BrowserWindowsForm() : base(browserWindowsFormButton = new Button(By.XPath("//*[@id= \"tabButton\"]"), "\"Browser windows form button\""), "\"Browser windows form\"")
         {
-            locator = By.XPath("//*[@id= \"tabButton\"]");
-            elementName = "\"Browser windows form button\"";
         }
         
         public void ClickNewTabButton()

@@ -12,8 +12,6 @@ namespace Task3_Framework.TestPart.Pages
         
         public NestedFramesPage() : base(framesWrapper = new Wrapper(By.XPath("//*[@id=\"framesWrapper\"]"), "\"Frames wrapper\""), "\"Nested forms page\"")
         {
-            locator = By.XPath("//*[@id=\"framesWrapper\"]");
-            elementName = "\"Frames wrapper\"";
         }
     }
 }

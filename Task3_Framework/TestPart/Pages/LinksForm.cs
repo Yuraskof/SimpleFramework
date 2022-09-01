@@ -11,8 +11,6 @@ namespace Task3_Framework.TestPart.Pages
 
         public LinksForm() : base(linksPageWrapper = new Wrapper(By.XPath("//*[@id = \"linkWrapper\"]"), "\"links page wrapper\""), "\"links form\"")
         {
-            locator = By.XPath("//*[@id = \"linkWrapper\"]");
-            elementName = "\"links page wrapper\"";
         }
         
         public void OpenHomeReference()

@@ -14,8 +14,6 @@ namespace Task3_Framework.TestPart.Pages
 
         public SliderForm() : base(slider = new Slider(By.XPath("//input[contains(@class, \"range-slider\")]"), "\"Slider\""), "\"Slider form\"")
         {
-            locator = By.XPath("//input[contains(@class, \"range-slider\")]");
-            elementName = "\"Slider\"";
         }
 
         public int SetSliderValue()

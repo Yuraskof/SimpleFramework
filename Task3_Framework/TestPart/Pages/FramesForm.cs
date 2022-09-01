@@ -11,8 +11,6 @@ namespace Task3_Framework.TestPart.Pages
 
         public FramesForm() : base(framesWrapper = new Wrapper(By.XPath("//*[@id=\"framesWrapper1\"]"), "\"Frames wrapper on forms page\""), "\"Frames form\"")
         {
-            locator = By.XPath("//*[@id=\"framesWrapper1\"]");
-            elementName = "\"Frames wrapper on forms page\"";
         }
     }
 }

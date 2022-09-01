@@ -14,8 +14,6 @@ namespace Task3_Framework.TestPart.Pages
 
         public ProgressBarForm() : base(progressBar = new ProgressBar(By.XPath("//div[@id =\"progressBar\"]"), "\"Progress bar\""), "\"Progress bar form\"")
         {
-            locator = By.XPath("//div[@id =\"progressBar\"]");
-            elementName = "\"Progress bar\"";
         }
 
         public void SetProgressBarValue()

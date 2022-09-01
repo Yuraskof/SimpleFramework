@@ -20,8 +20,6 @@ namespace Task3_Framework.TestPart.Pages
 
         public WebTablesForm() : base(webTablesFormButton = new Button(By.XPath(string.Format("//*[contains(text(), \"{0}\")]", ConfigUtils.TestData["WebTablesForm"])), "\"button webTables form\""), "\"Web tables form\"")
         {
-            locator = By.XPath(string.Format("//*[contains(text(), \"{0}\")]", ConfigUtils.TestData["WebTablesForm"]));
-            elementName = "\"button webTables form\"";
         }
 
         public void OpenRegistrationForm()

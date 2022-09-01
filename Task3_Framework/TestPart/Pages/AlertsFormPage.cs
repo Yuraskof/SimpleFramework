@@ -16,8 +16,6 @@ namespace Task3_Framework.TestPart.Pages
 
         public AlertsFormPage() : base(simpleAlertsButton = new Button(By.XPath("//*[@id = \"alertButton\"]"), "\"Simple alert\""), "\"AlertsForm page\"")
         {
-            locator = By.XPath("//*[@id = \"alertButton\"]");
-            elementName = "\"Simple alert\"";
         }
 
         public void ClickSimpleAlert()

@@ -17,8 +17,6 @@ namespace Task3_Framework.TestPart.Pages
 
         public ParentChildFramesPage() : base(parentFrameTextField = new TextField(By.XPath(string.Format("//body[contains(text(), \"{0}\")]", ConfigUtils.TestData["ParentFrameText"])), "\"Parent frame text field\""), "\"Parent and child frames page\"")
         {
-            locator = By.XPath(string.Format("//body[contains(text(), \"{0}\")]", ConfigUtils.TestData["ParentFrameText"]));
-            elementName = "\"Parent frame text field\"";
         }
 
         public string GetTextFromTheParentFrame()

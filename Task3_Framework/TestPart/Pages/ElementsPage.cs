@@ -11,8 +11,6 @@ namespace Task3_Framework.TestPart.Pages
 
         public ElementsPage() : base(elementsAccordion = new Accordion(By.XPath(string.Format("//div[contains(@class, \"show\")]//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"])), "\"Elements accordion\""), "\"Elements pagee\"")
         {
-            locator = By.XPath(string.Format("//div[contains(@class, \"show\")]//span[contains(text(), \"{0}\")]", ConfigUtils.TestData["ElementsWindows"]));
-            elementName = "\"Elements accordion\"";
         }
     }
 }
