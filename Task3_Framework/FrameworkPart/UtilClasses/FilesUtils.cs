@@ -30,13 +30,13 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
         {
             if (Directory.Exists(@Directory.GetCurrentDirectory() + "\\downloads"))
             {
+                log.Info("Download folder cleared");
                 System.IO.DirectoryInfo directory = new DirectoryInfo(@Directory.GetCurrentDirectory() + "\\downloads");
 
                 foreach (FileInfo file in directory.GetFiles())
                 {
                     file.Delete();
                 }
-                log.Info("Download folder cleared");
             }
         }
     }

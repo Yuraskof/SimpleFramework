@@ -17,6 +17,7 @@ namespace Task3_Framework
         {
             if (TestData.Count == 0)
             {
+                log.Info("test data received");
                 var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestData.json");
                 var json = File.ReadAllText(filePath);
                 var jsonObj = JObject.Parse(json);
@@ -25,13 +26,12 @@ namespace Task3_Framework
                 {
                     TestData.Add(element.Key, element.Value.ToString());
                 }
-
-                log.Info("test data received");
             }
         }
         
         public static void GetBrowserConfig()
         {
+            log.Info("browser config received");
             var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
             var json = File.ReadAllText(filePath);
             var jsonObj = JObject.Parse(json);
@@ -40,20 +40,19 @@ namespace Task3_Framework
             {
                 DriverUtils.BrowserConfig.Add(element.Key, element.Value.ToString());
             }
-
-            log.Info("browser config received");
         }
 
         public static void ClearData()
         {
+            log.Info("test data and config data cleared");
             DriverUtils.BrowserConfig.Clear();
             TestData.Clear();
-            log.Info("test data and config data cleared");
         }
 
 
         public static void GetUserInfo(string key)
         {
+            log.Info("user info received");
             string allUserInfo = TestData[key];
             string[] separatedData = allUserInfo.Split("\t");
 
@@ -66,7 +65,6 @@ namespace Task3_Framework
             {
                 UserInfo.Add(userInfoFields[i], separatedData[i]);
             }
-            log.Info("user info received");
         }
     }
 }

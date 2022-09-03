@@ -23,15 +23,16 @@ namespace Task3_Framework
             switch (browserName)
             {
                 case chromeBrowser:
+                    log.Info(string.Format("browser = {0}", browserName));
                     new DriverManager().SetUpDriver(new ChromeConfig());
                     ChromeOptions optionsChrome = new ChromeOptions();
                     optionsChrome.AddArguments(DriverUtils.BrowserConfig["optionsChrome"]);
                     optionsChrome.AddUserProfilePreference("download.default_directory", Directory.GetCurrentDirectory()+ "\\downloads");
                     driver = new ChromeDriver(optionsChrome);
-                    log.Info(string.Format("browser = {0}", browserName));
                     return driver;
 
                 case firefoxBrowser:
+                    log.Info(string.Format("browser = {0}", browserName));
                     new DriverManager().SetUpDriver(new FirefoxConfig());
                     FirefoxOptions optionsFirefox = new FirefoxOptions();
                     FirefoxProfile firefoxProfile = new FirefoxProfile();
@@ -41,7 +42,6 @@ namespace Task3_Framework
                     optionsFirefox.AddArguments(DriverUtils.BrowserConfig["regimeFirefox"]);
                     optionsFirefox.Profile = firefoxProfile;
                     driver = new FirefoxDriver(optionsFirefox);
-                    log.Info(string.Format("browser = {0}", browserName));
                     return driver;
                 default:
                     log.Info("No suitable browser found.Check browser name in config.json.");

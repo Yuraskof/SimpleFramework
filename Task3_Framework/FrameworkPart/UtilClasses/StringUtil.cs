@@ -30,6 +30,7 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
 
         public static List<string> GetSeparateddStrings(string text, string splitter)
         {
+            log.Info("strings separated");
             string[] separatedData = text.Split(splitter);
 
             List<string> userInfoFields = new List<string>();
@@ -38,8 +39,6 @@ namespace Task3_Framework.FrameworkPart.UtilClasses
             {
                 userInfoFields.Add(separatedData[i]);
             }
-
-            log.Info("strings separated");
             return userInfoFields;
         }
 

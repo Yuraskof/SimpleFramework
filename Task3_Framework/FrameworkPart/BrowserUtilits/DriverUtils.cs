@@ -43,21 +43,21 @@ namespace Task3_Framework
 
         public static void SetExplicitWait(int seconds)
         {
-            wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(seconds));
             log.Info(string.Format("explicit wait = {0} sec", seconds));
+            wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(seconds));
         }
 
         public static void SetImplicitWait(int seconds)
         {
-            WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(seconds);
             log.Info(string.Format("implicit wait = {0} sec", seconds));
+            WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(seconds);
         }
 
         public static void ResetDriver()
         {
+            log.Info("driver reset");
             WebDriver = null;
             BrowserConfig.Clear();
-            log.Info("driver reset");
         }
     }
 }
