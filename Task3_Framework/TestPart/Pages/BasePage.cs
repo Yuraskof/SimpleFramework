@@ -1,5 +1,4 @@
 ﻿using log4net;
-using OpenQA.Selenium;
 
 namespace Task3_Framework.TestPart.BaseClasses
 {
