@@ -21,6 +21,7 @@ namespace Task3_Framework.TestPart.Pages
         public void ClickSimpleAlert()
         {
             pageHeader.IsEnabled();
+            simpleAlertsButton.JsScrollToElement();
             simpleAlertsButton.IsEnabled();
             simpleAlertsButton.Click();
         }

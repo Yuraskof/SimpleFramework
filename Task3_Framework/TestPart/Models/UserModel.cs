@@ -21,7 +21,7 @@ namespace Task3_Framework
             if (obj == null || GetType() != obj.GetType())
                 return false;
 
-            UserModel other = (UserModel)obj; ;
+            UserModel other = (UserModel)obj;
 
             if (FirstName.Equals(other.FirstName) && LastName.Equals(other.LastName) && Email.Equals(other.Email) &&
                 Age.Equals(other.Age) && Salary.Equals(other.Salary) && Department.Equals(other.Department))
